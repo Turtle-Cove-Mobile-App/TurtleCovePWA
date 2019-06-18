@@ -1,0 +1,7 @@
+{
+  "name": "tcoveapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
