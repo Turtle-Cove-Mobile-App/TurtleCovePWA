@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { TabsPage } from "./pages/tabs/tabs.page";
-import { IonicModule } from '@ionic/angular';
-import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -45,10 +43,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    CommonModule,
-    IonicModule
   ],
-  declarations: [TabsPage],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
