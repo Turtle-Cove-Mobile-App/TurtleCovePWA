@@ -12,7 +12,7 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            loadChildren: "./pages/home/home.module#HomePageModule"
+            loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
           }
         ]
       },
@@ -21,7 +21,7 @@ const routes: Routes = [
         children: [
           {
             path: "",
-            loadChildren: "./pages/info/info.module#InfoPageModule"
+            loadChildren: () => import('./pages/info/info.module').then(m => m.InfoPageModule)
           }
         ]
       },
@@ -37,8 +37,8 @@ const routes: Routes = [
     redirectTo: "/tabs/home",
     pathMatch: "full"
   },
-  { path: "home", loadChildren: "./pages/home/home.module#HomePageModule" },
-  { path: "info", loadChildren: "./pages/info/info.module#InfoPageModule" }
+  { path: "home", loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule) },
+  { path: "info", loadChildren: () => import('./pages/info/info.module').then(m => m.InfoPageModule) }
 ];
 @NgModule({
   imports: [
