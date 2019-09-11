@@ -17,11 +17,29 @@ const routes: Routes = [
         ]
       },
       {
-        path: "info",
+        path: "gw-tour",
         children: [
           {
             path: "",
-            loadChildren: () => import('./pages/info/info.module').then(m => m.InfoPageModule)
+            loadChildren: () => import('./pages/gw-tour/gw-tour.module').then(m => m.GwTourPageModule)
+          }
+        ]
+      },
+      {
+        path: "checklist",
+        children: [
+          {
+            path: "",
+            loadChildren: () => import('./pages/checklist/checklist.module').then(m => m.ChecklistPageModule)
+          }
+        ]
+      },
+      {
+        path: "tc-tour",
+        children: [
+          {
+            path: "",
+            loadChildren: () => import('./pages/tc-tour/tc-tour.module').then(m => m.TcTourPageModule)
           }
         ]
       },
@@ -64,11 +82,8 @@ const routes: Routes = [
     redirectTo: "/tabs/home",
     pathMatch: "full"
   },
-  { path: "home", loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule) },
-  { path: "info", loadChildren: () => import('./pages/info/info.module').then(m => m.InfoPageModule) },
-  { path: 'tc-tour', loadChildren: './pages/tc-tour/tc-tour.module#TcTourPageModule' },
-  { path: 'gw-tour', loadChildren: './pages/gw-tour/gw-tour.module#GwTourPageModule' },
-  { path: 'checklist', loadChildren: './pages/checklist/checklist.module#ChecklistPageModule' },
+  { path: 'info', loadChildren: './pages/info/info.module#InfoPageModule' },
+  { path: 'events', loadChildren: './pages/events/events.module#EventsPageModule' },
 ];
 @NgModule({
   imports: [
