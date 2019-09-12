@@ -4,3 +4,9 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+
+ion-content {
+    --background: url('resources/background.jpg')  no-repeat 50% 40%;
+    --background-size:cover;
+    //opacity: 0.4;
+  }
