@@ -2,34 +2,21 @@ PODS:
   - Capacitor (1.2.0):
     - CapacitorCordova (= 1.2.0)
   - CapacitorCordova (1.2.0)
-  - CordovaPluginsStatic (1.0.0):
-    - CapacitorCordova
-    - XCDYouTubeKit (~> 2.7)
-  - XCDYouTubeKit (2.8.0)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
-  - CordovaPluginsStatic (from `../capacitor-cordova-ios-plugins`)
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - XCDYouTubeKit
 
 EXTERNAL SOURCES:
   Capacitor:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
-  CordovaPluginsStatic:
-    :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
   Capacitor: 38bbe536b1b9e717a82106e4bb189250ce736b75
   CapacitorCordova: 983c22b1eae96dbce614416ab902693755a09d0f
-  CordovaPluginsStatic: f16cedf6dbeffe343984499973b421b7723bf742
-  XCDYouTubeKit: 207fa50f3648fc0fd1558b2496c74c3b34af982c
 
-PODFILE CHECKSUM: d936ba46ccd5c7525261292e0217f7f9a19ca6d7
+PODFILE CHECKSUM: 96b0fbb362791bfbdc248771b2a61f0d83cddd19
 
 COCOAPODS: 1.7.5
