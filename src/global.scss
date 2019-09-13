@@ -10,9 +10,14 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-// ion-content {
-//     --background: #2D2F2F;
-// }
+ion-content {
+    --background: #eeeeee;
+}
+
+ion-card {
+   --background: #ffffff !important;
+}
+
  .tab-selected {
     color : var(--ion-color-secondary);
     --color-selected: var(--ion-color-secondary);
