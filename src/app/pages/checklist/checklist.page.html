@@ -1,40 +1,23 @@
 <tc-header [pageName]="'Species Checklist'"></tc-header>
 
 <ion-content>
-    <ion-header translucent>
+  <ion-header translucent>
     <ion-toolbar>
-        <ion-title>Species Checklist</ion-title>
+      <ion-title>Species Checklist</ion-title>
     </ion-toolbar>
-    </ion-header>
-    <ion-list>
-        <ion-list-header>Fish/Macroinvertebrate</ion-list-header>
-        <ion-item>
-            <ion-label>Alligator gar / Atractosteus spatula</ion-label>
+  </ion-header>
+  <ion-item-group>
+    <ng-container *ngFor="let obj of species">
+      <ion-item-divider mode="ios" style="background-color: gray; color: white;">{{ obj.class }}</ion-item-divider>
+      <ng-container *ngFor="let letter of alphabet">
+        <ion-item-group *ngIf="(obj.species | filterByStartsWith : letter).length > 0">
+          <ion-item-divider>{{ letter }}</ion-item-divider>
+          <ion-item *ngFor="let species of obj.species.sort() | filterByStartsWith : letter">
+            <ion-label>{{ species }}</ion-label>
             <ion-checkbox color="primary" slot="start"></ion-checkbox>
-        </ion-item>
-        <ion-list-header>Reptiles</ion-list-header>
-        <ion-item>
-                <ion-label>Alligator Snapping Turtle / Macrochelys temminckii</ion-label>
-                <ion-checkbox color="primary" slot="start"></ion-checkbox>
-        </ion-item>
-        <ion-list-header>Plants</ion-list-header>
-        <ion-item>
-                <ion-label>Alligatorweed / Alternanthera philoxeroides</ion-label>
-                <ion-checkbox color="primary" slot="start"></ion-checkbox>
-        </ion-item>
-        <ion-list-header>Birds</ion-list-header>
-        <ion-item>
-                <ion-label>Anhinga / Anhinga anhinga</ion-label>
-                <ion-checkbox color="primary" slot="start"></ion-checkbox>
-        </ion-item>
-        <ion-list-header>Mammals</ion-list-header>
-        <ion-item>
-                <ion-label>Cotton Mouse / Peromyscus gossypinus</ion-label>
-                <ion-checkbox color="primary" slot="start"></ion-checkbox>
-        </ion-item>
-        <ion-item>
-            <ion-label>Pao / Pao</ion-label>
-            <ion-checkbox color="primary" slot="start"></ion-checkbox>
-        </ion-item>
-        </ion-list>
+          </ion-item>
+        </ion-item-group>
+      </ng-container>
+    </ng-container>
+  </ion-item-group>
 </ion-content>
