@@ -10,7 +10,7 @@
     <ng-container *ngFor="let obj of species">
       <ion-item-divider mode="ios" style="background-color: gray; color: white;">{{ obj.class }}</ion-item-divider>
       <ng-container *ngFor="let letter of alphabet">
-        <ion-item-group *ngIf="(obj.species | filterByStartsWith : letter).length > 0">
+        <ion-item-group *ngIf="obj.species | filterByStartsWith : letter">
           <ion-item-divider>{{ letter }}</ion-item-divider>
           <ion-item *ngFor="let species of obj.species.sort() | filterByStartsWith : letter">
             <ion-label>{{ species }}</ion-label>
