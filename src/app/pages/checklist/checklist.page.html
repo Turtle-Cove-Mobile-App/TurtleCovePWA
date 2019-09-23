@@ -8,14 +8,21 @@
   </ion-header>
   <ion-item-group>
     <ng-container *ngFor="let obj of species">
-      <ion-item-divider mode="ios" style="background-color: gray; color: white;">{{ obj.class }}</ion-item-divider>
+      <ion-item-divider no-padding mode="ios" sticky style="background-color: gray; color: white;" (click)="toggleClass(obj)">
+          <ion-button class="ion-no-padding" slot="start" fill="clear" size="small" color="light">
+              <ion-icon slot="icon-only" size="large" [attr.name]="!obj.expanded ? 'add' : 'remove'" mode="ios"></ion-icon>
+          </ion-button>
+          {{ obj.class }}
+      </ion-item-divider>
       <ng-container *ngFor="let letter of alphabet">
-        <ion-item-group *ngIf="obj.species | filterByStartsWith : letter">
-          <ion-item-divider>{{ letter }}</ion-item-divider>
-          <ion-item *ngFor="let species of obj.species.sort() | filterByStartsWith : letter">
-            <ion-label>{{ species }}</ion-label>
-            <ion-checkbox color="primary" slot="start"></ion-checkbox>
-          </ion-item>
+        <ion-item-group *ngIf="obj.expanded && (obj.species | filterByStartsWith : letter)">
+          <ion-list-header mode="ios">{{ letter }}</ion-list-header>
+          <ng-container *ngFor="let species of obj.species.sort() | filterByStartsWith : letter; let i = index">
+            <ion-item [attr.lines]="(i == (obj.species.sort() | filterByStartsWith : letter).length - 1) ? 'none' : 'inset'">
+              <ion-label>{{ species }}</ion-label>
+              <ion-checkbox color="primary" slot="start"></ion-checkbox>
+            </ion-item>
+          </ng-container>
         </ion-item-group>
       </ng-container>
     </ng-container>
