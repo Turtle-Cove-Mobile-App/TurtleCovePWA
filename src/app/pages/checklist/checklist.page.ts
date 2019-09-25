@@ -21,32 +21,32 @@ export class ChecklistPage implements OnInit {
         {
           name: 'One Fish',
           nomenclature: 'OneFishfancyName',
-          image: 'image string',
+          image: 'assets/img/snek.png',
         },
         {
           name: 'O2 Fish',
           nomenclature: 'O2FishfancyName',
-          image: 'image string'
+          image: 'assets/img/snek.png'
          },
         {
           name: 'O3 Fish',
           nomenclature: 'O3FishfancyName',
-          image: 'image string'
+          image: 'assets/img/snek.png'
         },
         {
           name: 'Two Fish',
           nomenclature: 'TwoFishfancyName',
-          image: 'image string'
+          image: 'assets/img/snek.png'
         },
         {
           name: 'Red Fish',
           nomenclature: 'RedFishfancyName',
-          image: 'image string'
+          image: 'assets/img/snek.png'
         },
         {
           name: 'Blue Fish',
           nomenclature: 'BlueFishfancyName',
-          image: 'image string'
+          image: 'assets/img/snek.png'
         }
       ]
     },
@@ -62,7 +62,7 @@ export class ChecklistPage implements OnInit {
         {
           name: 'Lizard Person',
           nomenclature: 'LizardPersonfancyName',
-          image: 'image string'
+          image: 'assets/img/snek.png'
         }
       ]
     },
@@ -144,11 +144,15 @@ export class ChecklistPage implements OnInit {
     animalClass.expanded = !animalClass.expanded;
   }
 
-  async openSpeciesInfo(i,j) {
+  async openSpeciesInfo(obj) {
     // i is object index.
     // j is species index.
+    console.log(obj);
     const popover = await this.popoverController.create({
       component: PopoverComponent,
+      componentProps: {
+        species: obj
+      },
       translucent: true
     });
     return await popover.present();

@@ -24,6 +24,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ChecklistPage, PopoverComponent]
+  declarations: [ChecklistPage, PopoverComponent],
+  entryComponents: [PopoverComponent]
 })
 export class ChecklistPageModule {}

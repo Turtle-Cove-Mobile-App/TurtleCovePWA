@@ -14,6 +14,7 @@ export class PopoverComponent implements OnInit {
 
   ngOnInit() {
     this.species = this.navParams.get('species');
+    console.log(this.species);
   }
 
 }
