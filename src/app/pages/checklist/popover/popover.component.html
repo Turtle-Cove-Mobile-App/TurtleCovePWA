@@ -1,1 +1,12 @@
-<img [src]="species.image"/>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ species.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div style="text-align: center; width: 100%;">{{ species.nomenclature }}</div>
+<img class="species-img" [src]="species.image" />

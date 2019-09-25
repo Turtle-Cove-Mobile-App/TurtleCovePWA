@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { NavParams, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'tc-popover',
@@ -10,11 +10,14 @@ export class PopoverComponent implements OnInit {
 
   public species;
 
-  constructor(private navParams: NavParams) { }
+  constructor(private navParams: NavParams, private popoverController: PopoverController) { }
 
   ngOnInit() {
     this.species = this.navParams.get('species');
     console.log(this.species);
   }
 
+  public dismiss(): void {
+    this.popoverController.dismiss();
+  }
 }
