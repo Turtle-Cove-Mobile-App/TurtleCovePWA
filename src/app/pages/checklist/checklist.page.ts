@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from './popover/popover.component';
 
 @Component({
   selector: 'tc-checklist',
@@ -15,35 +17,144 @@ export class ChecklistPage implements OnInit {
     {
       class: 'Fish/Macroinvertebrate',
       expanded: false,
-      species: ['One Fish', 'O2 Fish', 'O3 Fish', 'Two Fish', 'Red Fish', 'Blue Fish']
+      species: [
+        {
+          name: 'One Fish',
+          nomenclature: 'OneFishfancyName',
+          image: 'image string',
+        },
+        {
+          name: 'O2 Fish',
+          nomenclature: 'O2FishfancyName',
+          image: 'image string'
+         },
+        {
+          name: 'O3 Fish',
+          nomenclature: 'O3FishfancyName',
+          image: 'image string'
+        },
+        {
+          name: 'Two Fish',
+          nomenclature: 'TwoFishfancyName',
+          image: 'image string'
+        },
+        {
+          name: 'Red Fish',
+          nomenclature: 'RedFishfancyName',
+          image: 'image string'
+        },
+        {
+          name: 'Blue Fish',
+          nomenclature: 'BlueFishfancyName',
+          image: 'image string'
+        }
+      ]
     },
     {
       class: 'Reptiles',
       expanded: false,
-      species: ['Snek', 'Lizard Person']
+      species: [
+        {
+          name: 'Snek',
+          nomenclature: 'SnekfancyName',
+          image: 'assets/img/snek.png'
+        },
+        {
+          name: 'Lizard Person',
+          nomenclature: 'LizardPersonfancyName',
+          image: 'image string'
+        }
+      ]
     },
     {
       class: 'Plants',
       expanded: false,
-      species: ['Grass', 'Happy Little Tree', 'Flower']
+      species: [
+        {
+          name: 'Grass',
+          nomenclature: 'GrassFancyName',
+          image: 'assets/img/snek.png'
+        },
+        {
+          name: 'Happy Little Tree',
+          nomenclature: 'HLTFancyName',
+          image: 'assets/img/snek.png'
+        },
+        {
+          name: 'Flower',
+          nomenclature: 'FlowerFancyName',
+          image: 'assets/img/snek.png'
+        }
+      ]
     },
     {
       class: 'Birds',
       expanded: false,
-      species: ['Screeching Owl', 'Bald Eagle']
+      species: [
+        {
+          name: 'Screeching Owl',
+          nomenclature: 'SOFancyName',
+          image: 'assets/img/snek.png'
+         },
+         {
+           name: 'Bald Eagle',
+           nomenclature: 'BEFancyName',
+           image: 'assets/img/snek.png'
+        }
+      ]
     },
     {
       class: 'Mammals',
       expanded: false,
-      species: ['Pao', 'Red Head Canadian', 'McDowell', 'G-Doc', 'Zac']
+      species: [
+        {
+          name: 'Pao',
+          nomenclature: 'Asian',
+          image: 'assets/img/snek.png'
+        },
+        {
+          name: 'Red Head Canadian',
+          nomenclature: 'CANADIAN',
+          image: 'assets/img/snek.png'
+        },
+        {
+          name: 'McDowell',
+          nomenclature: 'Zoiks!',
+          image: 'assets/img/snek.png'
+        },
+        {
+          name: 'G-Doc',
+          nomenclature: 'Projects',
+          image: 'assets/img/snek.png'
+        },
+        {
+          name: 'Zac',
+          nomenclature: 'loser',
+          image: 'assets/img/snek.png'
+        }
+      ]
     }
   ];
 
-  constructor() {}
+  constructor(public popoverController: PopoverController) {}
 
   ngOnInit() {}
 
-toggleClass(animalClass) {
+  toggleClass(animalClass) {
     animalClass.expanded = !animalClass.expanded;
+  }
+
+  async openSpeciesInfo(i,j) {
+    // i is object index.
+    // j is species index.
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      translucent: true
+    });
+    return await popover.present();
+  }
+
+  getSpeciesNames(obj) {
+    return obj.map(item => item.name);
   }
 }

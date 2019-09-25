@@ -15,12 +15,13 @@
           {{ obj.class }}
       </ion-item-divider>
       <ng-container *ngFor="let letter of alphabet">
-        <ion-item-group *ngIf="obj.expanded && (obj.species | filterByStartsWith : letter)">
-          <ion-list-header mode="ios">{{ letter }}</ion-list-header>
-          <ng-container *ngFor="let species of obj.species.sort() | filterByStartsWith : letter; let i = index">
-            <ion-item [attr.lines]="(i == (obj.species.sort() | filterByStartsWith : letter).length - 1) ? 'none' : 'inset'">
+        <ion-item-group *ngIf="obj.expanded && (getSpeciesNames(obj.species) | filterByStartsWith : letter)">
+          <ion-item-divider style="background-color: lightgray;" mode="ios">{{ letter }}</ion-item-divider>
+          <ng-container *ngFor="let species of getSpeciesNames(obj.species).sort() | filterByStartsWith : letter; let i = index">
+            <ion-item [attr.lines]="(i == (getSpeciesNames(obj.species).sort() | filterByStartsWith : letter).length - 1) ? 'none' : 'inset'">
               <ion-label>{{ species }}</ion-label>
               <ion-checkbox color="primary" slot="start"></ion-checkbox>
+              <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species)" name="information-circle-outline"></ion-icon>
             </ion-item>
           </ng-container>
         </ion-item-group>
