@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from './popover/popover.component';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'tc-checklist',
@@ -19,31 +20,37 @@ export class ChecklistPage implements OnInit {
       species: [
         {
           id: 0,
+          checked: false,
           name: 'One Fish',
           nomenclature: 'OneFishfancyName'
         },
         {
           id: 1,
+          checked: false,
           name: 'O2 Fish',
           nomenclature: 'O2FishfancyName'
         },
         {
           id: 2,
+          checked: false,
           name: 'O3 Fish',
           nomenclature: 'O3FishfancyName'
         },
         {
           id: 3,
+          checked: false,
           name: 'Two Fish',
           nomenclature: 'TwoFishfancyName'
         },
         {
           id: 4,
+          checked: false,
           name: 'Red Fish',
           nomenclature: 'RedFishfancyName'
         },
         {
           id: 5,
+          checked: false,
           name: 'Blue Fish',
           nomenclature: 'BlueFishfancyName'
         }
@@ -55,11 +62,13 @@ export class ChecklistPage implements OnInit {
       species: [
         {
           id: 0,
+          checked: false,
           name: 'Snek',
           nomenclature: 'SnekfancyName'
         },
         {
           id: 1,
+          checked: false,
           name: 'Lizard Person',
           nomenclature: 'LizardPersonfancyName'
         }
@@ -71,16 +80,19 @@ export class ChecklistPage implements OnInit {
       species: [
         {
           id: 0,
+          checked: false,
           name: 'Grass',
           nomenclature: 'GrassFancyName'
         },
         {
           id: 1,
+          checked: false,
           name: 'Happy Little Tree',
           nomenclature: 'HLTFancyName'
         },
         {
           id: 2,
+          checked: false,
           name: 'Flower',
           nomenclature: 'FlowerFancyName'
         }
@@ -92,11 +104,13 @@ export class ChecklistPage implements OnInit {
       species: [
         {
           id: 0,
+          checked: false,
           name: 'Screeching Owl',
           nomenclature: 'SOFancyName'
         },
         {
           id: 1,
+          checked: false,
           name: 'Bald Eagle',
           nomenclature: 'BEFancyName'
         }
@@ -108,21 +122,25 @@ export class ChecklistPage implements OnInit {
       species: [
         {
           id: 0,
+          checked: false,
           name: 'Pao',
           nomenclature: 'Asian'
         },
         {
           id: 1,
+          checked: false,
           name: 'Red Head Canadian',
           nomenclature: 'CANADIAN'
         },
         {
           id: 2,
+          checked: false,
           name: 'McDowell',
           nomenclature: 'Zoiks!'
         },
         {
           id: 3,
+          checked: false,
           name: 'G-Doc',
           nomenclature: 'Projects'
         }
@@ -130,9 +148,31 @@ export class ChecklistPage implements OnInit {
     }
   ];
 
-  constructor(public popoverController: PopoverController) {}
+  constructor(public popoverController: PopoverController, private storage: Storage) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.restoreSpecies();
+  }
+
+  restoreSpecies() {
+    this.storage.get('speciesArray').then(speciesArray => {
+      this.species = speciesArray.map(item => {
+        return {
+          class: item.class,
+          expanded: false,
+          species: item.species
+        };
+      });
+    });
+    console.log('Species restored.');
+    console.log(this.species);
+  }
+
+  saveSpecies() {
+    this.storage.set('speciesArray', this.species);
+    console.log('Species saved.');
+    console.log(this.species);
+  }
 
   toggleClass(speciesClass) {
     speciesClass.expanded = !speciesClass.expanded;

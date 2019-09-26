@@ -24,7 +24,7 @@
           <ng-container *ngFor="let species of (obj.species | filterSpeciesByNameStartsWith : letter).sort(); let i = index">
             <ion-item [attr.lines]="(i == (obj.species | filterSpeciesByNameStartsWith : letter).sort().length - 1) ? 'none' : 'inset'">
               <ion-label>{{ species.name }}</ion-label>
-              <ion-checkbox color="primary" slot="start"></ion-checkbox>
+              <ion-checkbox color="primary" slot="start" [(ngModel)]="species.checked" (ionChange)="saveSpecies()"></ion-checkbox>
               <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species, obj.class)" name="information-circle-outline"></ion-icon>
             </ion-item>
           </ng-container>
