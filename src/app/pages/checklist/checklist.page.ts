@@ -8,12 +8,9 @@ import { PopoverComponent } from './popover/popover.component';
   styleUrls: ['./checklist.page.scss']
 })
 export class ChecklistPage implements OnInit {
-  // In Angular... for class in species, create header section with name of class.
-  // for species of species[class], display species
-
   public alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
 
-  public allExpanded = false;
+  public anyExpanded = false;
 
   public species = [
     {
@@ -137,8 +134,22 @@ export class ChecklistPage implements OnInit {
 
   ngOnInit() {}
 
-  toggleClass(animalClass) {
-    animalClass.expanded = !animalClass.expanded;
+  toggleClass(speciesClass) {
+    speciesClass.expanded = !speciesClass.expanded;
+    for (const obj of this.species) {
+      if (obj.expanded === true) {
+        this.anyExpanded = true;
+        break;
+      }
+      this.anyExpanded = false;
+    }
+  }
+
+  toggleAllExpanded() {
+    for (const speciesClass of this.species) {
+      speciesClass.expanded = !this.anyExpanded;
+    }
+    this.anyExpanded = !this.anyExpanded;
   }
 
   async openSpeciesInfo(species, speciesClass) {
@@ -156,12 +167,5 @@ export class ChecklistPage implements OnInit {
 
   getSpeciesNames(obj) {
     return obj.map(item => item.name);
-  }
-
-  toggleAllExpanded() {
-    this.allExpanded = !this.allExpanded;
-    this.species.forEach(speciesClass => {
-      speciesClass.expanded = this.allExpanded;
-    });
   }
 }
