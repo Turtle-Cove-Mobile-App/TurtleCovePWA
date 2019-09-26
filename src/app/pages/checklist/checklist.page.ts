@@ -15,44 +15,50 @@ export class ChecklistPage implements OnInit {
 
   public species = [
     {
-      class: 'Fish/Macroinvertebrate',
+      class: 'Fish',
       expanded: false,
       species: [
         {
           id: 0,
           checked: false,
-          name: 'One Fish',
-          nomenclature: 'OneFishfancyName'
+          name: 'Alligator Gar',
+          nomenclature: 'Atractosteus spatula'
         },
         {
           id: 1,
           checked: false,
-          name: 'O2 Fish',
-          nomenclature: 'O2FishfancyName'
+          name: 'Bay Anchovy',
+          nomenclature: 'Anchovi Anchoa mitchilli'
         },
         {
           id: 2,
           checked: false,
-          name: 'O3 Fish',
-          nomenclature: 'O3FishfancyName'
+          name: 'Blue Crab',
+          nomenclature: 'Callinectes sapidus'
         },
         {
           id: 3,
           checked: false,
-          name: 'Two Fish',
-          nomenclature: 'TwoFishfancyName'
+          name: 'Bluegill',
+          nomenclature: 'Lepomis macrochirus'
         },
         {
           id: 4,
           checked: false,
-          name: 'Red Fish',
-          nomenclature: 'RedFishfancyName'
+          name: 'Bowfin',
+          nomenclature: 'Amiiformes'
         },
         {
           id: 5,
           checked: false,
-          name: 'Blue Fish',
-          nomenclature: 'BlueFishfancyName'
+          name: 'Brown Shrimp',
+          nomenclature: 'Farfantepenaeus aztecus'
+        },
+        {
+          id: 6,
+          checked: false,
+          name: 'Catfish',
+          nomenclature: 'Siluriformes'
         }
       ]
     },
@@ -63,14 +69,14 @@ export class ChecklistPage implements OnInit {
         {
           id: 0,
           checked: false,
-          name: 'Snek',
-          nomenclature: 'SnekfancyName'
+          name: 'Alligator Snapping Turtle',
+          nomenclature: 'Macrochelys temminckii'
         },
         {
           id: 1,
           checked: false,
-          name: 'Lizard Person',
-          nomenclature: 'LizardPersonfancyName'
+          name: 'American Bullfrog',
+          nomenclature: 'Rana catesbeiana'
         }
       ]
     },
@@ -81,20 +87,20 @@ export class ChecklistPage implements OnInit {
         {
           id: 0,
           checked: false,
-          name: 'Grass',
-          nomenclature: 'GrassFancyName'
+          name: 'Alligatorweed',
+          nomenclature: 'Alternanthera philoxeroides'
         },
         {
           id: 1,
           checked: false,
-          name: 'Happy Little Tree',
-          nomenclature: 'HLTFancyName'
+          name: 'Baldcypress',
+          nomenclature: 'Taxodium distichum'
         },
         {
           id: 2,
           checked: false,
-          name: 'Flower',
-          nomenclature: 'FlowerFancyName'
+          name: 'Bulltongue',
+          nomenclature: 'Safittaria lancifolia'
         }
       ]
     },
@@ -105,14 +111,14 @@ export class ChecklistPage implements OnInit {
         {
           id: 0,
           checked: false,
-          name: 'Screeching Owl',
-          nomenclature: 'SOFancyName'
+          name: 'Anhinga',
+          nomenclature: 'Anhinga anhinga'
         },
         {
           id: 1,
           checked: false,
           name: 'Bald Eagle',
-          nomenclature: 'BEFancyName'
+          nomenclature: 'Haliaeetus leucocephalus'
         }
       ]
     },
