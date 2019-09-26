@@ -1,8 +1,8 @@
 {
   "name": "Turtle Cove",
   "short_name": "TurtleCove",
-  "theme_color": "#323434",
-  "background_color": "#3A3C3C",
+  "theme_color": "#08582e",
+  "background_color": "#08582e",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
