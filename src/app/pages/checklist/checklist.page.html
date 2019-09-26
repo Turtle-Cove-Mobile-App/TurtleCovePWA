@@ -21,7 +21,6 @@
             <ion-item [attr.lines]="(i == (obj.species | filterSpeciesByNameStartsWith : letter).sort().length - 1) ? 'none' : 'inset'">
               <ion-label>{{ species.name }}</ion-label>
               <ion-checkbox color="primary" slot="start"></ion-checkbox>
-              {{i}}
               <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species, obj.class)" name="information-circle-outline"></ion-icon>
             </ion-item>
           </ng-container>
