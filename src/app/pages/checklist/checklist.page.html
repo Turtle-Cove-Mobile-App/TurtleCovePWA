@@ -7,10 +7,15 @@
     </ion-toolbar>
   </ion-header>
   <ion-item-group>
-    <ion-button class="expand-all" color="secondary" (click)="toggleExpandAll()">
-      <ion-icon slot="start" size="large" [attr.name]="!anyExpanded ? 'add' : 'remove'" mode="ios"></ion-icon>
-      {{ anyExpanded ? 'Collapse' : 'Expand' }} All
-    </ion-button>
+    <div style="display: flex; align-content: center; width: 100%;">
+      <ion-button class="top-button" color="secondary" (click)="toggleExpandAll()">
+        <ion-icon slot="start" size="large" [attr.name]="!anyExpanded ? 'add' : 'remove'" mode="ios"></ion-icon>
+        {{ anyExpanded ? 'Collapse' : 'Expand' }} All
+      </ion-button>
+      <ion-button class="top-button" color="secondary" (click)="presentResetAlert()">
+          Reset All
+        </ion-button>
+    </div>
     <ng-container *ngFor="let obj of species">
       <ion-item-divider no-padding mode="ios" sticky style="background-color: gray; color: white;" (click)="toggleClass(obj)">
           <ion-button class="ion-no-padding" slot="start" fill="clear" size="small" color="light">

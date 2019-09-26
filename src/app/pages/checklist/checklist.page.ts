@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, AlertController } from '@ionic/angular';
 import { PopoverComponent } from './popover/popover.component';
 import { Storage } from '@ionic/storage';
 
@@ -148,7 +148,7 @@ export class ChecklistPage implements OnInit {
     }
   ];
 
-  constructor(public popoverController: PopoverController, private storage: Storage) {}
+  constructor(public popoverController: PopoverController, private storage: Storage, private alertController: AlertController) {}
 
   ngOnInit() {
     this.restoreSpecies();
@@ -156,13 +156,15 @@ export class ChecklistPage implements OnInit {
 
   restoreSpecies() {
     this.storage.get('speciesArray').then(speciesArray => {
-      this.species = speciesArray.map(item => {
-        return {
-          class: item.class,
-          expanded: false,
-          species: item.species
-        };
-      });
+      if (speciesArray) {
+        this.species = speciesArray.map(item => {
+          return {
+            class: item.class,
+            expanded: false,
+            species: item.species
+          };
+        });
+      }
     });
     console.log('Species restored.');
     console.log(this.species);
@@ -172,6 +174,34 @@ export class ChecklistPage implements OnInit {
     this.storage.set('speciesArray', this.species);
     console.log('Species saved.');
     console.log(this.species);
+  }
+
+  async presentResetAlert() {
+    const alert = await this.alertController.create({
+      header: 'Reset All',
+      message: 'Are you sure you want to reset all of your checkboxes? This cannot be undone!',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => this.resetAll()
+        },
+        {
+          text: 'No',
+          role: 'cancel'
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  resetAll() {
+    for (const speciesClass of this.species) {
+      for (const species of speciesClass.species) {
+        species.checked = false;
+      }
+    }
+    this.saveSpecies();
   }
 
   toggleClass(speciesClass) {
