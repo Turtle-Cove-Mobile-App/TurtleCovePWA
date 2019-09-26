@@ -145,7 +145,7 @@ export class ChecklistPage implements OnInit {
     }
   }
 
-  toggleAllExpanded() {
+  toggleExpandAll() {
     for (const speciesClass of this.species) {
       speciesClass.expanded = !this.anyExpanded;
     }
