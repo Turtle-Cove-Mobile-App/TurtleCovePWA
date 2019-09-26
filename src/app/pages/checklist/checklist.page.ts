@@ -13,40 +13,42 @@ export class ChecklistPage implements OnInit {
 
   public alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
 
+  public allExpanded = false;
+
   public species = [
     {
       class: 'Fish/Macroinvertebrate',
       expanded: false,
       species: [
         {
+          id: 0,
           name: 'One Fish',
-          nomenclature: 'OneFishfancyName',
-          image: 'assets/img/snek.png',
+          nomenclature: 'OneFishfancyName'
         },
         {
+          id: 1,
           name: 'O2 Fish',
-          nomenclature: 'O2FishfancyName',
-          image: 'assets/img/snek.png'
-         },
+          nomenclature: 'O2FishfancyName'
+        },
         {
+          id: 2,
           name: 'O3 Fish',
-          nomenclature: 'O3FishfancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'O3FishfancyName'
         },
         {
+          id: 3,
           name: 'Two Fish',
-          nomenclature: 'TwoFishfancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'TwoFishfancyName'
         },
         {
+          id: 4,
           name: 'Red Fish',
-          nomenclature: 'RedFishfancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'RedFishfancyName'
         },
         {
+          id: 5,
           name: 'Blue Fish',
-          nomenclature: 'BlueFishfancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'BlueFishfancyName'
         }
       ]
     },
@@ -55,14 +57,14 @@ export class ChecklistPage implements OnInit {
       expanded: false,
       species: [
         {
+          id: 0,
           name: 'Snek',
-          nomenclature: 'SnekfancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'SnekfancyName'
         },
         {
+          id: 1,
           name: 'Lizard Person',
-          nomenclature: 'LizardPersonfancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'LizardPersonfancyName'
         }
       ]
     },
@@ -71,19 +73,19 @@ export class ChecklistPage implements OnInit {
       expanded: false,
       species: [
         {
+          id: 0,
           name: 'Grass',
-          nomenclature: 'GrassFancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'GrassFancyName'
         },
         {
+          id: 1,
           name: 'Happy Little Tree',
-          nomenclature: 'HLTFancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'HLTFancyName'
         },
         {
+          id: 2,
           name: 'Flower',
-          nomenclature: 'FlowerFancyName',
-          image: 'assets/img/snek.png'
+          nomenclature: 'FlowerFancyName'
         }
       ]
     },
@@ -92,14 +94,14 @@ export class ChecklistPage implements OnInit {
       expanded: false,
       species: [
         {
+          id: 0,
           name: 'Screeching Owl',
-          nomenclature: 'SOFancyName',
-          image: 'assets/img/snek.png'
-         },
-         {
-           name: 'Bald Eagle',
-           nomenclature: 'BEFancyName',
-           image: 'assets/img/snek.png'
+          nomenclature: 'SOFancyName'
+        },
+        {
+          id: 1,
+          name: 'Bald Eagle',
+          nomenclature: 'BEFancyName'
         }
       ]
     },
@@ -108,29 +110,24 @@ export class ChecklistPage implements OnInit {
       expanded: false,
       species: [
         {
+          id: 0,
           name: 'Pao',
-          nomenclature: 'Asian',
-          image: 'assets/img/snek.png'
+          nomenclature: 'Asian'
         },
         {
+          id: 1,
           name: 'Red Head Canadian',
-          nomenclature: 'CANADIAN',
-          image: 'assets/img/snek.png'
+          nomenclature: 'CANADIAN'
         },
         {
+          id: 2,
           name: 'McDowell',
-          nomenclature: 'Zoiks!',
-          image: 'assets/img/snek.png'
+          nomenclature: 'Zoiks!'
         },
         {
+          id: 3,
           name: 'G-Doc',
-          nomenclature: 'Projects',
-          image: 'assets/img/snek.png'
-        },
-        {
-          name: 'Zac',
-          nomenclature: 'loser',
-          image: 'assets/img/snek.png'
+          nomenclature: 'Projects'
         }
       ]
     }
@@ -144,14 +141,13 @@ export class ChecklistPage implements OnInit {
     animalClass.expanded = !animalClass.expanded;
   }
 
-  async openSpeciesInfo(obj) {
-    // i is object index.
-    // j is species index.
-    console.log(obj);
+  async openSpeciesInfo(species, speciesClass) {
+    console.log(species);
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps: {
-        species: obj
+        species,
+        speciesClass
       },
       translucent: true
     });
@@ -160,5 +156,12 @@ export class ChecklistPage implements OnInit {
 
   getSpeciesNames(obj) {
     return obj.map(item => item.name);
+  }
+
+  toggleAllExpanded() {
+    this.allExpanded = !this.allExpanded;
+    this.species.forEach(speciesClass => {
+      speciesClass.expanded = this.allExpanded;
+    });
   }
 }

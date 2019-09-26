@@ -1,25 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterByStartsWith',
+  name: 'filterSpeciesByNameStartsWith',
   pure: false
 })
-export class FilterByStartsWithPipe implements PipeTransform {
-
+export class FilterSpeciesByNameStartsWithPipe implements PipeTransform {
   transform(array, letter): any {
     const filterArray = array.filter(eachItem => {
-      return (
-        eachItem.toLowerCase().startsWith(
-          letter.toLowerCase()
-        )
-      );
+      return eachItem.name.toLowerCase().startsWith(letter.toLowerCase());
     });
     if (filterArray.length > 0) {
       return filterArray;
-    }
-    else {
+    } else {
       return null;
     }
   }
-
 }
