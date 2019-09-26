@@ -25,7 +25,7 @@
       </ion-item-divider>
       <ng-container *ngFor="let letter of alphabet">
         <ion-item-group *ngIf="obj.expanded && (obj.species | filterSpeciesByNameStartsWith : letter)">
-          <ion-item-divider style="background-color: lightgray;" mode="ios">{{ letter }}</ion-item-divider>
+          <ion-item-divider style="background-color: lightgray; z-index: 0;" mode="ios">{{ letter }}</ion-item-divider>
           <ng-container *ngFor="let species of (obj.species | filterSpeciesByNameStartsWith : letter).sort(); let i = index">
             <ion-item [attr.lines]="(i == (obj.species | filterSpeciesByNameStartsWith : letter).sort().length - 1) ? 'none' : 'inset'">
               <ion-label>{{ species.name }}</ion-label>
