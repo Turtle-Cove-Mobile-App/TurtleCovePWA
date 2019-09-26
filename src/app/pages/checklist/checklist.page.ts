@@ -182,12 +182,12 @@ export class ChecklistPage implements OnInit {
       message: 'Are you sure you want to reset all of your checkboxes? This cannot be undone!',
       buttons: [
         {
-          text: 'Yes',
-          handler: () => this.resetAll()
-        },
-        {
           text: 'No',
           role: 'cancel'
+        },
+        {
+          text: 'Yes',
+          handler: () => this.resetAll()
         }
       ]
     });
