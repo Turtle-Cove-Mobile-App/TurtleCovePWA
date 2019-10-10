@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="getEvents($event)">
+  <ion-refresher pullMax="8000" slot="fixed" (ionRefresh)="getEvents($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   
