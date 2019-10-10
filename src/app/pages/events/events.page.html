@@ -1,12 +1,25 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="tabs/home"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Events</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Events</ion-title>
   </ion-toolbar>
-  </ion-header>
+</ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="getEvents($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-card *ngFor="let event of events" (click)="openEvent(event.htmlLink)">
+    <ion-card-header>
+      <ion-card-subtitle>{{ event.date | date: "MMMM d" }}</ion-card-subtitle>
+      <ion-card-title>{{ event.summary }}</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content *ngIf="event.description">
+      {{ event.description }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
