@@ -42,6 +42,6 @@ export class EventsPage implements OnInit {
   }
 
   openEvent(url) {
-    this.browser.openUrl({ url });
+    this.browser.openUrl(url);
   }
 }

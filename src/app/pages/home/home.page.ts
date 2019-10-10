@@ -12,6 +12,6 @@ export class HomePage implements OnInit {
   ngOnInit() {}
 
   openUrl(url: string) {
-    this.browser.openUrl({ url });
+    this.browser.openUrl(url);
   }
 }
