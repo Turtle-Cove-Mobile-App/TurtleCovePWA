@@ -1,6 +1,5 @@
+import { InAppBrowserService } from './../../services/in-app-browser/in-app-browser.service';
 import { Component, OnInit } from "@angular/core";
-import { Plugins } from "@capacitor/core";
-const { Browser } = Plugins;
 
 @Component({
   selector: "tc-home",
@@ -8,11 +7,11 @@ const { Browser } = Plugins;
   styleUrls: ["./home.page.scss"]
 })
 export class HomePage implements OnInit {
-  constructor() {}
+  constructor(private browser: InAppBrowserService) {}
 
   ngOnInit() {}
 
   openUrl(url: string) {
-    Browser.open({ url });
+    this.browser.openUrl({ url });
   }
 }

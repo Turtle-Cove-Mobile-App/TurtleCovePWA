@@ -12,7 +12,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   
-  <ion-card *ngFor="let event of events">
+  <ion-card *ngFor="let event of events" (click)="openEvent(event.htmlLink)">
     <ion-card-header>
       <ion-card-subtitle>{{ event.date | date: "MMMM d" }}</ion-card-subtitle>
       <ion-card-title>{{ event.summary }}</ion-card-title>
