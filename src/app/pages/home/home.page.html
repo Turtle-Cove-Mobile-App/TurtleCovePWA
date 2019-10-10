@@ -1,4 +1,18 @@
-<tc-header [pageName]="'Home'"></tc-header>
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="secondary">
+        <ion-button routerLink="/info">
+            <ion-icon name="information-circle" slot="icon-only" name="information-circle"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title>
+        <!-- <img src="assets/img/whiteturtle.png" width="40px" style="display:inline-block" height="40px"/> -->
+        <!-- <ion-icon name="paw"></ion-icon> -->
+      Turtle Cove
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <ion-grid>
@@ -21,29 +35,27 @@
         </ion-card>
       </ion-col>
     </ion-row>
+  
     <ion-row>
       <ion-col>
         <div style="display: flex; flex-direction: row;">
-          <ion-button routerLink="/info">
-            Info
-          </ion-button>
           <ion-button routerLink="/events">
             Events
-          </ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div style="display: flex; flex-direction: row;">
-          <ion-button (click)="openUrl('https://www.southeastern.edu/alumni_donors/foundation/giving/tutlecove/index.html')">
-            Support Us!
           </ion-button>
           <ion-button (click)="openUrl('https://www.youtube-nocookie.com/embed/iqhW54bWwnw')">
             Troubled Waters
           </ion-button>
-        </div>
+      </div>
       </ion-col>
     </ion-row>
+    <ion-row>
+        <ion-col>
+          <div style="display: flex; flex-direction: row;">
+            <ion-button color="secondary" (click)="openUrl('https://www.southeastern.edu/alumni_donors/foundation/giving/tutlecove/index.html')">
+                Support Us!
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
   </ion-grid>
 </ion-content>
