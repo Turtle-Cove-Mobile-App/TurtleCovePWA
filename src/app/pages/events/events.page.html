@@ -8,14 +8,18 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="getEvents($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
   <ion-card *ngFor="let event of events">
     <ion-card-header>
-      <ion-card-subtitle>{{event.date | date : 'MMMM d'}}</ion-card-subtitle>
-      <ion-card-title>{{event.summary}}</ion-card-title>
+      <ion-card-subtitle>{{ event.date | date: "MMMM d" }}</ion-card-subtitle>
+      <ion-card-title>{{ event.summary }}</ion-card-title>
     </ion-card-header>
 
-    <ion-card-content>
-      {{event.description}}
+    <ion-card-content *ngIf="event.description">
+      {{ event.description }}
     </ion-card-content>
   </ion-card>
 </ion-content>

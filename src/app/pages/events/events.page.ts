@@ -16,7 +16,7 @@ export class EventsPage implements OnInit {
     this.getEvents();
   }
 
-  async getEvents() {
+  async getEvents(refreshEvent?) {
     await fetch(
       "https://www.googleapis.com/calendar/v3/calendars/ok6j0uq2hpfl5u2883mn0poeh8%40group.calendar.google.com/events?key=" +
         this.apiKey
@@ -32,6 +32,10 @@ export class EventsPage implements OnInit {
         });
       })
     );
+
+    if (refreshEvent) {
+      refreshEvent.target.complete();
+    }
 
     console.log(this.events);
   }
