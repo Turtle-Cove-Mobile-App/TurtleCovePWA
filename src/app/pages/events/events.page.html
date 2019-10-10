@@ -1,12 +1,21 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="tabs/home"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Events</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Events</ion-title>
   </ion-toolbar>
-  </ion-header>
+</ion-header>
 
-<ion-content>
+<ion-content *ngFor="let event of events">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{event.date | date : 'MMMM d'}}</ion-card-subtitle>
+      <ion-card-title>{{event.summary}}</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      {{event.description}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
