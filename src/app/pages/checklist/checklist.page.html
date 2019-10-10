@@ -6,6 +6,13 @@
       <ion-title>Species Checklist</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div style="padding-top: 10px; margin: auto; width: 100%; display: flex; justify-content: center;">
+    <ion-chip color="primary" style="text-align: center;">
+      <ion-label>
+        {{ totalFound }} / {{ total }} Species Found
+      </ion-label>
+    </ion-chip>
+  </div>
   <ion-item-group>
     <div style="display: flex; align-content: center; width: 100%;">
       <ion-button class="top-button" color="secondary" (click)="toggleExpandAll()">
@@ -13,15 +20,20 @@
         {{ anyExpanded ? 'Collapse' : 'Expand' }} All
       </ion-button>
       <ion-button class="top-button" color="secondary" (click)="presentResetAlert()">
-          Reset All
-        </ion-button>
+        Reset All
+      </ion-button>
     </div>
-    <ng-container *ngFor="let obj of species">
-      <ion-item-divider no-padding mode="ios" sticky style="background-color: gray; color: white;" (click)="toggleClass(obj)">
+    <ng-container *ngFor="let obj of species; let i = index">
+      <ion-item-divider no-padding mode="ios" sticky style="background-color: gray; color: white; height: 40px;" (click)="toggleClass(obj)">
           <ion-button class="ion-no-padding" slot="start" fill="clear" size="small" color="light">
               <ion-icon slot="icon-only" size="large" [attr.name]="!obj.expanded ? 'add' : 'remove'" mode="ios"></ion-icon>
           </ion-button>
           {{ obj.class }}
+          <ion-chip slot="end">
+            <ion-label color="light">
+              {{ found[i] }} / {{ species[i].species.length }}
+            </ion-label>
+          </ion-chip>
       </ion-item-divider>
       <ng-container *ngFor="let letter of alphabet">
         <ion-item-group *ngIf="obj.expanded && (obj.species | filterSpeciesByNameStartsWith : letter)">
@@ -29,7 +41,7 @@
           <ng-container *ngFor="let species of (obj.species | filterSpeciesByNameStartsWith : letter).sort(); let i = index">
             <ion-item [attr.lines]="(i == (obj.species | filterSpeciesByNameStartsWith : letter).sort().length - 1) ? 'none' : 'inset'">
               <ion-label>{{ species.name }}</ion-label>
-              <ion-checkbox color="primary" slot="start" [(ngModel)]="species.checked" (ionChange)="saveSpecies()"></ion-checkbox>
+              <ion-checkbox color="primary" slot="start" [(ngModel)]="species.checked" (ionChange)="checkChanged()"></ion-checkbox>
               <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species, obj.class)" name="information-circle-outline"></ion-icon>
             </ion-item>
           </ng-container>

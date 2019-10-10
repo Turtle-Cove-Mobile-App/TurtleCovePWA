@@ -13,6 +13,10 @@ export class ChecklistPage implements OnInit {
 
   public anyExpanded = false;
 
+  public total = 0;
+  public found = [];
+  public totalFound = 0;
+
   public species = [
     {
       class: 'Fish',
@@ -157,10 +161,33 @@ export class ChecklistPage implements OnInit {
   constructor(public popoverController: PopoverController, private storage: Storage, private alertController: AlertController) {}
 
   ngOnInit() {
-    this.restoreSpecies();
+    this.restore();
+    // tslint:disable-next-line: forin
+    for (const i in this.species) {
+      this.found[i] = 0;
+      this.total += this.species[i].species.length;
+    }
+    console.log(this.found);
   }
 
-  restoreSpecies() {
+  checkChanged() {
+    this.found = [];
+    // record index of class
+    // tslint:disable-next-line: forin
+    for (const i in this.species) {
+      this.found[i] = 0;
+      // have array of "founds" where each int in the array is the number of found for each class
+      for (const species of this.species[i].species) {
+        if (species.checked) {
+          this.found[i]++;
+        }
+      }
+    }
+    this.totalFound = this.found.reduce(val => val);
+    this.save();
+  }
+
+  restore() {
     this.storage.get('speciesArray').then(speciesArray => {
       if (speciesArray) {
         this.species = speciesArray.map(item => {
@@ -172,12 +199,18 @@ export class ChecklistPage implements OnInit {
         });
       }
     });
+    this.storage.get('speciesFound').then(speciesFound => {
+      if (speciesFound) {
+        this.found = speciesFound;
+      }
+    });
     console.log('Species restored.');
     console.log(this.species);
   }
 
-  saveSpecies() {
+  save() {
     this.storage.set('speciesArray', this.species);
+    this.storage.set('speciesFound', this.found);
     console.log('Species saved.');
     console.log(this.species);
   }
@@ -202,12 +235,15 @@ export class ChecklistPage implements OnInit {
   }
 
   resetAll() {
-    for (const speciesClass of this.species) {
-      for (const species of speciesClass.species) {
+    // tslint:disable-next-line: forin
+    for (const i in this.species) {
+      this.found[i] = 0;
+      for (const species of this.species[i].species) {
         species.checked = false;
       }
     }
-    this.saveSpecies();
+    this.totalFound = 0;
+    this.save();
   }
 
   toggleClass(speciesClass) {
