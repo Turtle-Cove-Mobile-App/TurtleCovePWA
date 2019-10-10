@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngFor="let event of events">
-  <ion-card>
+<ion-content>
+  <ion-card *ngFor="let event of events">
     <ion-card-header>
       <ion-card-subtitle>{{event.date | date : 'MMMM d'}}</ion-card-subtitle>
       <ion-card-title>{{event.summary}}</ion-card-title>
