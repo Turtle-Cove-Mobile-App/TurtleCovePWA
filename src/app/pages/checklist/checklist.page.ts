@@ -167,23 +167,20 @@ export class ChecklistPage implements OnInit {
       this.found[i] = 0;
       this.total += this.species[i].species.length;
     }
-    console.log(this.found);
   }
 
   checkChanged() {
     this.found = [];
-    // record index of class
     // tslint:disable-next-line: forin
     for (const i in this.species) {
       this.found[i] = 0;
-      // have array of "founds" where each int in the array is the number of found for each class
       for (const species of this.species[i].species) {
         if (species.checked) {
           this.found[i]++;
         }
       }
     }
-    this.totalFound = this.found.reduce(val => val);
+    this.totalFound = this.found.reduce((a, b) => a + b);
     this.save();
   }
 
@@ -203,7 +200,7 @@ export class ChecklistPage implements OnInit {
       if (speciesFound) {
         this.found = speciesFound;
       }
-    });
+    }).then(() => this.totalFound = this.found.reduce((a, b) => a + b));
     console.log('Species restored.');
     console.log(this.species);
   }
