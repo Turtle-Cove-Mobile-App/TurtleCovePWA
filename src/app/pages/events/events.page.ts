@@ -17,9 +17,24 @@ export class EventsPage implements OnInit {
     this.getEvents();
   }
 
+  ISODateString(d) {
+    function pad(n) {
+      return n < 10 ? '0' + n : n;
+    }
+    return d.getUTCFullYear() + '-'
+         + pad(d.getUTCMonth() + 1) + '-'
+         + pad(d.getUTCDate()) + 'T'
+         + pad(d.getUTCHours()) + ':'
+         + pad(d.getUTCMinutes()) + ':'
+         + pad(d.getUTCSeconds()) + 'Z';
+  }
+
   async getEvents(refreshEvent?) {
+    const date = new Date();
     await fetch(
-      "https://www.googleapis.com/calendar/v3/calendars/ok6j0uq2hpfl5u2883mn0poeh8%40group.calendar.google.com/events?key=" +
+      'https://www.googleapis.com/calendar/v3/calendars/ok6j0uq2hpfl5u2883mn0poeh8%40group.calendar.google.com/events?orderBy=startTime&singleEvents=true&timeMin=' +
+        this.ISODateString(date) +
+        '&key=' +
         this.apiKey
     ).then(res =>
       res.json().then(resJson => {
@@ -31,6 +46,7 @@ export class EventsPage implements OnInit {
             htmlLink: item.htmlLink
           };
         });
+        // this.events.sort(( a, b ) => (new Date(a.date) as any) - (new Date(b.date) as any));
       })
     );
 
