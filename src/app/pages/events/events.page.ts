@@ -1,4 +1,4 @@
-import { PluginsService } from './../../services/plugins/plugins.service';
+import { PluginsService } from '../../services/plugins-service/plugins.service';
 import { Component, OnInit } from "@angular/core";
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PluginsService } from 'src/app/services/plugins/plugins.service';
+import { PluginsService } from 'src/app/services/plugins-service/plugins.service';
 
 @Component({
   selector: "tc-home",
