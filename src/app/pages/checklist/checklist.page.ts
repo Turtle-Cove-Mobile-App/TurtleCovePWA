@@ -29,7 +29,7 @@ export class ChecklistPage implements OnInit {
       new Species(5, 'Brown Shrimp', 'Farfantepenaeus aztecus'),
       new Species(6, 'Catfish', 'Siluriformes')
     ]),
-    new AnimalClass('Reptiles', [
+    new AnimalClass('Reptiles and Amphibians', [
       new Species(0, 'Alligator Snapping Turtle', 'Macrochelys temminckii'),
       new Species(1, 'American Bullfrog', 'Rana catesbeiana')
     ]),
