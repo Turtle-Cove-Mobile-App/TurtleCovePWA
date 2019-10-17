@@ -1,3 +1,4 @@
+import { PluginsService } from './../../services/plugins/plugins.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GwTourPage implements OnInit {
 
-  constructor() { }
+  constructor(public plugins: PluginsService) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.plugins.subscribeLocation();
+  }
+
+  ionViewDidLeave() {
+    this.plugins.unsubscribeLocation();
+  }
+
+  logLocation() {
+    console.log(this.plugins.location);
   }
 
 }

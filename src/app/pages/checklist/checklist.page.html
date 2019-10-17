@@ -28,7 +28,7 @@
           <ion-button class="ion-no-padding" slot="start" fill="clear" size="small" color="light">
               <ion-icon slot="icon-only" size="large" [attr.name]="!obj.expanded ? 'add' : 'remove'" mode="ios"></ion-icon>
           </ion-button>
-          {{ obj.class }}
+          {{ obj.className }}
           <ion-chip slot="end">
             <ion-label color="light">
               {{ found[i] }} / {{ species[i].species.length }}
@@ -42,7 +42,7 @@
             <ion-item [attr.lines]="(i == (obj.species | filterSpeciesByNameStartsWith : letter).sort().length - 1) ? 'none' : 'inset'">
               <ion-label>{{ species.name }}</ion-label>
               <ion-checkbox color="primary" slot="start" [(ngModel)]="species.checked" (ionChange)="checkChanged()"></ion-checkbox>
-              <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species, obj.class)" name="information-circle-outline"></ion-icon>
+              <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species, obj.className)" name="information-circle-outline"></ion-icon>
             </ion-item>
           </ng-container>
         </ion-item-group>
