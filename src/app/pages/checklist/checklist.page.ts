@@ -84,11 +84,8 @@ export class ChecklistPage implements OnInit {
     this.storage.get('speciesArray').then(speciesArray => {
       if (speciesArray) {
         this.species = speciesArray.map(item => {
-          return {
-            class: item.class,
-            expanded: false,
-            species: item.species
-          };
+          item.expanded = false;
+          return item;
         });
       }
     });
