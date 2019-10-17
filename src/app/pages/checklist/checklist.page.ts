@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PopoverController, AlertController } from '@ionic/angular';
 import { PopoverComponent } from './popover/popover.component';
 import { Storage } from '@ionic/storage';
+import { Species } from './species';
+import { AnimalClass } from './animal-class';
 
 @Component({
   selector: 'tc-checklist',
@@ -18,147 +20,41 @@ export class ChecklistPage implements OnInit {
   public totalFound = 0;
 
   public species = [
-    {
-      class: 'Fish',
-      expanded: false,
-      species: [
-        {
-          id: 0,
-          checked: false,
-          name: 'Alligator Gar',
-          nomenclature: 'Atractosteus spatula'
-        },
-        {
-          id: 1,
-          checked: false,
-          name: 'Bay Anchovy',
-          nomenclature: 'Anchovi Anchoa mitchilli'
-        },
-        {
-          id: 2,
-          checked: false,
-          name: 'Blue Crab',
-          nomenclature: 'Callinectes sapidus'
-        },
-        {
-          id: 3,
-          checked: false,
-          name: 'Bluegill',
-          nomenclature: 'Lepomis macrochirus'
-        },
-        {
-          id: 4,
-          checked: false,
-          name: 'Bowfin',
-          nomenclature: 'Amiiformes'
-        },
-        {
-          id: 5,
-          checked: false,
-          name: 'Brown Shrimp',
-          nomenclature: 'Farfantepenaeus aztecus'
-        },
-        {
-          id: 6,
-          checked: false,
-          name: 'Catfish',
-          nomenclature: 'Siluriformes'
-        }
-      ]
-    },
-    {
-      class: 'Reptiles',
-      expanded: false,
-      species: [
-        {
-          id: 0,
-          checked: false,
-          name: 'Alligator Snapping Turtle',
-          nomenclature: 'Macrochelys temminckii'
-        },
-        {
-          id: 1,
-          checked: false,
-          name: 'American Bullfrog',
-          nomenclature: 'Rana catesbeiana'
-        }
-      ]
-    },
-    {
-      class: 'Plants',
-      expanded: false,
-      species: [
-        {
-          id: 0,
-          checked: false,
-          name: 'Alligatorweed',
-          nomenclature: 'Alternanthera philoxeroides'
-        },
-        {
-          id: 1,
-          checked: false,
-          name: 'Baldcypress',
-          nomenclature: 'Taxodium distichum'
-        },
-        {
-          id: 2,
-          checked: false,
-          name: 'Bulltongue',
-          nomenclature: 'Safittaria lancifolia'
-        }
-      ]
-    },
-    {
-      class: 'Birds',
-      expanded: false,
-      species: [
-        {
-          id: 0,
-          checked: false,
-          name: 'Anhinga',
-          nomenclature: 'Anhinga anhinga'
-        },
-        {
-          id: 1,
-          checked: false,
-          name: 'Bald Eagle',
-          nomenclature: 'Haliaeetus leucocephalus'
-        }
-      ]
-    },
-    {
-      class: 'Mammals',
-      expanded: false,
-      species: [
-        {
-          id: 0,
-          checked: false,
-          name: 'Pao',
-          nomenclature: 'Asian'
-        },
-        {
-          id: 1,
-          checked: false,
-          name: 'Red Head Canadian',
-          nomenclature: 'CANADIAN'
-        },
-        {
-          id: 2,
-          checked: false,
-          name: 'McDowell',
-          nomenclature: 'Zoiks!'
-        },
-        {
-          id: 3,
-          checked: false,
-          name: 'G-Doc',
-          nomenclature: 'Projects'
-        }
-      ]
-    }
+    new AnimalClass('Fish', [
+      new Species(0, 'Alligator Gar', 'Atractosteus spatula'),
+      new Species(1, 'Bay Anchovy', 'Anchovi Anchoa mitchilli'),
+      new Species(2, 'Blue Crab', 'Callinectes sapidus'),
+      new Species(3, 'Bluegill', 'Lepomis macrochirus'),
+      new Species(4, 'Bowfin', 'Amiiformes'),
+      new Species(5, 'Brown Shrimp', 'Farfantepenaeus aztecus'),
+      new Species(6, 'Catfish', 'Siluriformes')
+    ]),
+    new AnimalClass('Reptiles', [
+      new Species(0, 'Alligator Snapping Turtle', 'Macrochelys temminckii'),
+      new Species(1, 'American Bullfrog', 'Rana catesbeiana')
+    ]),
+    new AnimalClass('Plants', [
+      new Species(0, 'Alligatorweed', 'Alternanthera philoxeroides'),
+      new Species(1, 'Baldcypress', 'Taxodium distichum'),
+      new Species(2, 'Bulltongue', 'Safittaria lancifolia')
+    ]),
+    new AnimalClass('Birds', [
+      new Species(0, 'Anhinga', 'Anhinga anhinga'),
+      new Species(1, 'Bald Eagle', 'Haliaeetus leucocephalus')
+    ]),
+    new AnimalClass('Mammals', [
+      new Species(0, 'Pao', 'Asian'),
+      new Species(1, 'Red Head Canadian', 'CANADIAN'),
+      new Species(2, 'McDowell', 'Zoiks!'),
+      new Species(3, 'G-Doc', 'Projects')
+    ])
   ];
 
-  constructor(public popoverController: PopoverController, private storage: Storage, private alertController: AlertController) {}
+  constructor(
+    public popoverController: PopoverController,
+    private storage: Storage,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
     this.restore();
@@ -196,11 +92,14 @@ export class ChecklistPage implements OnInit {
         });
       }
     });
-    this.storage.get('speciesFound').then(speciesFound => {
-      if (speciesFound) {
-        this.found = speciesFound;
-      }
-    }).then(() => this.totalFound = this.found.reduce((a, b) => a + b));
+    this.storage
+      .get('speciesFound')
+      .then(speciesFound => {
+        if (speciesFound) {
+          this.found = speciesFound;
+        }
+      })
+      .then(() => (this.totalFound = this.found.reduce((a, b) => a + b)));
     console.log('Species restored.');
     console.log(this.species);
   }
@@ -215,7 +114,8 @@ export class ChecklistPage implements OnInit {
   async presentResetAlert() {
     const alert = await this.alertController.create({
       header: 'Reset All',
-      message: 'Are you sure you want to reset all of your checkboxes? This cannot be undone!',
+      message:
+        'Are you sure you want to reset all of your checkboxes? This cannot be undone!',
       buttons: [
         {
           text: 'No',

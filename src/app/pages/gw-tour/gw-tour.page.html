@@ -1,5 +1,22 @@
 <tc-header [pageName]="'GucciTour'"></tc-header>
 
 <ion-content>
-
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <div class="coords">
+                    {{ plugins.location[0] }}, {{ plugins.location[1] }}
+                </div>
+            </ion-col>
+        </ion-row>
+        <!-- <ion-row>
+            <ion-col>
+                <div style="display: flex; flex-direction: row;">
+                    <ion-button color="secondary" (click)="logLocation()">
+                        Check Location
+                    </ion-button>
+                </div>
+            </ion-col>
+        </ion-row> -->
+    </ion-grid>
 </ion-content>

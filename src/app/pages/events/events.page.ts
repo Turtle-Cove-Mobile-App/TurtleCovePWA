@@ -1,4 +1,4 @@
-import { InAppBrowserService } from './../../services/in-app-browser/in-app-browser.service';
+import { PluginsService } from './../../services/plugins/plugins.service';
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -11,7 +11,7 @@ export class EventsPage implements OnInit {
 
   public events;
 
-  constructor(private browser: InAppBrowserService) {}
+  constructor(private plugins: PluginsService) {}
 
   ngOnInit() {
     this.getEvents();
@@ -58,6 +58,6 @@ export class EventsPage implements OnInit {
   }
 
   openEvent(url) {
-    this.browser.openUrl(url);
+    this.plugins.openUrl(url);
   }
 }
