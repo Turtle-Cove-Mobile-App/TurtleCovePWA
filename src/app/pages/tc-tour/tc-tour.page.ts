@@ -8,7 +8,7 @@ import { PopoverController, AlertController } from '@ionic/angular';
 })
 export class TcTourPage implements OnInit {
 
-  public total = 12; // setTotal?
+  public total; // setTotal?
   public found = [];
   public totalFound = 0;
 
@@ -93,12 +93,6 @@ export class TcTourPage implements OnInit {
     }
   }
 
-  public setTotal(): void {
-    for (const o of this.signs) {
-      this.total++;
-    }
-  }
-
   public reset(): void {
 
     for (const o of this.signs) {
@@ -109,7 +103,7 @@ export class TcTourPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.setTotal;
+    this.total = this.signs.length;
   }
 
 }
