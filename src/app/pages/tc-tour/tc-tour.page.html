@@ -1,107 +1,36 @@
 <tc-header [pageName]="'Turtle Tour'"></tc-header>
 
 <ion-content>
+    <ion-header translucent>
+        <ion-toolbar>
+            <ion-title>Boardwalk Tour</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <div style="padding-top: 10px; margin: auto; width: 100%; display: flex; justify-content: center;">
+        <ion-chip color="primary" style="text-align: center;">
+            <ion-label>
+            {{ totalFound }} / {{ total }} Signs Viewed
+            </ion-label>
+        </ion-chip>
+    </div>
     <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            1
-                        </ion-button >
-                    </div>
-                </ion-col>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            2
-                        </ion-button>
-                    </div>
-                </ion-col>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            3
-                        </ion-button>
-                    </div>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            4
-                        </ion-button >
-                    </div>
-                </ion-col>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            5
-                        </ion-button>
-                    </div>
-                </ion-col>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            6
-                        </ion-button>
-                    </div>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            7
-                        </ion-button >
-                    </div>
-                </ion-col>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large" onclick>
-                            8
-                        </ion-button>
-                    </div>
-                </ion-col>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            9
-                        </ion-button>
-                    </div>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            10
-                        </ion-button >
-                    </div>
-                </ion-col>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large" onclick>
-                            11
-                        </ion-button>
-                    </div>
-                </ion-col>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button size="large">
-                            12
-                        </ion-button>
-                    </div>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col>
-                    <div style="display: flex; flex-direction: row;">
-                        <ion-button color="secondary" size="large">
-                            Reset All
-                        </ion-button >
-                    </div>
-                </ion-col>
-            </ion-row>
+        <ion-row>  
+            <ion-col size="4" *ngFor="let obj of signs;">
+                <div style="display: flex; flex-direction: row;">
+                    <ion-button size="large" (click)="signViewed(obj)" [color]="getColor(obj.viewed)">
+                        <ion-label>{{ obj.name }}</ion-label>
+                    </ion-button>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div style="display: flex; flex-direction: row;">
+                    <ion-button color="secondary" size="large" (click)="reset()">
+                        Reset All
+                    </ion-button>
+                </div>
+            </ion-col>
+        </ion-row>
     </ion-grid>
 </ion-content>
