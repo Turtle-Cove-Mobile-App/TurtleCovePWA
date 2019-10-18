@@ -4,6 +4,7 @@ import { PopoverComponent } from './popover/popover.component';
 import { Storage } from '@ionic/storage';
 import { Species } from './species';
 import { AnimalClass } from './animal-class';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'tc-checklist',
@@ -43,10 +44,7 @@ export class ChecklistPage implements OnInit {
       new Species(1, 'Bald Eagle', 'Haliaeetus leucocephalus')
     ]),
     new AnimalClass('Mammals', [
-      new Species(0, 'Pao', 'Asian'),
-      new Species(1, 'Red Head Canadian', 'CANADIAN'),
-      new Species(2, 'McDowell', 'Zoiks!'),
-      new Species(3, 'G-Doc', 'Projects')
+      
     ])
   ];
 
@@ -54,7 +52,18 @@ export class ChecklistPage implements OnInit {
     public popoverController: PopoverController,
     private storage: Storage,
     private alertController: AlertController
-  ) {}
+  ) {
+    if (!environment.production) {
+      this.species[this.species.length - 1].species.push(
+        ...[
+          new Species(0, 'Pao', 'Asian'),
+          new Species(1, 'Red Head Canadian', 'CANADIAN'),
+          new Species(2, 'McDowell', 'Zoiks!'),
+          new Species(3, 'G-Doc', 'Projects')
+        ]
+      );
+    }
+  }
 
   ngOnInit() {
     this.restore();

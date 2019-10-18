@@ -1,8 +1,8 @@
 // App Styles
 // ----------------------------------------------------------------------------
-// Put style rules here that you want to apply to the entire application. These 
-// styles are for the entire app and not just one component. Additionally, this 
-// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
 // and used throughout the application.
 
 // ion-content {
@@ -10,3 +10,16 @@
 //     --background-size:cover;
 //     //opacity: 0.4;
 //   }
+
+.dev-banner {
+  width: 100%;
+  background-color: goldenrod;
+  z-index: 999;
+  text-align: center;
+  height: 1.5em;
+  padding-top: 3px;
+}
+.dev-router {
+  z-index: 1;
+  margin-top: 1.5em;
+}
