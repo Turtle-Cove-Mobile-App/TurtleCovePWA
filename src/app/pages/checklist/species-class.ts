@@ -1,6 +1,6 @@
 import { Species } from './species';
 
-export class AnimalClass {
+export class SpeciesClass {
     public className: string;
     public species: Species[];
     public expanded: boolean;

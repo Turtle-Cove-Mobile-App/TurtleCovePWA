@@ -3,7 +3,7 @@ import { PopoverController, AlertController } from '@ionic/angular';
 import { PopoverComponent } from './popover/popover.component';
 import { Storage } from '@ionic/storage';
 import { Species } from './species';
-import { AnimalClass } from './animal-class';
+import { SpeciesClass } from './species-class';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -21,7 +21,7 @@ export class ChecklistPage implements OnInit {
   public totalFound = 0;
 
   public species = [
-    new AnimalClass('Fish', [
+    new SpeciesClass('Fish', [
       new Species(0, 'Alligator Gar', 'Atractosteus spatula'),
       new Species(1, 'Bay Anchovy', 'Anchovi Anchoa mitchilli'),
       new Species(2, 'Blue Crab', 'Callinectes sapidus'),
@@ -30,20 +30,20 @@ export class ChecklistPage implements OnInit {
       new Species(5, 'Brown Shrimp', 'Farfantepenaeus aztecus'),
       new Species(6, 'Catfish', 'Siluriformes')
     ]),
-    new AnimalClass('Reptiles and Amphibians', [
+    new SpeciesClass('Reptiles and Amphibians', [
       new Species(0, 'Alligator Snapping Turtle', 'Macrochelys temminckii'),
       new Species(1, 'American Bullfrog', 'Rana catesbeiana')
     ]),
-    new AnimalClass('Plants', [
+    new SpeciesClass('Plants', [
       new Species(0, 'Alligatorweed', 'Alternanthera philoxeroides'),
       new Species(1, 'Baldcypress', 'Taxodium distichum'),
       new Species(2, 'Bulltongue', 'Safittaria lancifolia')
     ]),
-    new AnimalClass('Birds', [
+    new SpeciesClass('Birds', [
       new Species(0, 'Anhinga', 'Anhinga anhinga'),
       new Species(1, 'Bald Eagle', 'Haliaeetus leucocephalus')
     ]),
-    new AnimalClass('Mammals', [
+    new SpeciesClass('Mammals', [
       
     ])
   ];
