@@ -17,7 +17,6 @@ export class ChecklistPage implements OnInit {
   public anyExpanded = false;
 
   public total = 0;
-  public found = [];
   public totalFound = 0;
 
   public species = [
@@ -44,7 +43,7 @@ export class ChecklistPage implements OnInit {
       new Species(1, 'Bald Eagle', 'Haliaeetus leucocephalus')
     ]),
     new SpeciesClass('Mammals', [
-      
+
     ])
   ];
 
@@ -68,24 +67,24 @@ export class ChecklistPage implements OnInit {
   ngOnInit() {
     this.restore();
     // tslint:disable-next-line: forin
-    for (const i in this.species) {
-      this.found[i] = 0;
-      this.total += this.species[i].species.length;
+    for (const obj of this.species) {
+      obj.found = 0;
+      this.total += obj.species.length;
     }
   }
 
   checkChanged() {
-    this.found = [];
+    this.totalFound = 0;
     // tslint:disable-next-line: forin
-    for (const i in this.species) {
-      this.found[i] = 0;
-      for (const species of this.species[i].species) {
+    for (const speciesClass of this.species) {
+      speciesClass.found = 0;
+      for (const species of speciesClass.species) {
         if (species.checked) {
-          this.found[i]++;
+          speciesClass.found++;
         }
       }
+      this.totalFound += speciesClass.found;
     }
-    this.totalFound = this.found.reduce((a, b) => a + b);
     this.save();
   }
 
@@ -97,22 +96,18 @@ export class ChecklistPage implements OnInit {
           return item;
         });
       }
+    }).then(() => {
+      this.totalFound = 0;
+      for (const speciesClass of this.species) {
+        this.totalFound += speciesClass.found;
+      }
     });
-    this.storage
-      .get('speciesFound')
-      .then(speciesFound => {
-        if (speciesFound) {
-          this.found = speciesFound;
-        }
-      })
-      .then(() => (this.totalFound = this.found.reduce((a, b) => a + b)));
     console.log('Species restored.');
     console.log(this.species);
   }
 
   save() {
     this.storage.set('speciesArray', this.species);
-    this.storage.set('speciesFound', this.found);
     console.log('Species saved.');
     console.log(this.species);
   }
@@ -139,9 +134,9 @@ export class ChecklistPage implements OnInit {
 
   resetAll() {
     // tslint:disable-next-line: forin
-    for (const i in this.species) {
-      this.found[i] = 0;
-      for (const species of this.species[i].species) {
+    for (const obj of this.species) {
+      obj.found = 0;
+      for (const species of obj.species) {
         species.checked = false;
       }
     }
