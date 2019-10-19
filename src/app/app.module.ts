@@ -22,7 +22,7 @@ import { TabsPage } from './pages/tabs/tabs.page';
     IonicStorageModule.forRoot(),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
+      enabled: true
     })
   ],
   providers: [
