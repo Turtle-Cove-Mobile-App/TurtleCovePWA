@@ -19,7 +19,7 @@ export class ChecklistPage implements OnInit {
   public total = 0;
   public totalFound = 0;
 
-  public species = [
+  public speciesClass = [
     new SpeciesClass('Fish', [
       new Species(0, 'Alligator Gar', 'Atractosteus spatula'),
       new Species(1, 'Bay Anchovy', 'Anchovi Anchoa mitchilli'),
@@ -42,9 +42,7 @@ export class ChecklistPage implements OnInit {
       new Species(0, 'Anhinga', 'Anhinga anhinga'),
       new Species(1, 'Bald Eagle', 'Haliaeetus leucocephalus')
     ]),
-    new SpeciesClass('Mammals', [
-
-    ])
+    new SpeciesClass('Mammals', [])
   ];
 
   constructor(
@@ -53,7 +51,7 @@ export class ChecklistPage implements OnInit {
     private alertController: AlertController
   ) {
     if (!environment.production) {
-      this.species[this.species.length - 1].species.push(
+      this.speciesClass[this.speciesClass.length - 1].species.push(
         ...[
           new Species(0, 'Pao', 'Asian'),
           new Species(1, 'Red Head Canadian', 'CANADIAN'),
@@ -67,7 +65,7 @@ export class ChecklistPage implements OnInit {
   ngOnInit() {
     this.restore();
     // tslint:disable-next-line: forin
-    for (const obj of this.species) {
+    for (const obj of this.speciesClass) {
       obj.found = 0;
       this.total += obj.species.length;
     }
@@ -76,7 +74,7 @@ export class ChecklistPage implements OnInit {
   checkChanged() {
     this.totalFound = 0;
     // tslint:disable-next-line: forin
-    for (const speciesClass of this.species) {
+    for (const speciesClass of this.speciesClass) {
       speciesClass.found = 0;
       for (const species of speciesClass.species) {
         if (species.checked) {
@@ -90,26 +88,45 @@ export class ChecklistPage implements OnInit {
 
   restore() {
     this.storage.get('speciesArray').then(speciesArray => {
-      if (speciesArray) {
-        this.species = speciesArray.map(item => {
-          item.expanded = false;
-          return item;
-        });
+      let same = true;
+      if (speciesArray && speciesArray.length === this.speciesClass.length) {
+        for (const species in speciesArray) {
+          if (
+            speciesArray[species].species.length !==
+            this.speciesClass[species].species.length
+          ) {
+            same = false;
+            break;
+          }
+        }
+      } else {
+        same = false;
       }
-    }).then(() => {
-      this.totalFound = 0;
-      for (const speciesClass of this.species) {
-        this.totalFound += speciesClass.found;
+
+      if (same) {
+        this.speciesClass = speciesArray
+          .map(item => {
+            item.expanded = false;
+            return item;
+          })
+          .then(() => {
+            this.totalFound = 0;
+            for (const speciesClass of this.speciesClass) {
+              this.totalFound += speciesClass.found;
+            }
+          });
+      } else {
+        // Loop through array and restored "checked"s
       }
     });
     console.log('Species restored.');
-    console.log(this.species);
+    console.log(this.speciesClass);
   }
 
   save() {
-    this.storage.set('speciesArray', this.species);
+    this.storage.set('speciesArray', this.speciesClass);
     console.log('Species saved.');
-    console.log(this.species);
+    console.log(this.speciesClass);
   }
 
   async presentResetAlert() {
@@ -134,7 +151,7 @@ export class ChecklistPage implements OnInit {
 
   resetAll() {
     // tslint:disable-next-line: forin
-    for (const obj of this.species) {
+    for (const obj of this.speciesClass) {
       obj.found = 0;
       for (const species of obj.species) {
         species.checked = false;
@@ -146,7 +163,7 @@ export class ChecklistPage implements OnInit {
 
   toggleClass(speciesClass) {
     speciesClass.expanded = !speciesClass.expanded;
-    for (const obj of this.species) {
+    for (const obj of this.speciesClass) {
       if (obj.expanded === true) {
         this.anyExpanded = true;
         break;
@@ -156,7 +173,7 @@ export class ChecklistPage implements OnInit {
   }
 
   toggleExpandAll() {
-    for (const speciesClass of this.species) {
+    for (const speciesClass of this.speciesClass) {
       speciesClass.expanded = !this.anyExpanded;
     }
     this.anyExpanded = !this.anyExpanded;
