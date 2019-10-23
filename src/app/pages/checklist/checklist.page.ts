@@ -17,10 +17,9 @@ export class ChecklistPage implements OnInit {
   public anyExpanded = false;
 
   public total = 0;
-  public found = [];
   public totalFound = 0;
 
-  public species = [
+  public speciesClass = [
     new SpeciesClass('Fish', [
       new Species(0, 'Alligator Gar', 'Atractosteus spatula'),
       new Species(1, 'Bay Anchovy', 'Anchovi Anchoa mitchilli'),
@@ -43,9 +42,7 @@ export class ChecklistPage implements OnInit {
       new Species(0, 'Anhinga', 'Anhinga anhinga'),
       new Species(1, 'Bald Eagle', 'Haliaeetus leucocephalus')
     ]),
-    new SpeciesClass('Mammals', [
-      
-    ])
+    new SpeciesClass('Mammals', [])
   ];
 
   constructor(
@@ -54,7 +51,7 @@ export class ChecklistPage implements OnInit {
     private alertController: AlertController
   ) {
     if (!environment.production) {
-      this.species[this.species.length - 1].species.push(
+      this.speciesClass[this.speciesClass.length - 1].species.push(
         ...[
           new Species(0, 'Pao', 'Asian'),
           new Species(1, 'Red Head Canadian', 'CANADIAN'),
@@ -66,55 +63,88 @@ export class ChecklistPage implements OnInit {
   }
 
   ngOnInit() {
+    for (const obj of this.speciesClass) {
+      obj.species = obj.species.sort((a, b) => (a.id > b.id) ? -1 : 1);
+    }
     this.restore();
     // tslint:disable-next-line: forin
-    for (const i in this.species) {
-      this.found[i] = 0;
-      this.total += this.species[i].species.length;
+    for (const obj of this.speciesClass) {
+      obj.found = 0;
+      this.total += obj.species.length;
     }
   }
 
   checkChanged() {
-    this.found = [];
+    this.totalFound = 0;
     // tslint:disable-next-line: forin
-    for (const i in this.species) {
-      this.found[i] = 0;
-      for (const species of this.species[i].species) {
+    for (const speciesClass of this.speciesClass) {
+      speciesClass.found = 0;
+      for (const species of speciesClass.species) {
         if (species.checked) {
-          this.found[i]++;
+          speciesClass.found++;
         }
       }
+      this.totalFound += speciesClass.found;
     }
-    this.totalFound = this.found.reduce((a, b) => a + b);
     this.save();
   }
 
   restore() {
     this.storage.get('speciesArray').then(speciesArray => {
-      if (speciesArray) {
-        this.species = speciesArray.map(item => {
-          item.expanded = false;
-          return item;
-        });
+      // let same = true;
+      // if (speciesArray && speciesArray.length === this.speciesClass.length) {
+      //   for (const species in speciesArray) {
+      //     if (
+      //       speciesArray[species].species.length !==
+      //       this.speciesClass[species].species.length
+      //     ) {
+      //       same = false;
+      //       break;
+      //     }
+      //   }
+      // }
+
+      // If species arrays are the same classes and species, then restore
+      if (JSON.stringify(speciesArray) === JSON.stringify(this.speciesClass)) {
+        console.log('Running if');
+        this.speciesClass = null;
+        this.speciesClass = speciesArray
+          .map(item => {
+            item.expanded = false;
+            return item;
+          });
+        this.totalFound = 0;
+        for (const speciesClass of this.speciesClass) {
+          this.totalFound += speciesClass.found;
+        }
+      } else {
+        console.log('Running else');
+
+        // Loop through array and restored "checked"s
+        // tslint:disable-next-line: forin
+        for (const index in speciesArray) {
+          // tslint:disable-next-line: forin
+          for (const speciesIndex in speciesArray[index].species) {
+            for (const thisSpeciesIndex in this.speciesClass[index].species) {
+              if (this.speciesClass[index].species[thisSpeciesIndex].id === speciesArray[index].species[speciesIndex].id) {
+                this.speciesClass[index].species[thisSpeciesIndex] = speciesArray[index].species[speciesIndex];
+                console.log('Did the thing');
+                break;
+              }
+            }
+          }
+        }
       }
     });
-    this.storage
-      .get('speciesFound')
-      .then(speciesFound => {
-        if (speciesFound) {
-          this.found = speciesFound;
-        }
-      })
-      .then(() => (this.totalFound = this.found.reduce((a, b) => a + b)));
     console.log('Species restored.');
-    console.log(this.species);
+    console.log(this.speciesClass);
+    this.save();
   }
 
   save() {
-    this.storage.set('speciesArray', this.species);
-    this.storage.set('speciesFound', this.found);
+    this.storage.set('speciesArray', this.speciesClass);
     console.log('Species saved.');
-    console.log(this.species);
+    console.log(this.speciesClass);
   }
 
   async presentResetAlert() {
@@ -139,9 +169,9 @@ export class ChecklistPage implements OnInit {
 
   resetAll() {
     // tslint:disable-next-line: forin
-    for (const i in this.species) {
-      this.found[i] = 0;
-      for (const species of this.species[i].species) {
+    for (const obj of this.speciesClass) {
+      obj.found = 0;
+      for (const species of obj.species) {
         species.checked = false;
       }
     }
@@ -151,7 +181,7 @@ export class ChecklistPage implements OnInit {
 
   toggleClass(speciesClass) {
     speciesClass.expanded = !speciesClass.expanded;
-    for (const obj of this.species) {
+    for (const obj of this.speciesClass) {
       if (obj.expanded === true) {
         this.anyExpanded = true;
         break;
@@ -161,7 +191,7 @@ export class ChecklistPage implements OnInit {
   }
 
   toggleExpandAll() {
-    for (const speciesClass of this.species) {
+    for (const speciesClass of this.speciesClass) {
       speciesClass.expanded = !this.anyExpanded;
     }
     this.anyExpanded = !this.anyExpanded;
