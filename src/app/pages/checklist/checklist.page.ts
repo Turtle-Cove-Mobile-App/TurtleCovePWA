@@ -63,6 +63,9 @@ export class ChecklistPage implements OnInit {
   }
 
   ngOnInit() {
+    for (const obj of this.speciesClass) {
+      obj.species = obj.species.sort((a, b) => (a.id > b.id) ? -1 : 1);
+    }
     this.restore();
     // tslint:disable-next-line: forin
     for (const obj of this.speciesClass) {
@@ -88,39 +91,54 @@ export class ChecklistPage implements OnInit {
 
   restore() {
     this.storage.get('speciesArray').then(speciesArray => {
-      let same = true;
-      if (speciesArray && speciesArray.length === this.speciesClass.length) {
-        for (const species in speciesArray) {
-          if (
-            speciesArray[species].species.length !==
-            this.speciesClass[species].species.length
-          ) {
-            same = false;
-            break;
-          }
-        }
-      } else {
-        same = false;
-      }
+      // let same = true;
+      // if (speciesArray && speciesArray.length === this.speciesClass.length) {
+      //   for (const species in speciesArray) {
+      //     if (
+      //       speciesArray[species].species.length !==
+      //       this.speciesClass[species].species.length
+      //     ) {
+      //       same = false;
+      //       break;
+      //     }
+      //   }
+      // }
 
-      if (same) {
+      // If species arrays are the same classes and species, then restore
+      if (JSON.stringify(speciesArray) === JSON.stringify(this.speciesClass)) {
+        console.log('Running if');
+        this.speciesClass = null;
         this.speciesClass = speciesArray
           .map(item => {
             item.expanded = false;
             return item;
-          })
-          .then(() => {
-            this.totalFound = 0;
-            for (const speciesClass of this.speciesClass) {
-              this.totalFound += speciesClass.found;
-            }
           });
+        this.totalFound = 0;
+        for (const speciesClass of this.speciesClass) {
+          this.totalFound += speciesClass.found;
+        }
       } else {
+        console.log('Running else');
+
         // Loop through array and restored "checked"s
+        // tslint:disable-next-line: forin
+        for (const index in speciesArray) {
+          // tslint:disable-next-line: forin
+          for (const speciesIndex in speciesArray[index].species) {
+            for (const thisSpeciesIndex in this.speciesClass[index].species) {
+              if (this.speciesClass[index].species[thisSpeciesIndex].id === speciesArray[index].species[speciesIndex].id) {
+                this.speciesClass[index].species[thisSpeciesIndex] = speciesArray[index].species[speciesIndex];
+                console.log('Did the thing');
+                break;
+              }
+            }
+          }
+        }
       }
     });
     console.log('Species restored.');
     console.log(this.speciesClass);
+    this.save();
   }
 
   save() {

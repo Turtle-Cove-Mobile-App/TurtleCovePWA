@@ -23,7 +23,7 @@
         Reset All
       </ion-button>
     </div>
-    <ng-container *ngFor="let obj of species">
+    <ng-container *ngFor="let obj of speciesClass">
       <ion-item-divider no-padding mode="ios" sticky style="background-color: gray; color: white; height: 40px;" (click)="toggleClass(obj)">
           <ion-button class="ion-no-padding" slot="start" fill="clear" size="small" color="light">
               <ion-icon slot="icon-only" size="large" [attr.name]="!obj.expanded ? 'add' : 'remove'" mode="ios"></ion-icon>
