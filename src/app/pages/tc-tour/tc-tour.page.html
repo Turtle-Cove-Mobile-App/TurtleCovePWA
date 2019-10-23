@@ -17,7 +17,7 @@
         <ion-row>  
             <ion-col size="4" *ngFor="let obj of signs;">
                 <div style="display: flex; flex-direction: row;">
-                    <ion-button size="large" (click)="signViewed(obj)" [color]="getColor(obj.viewed)">
+                    <ion-button size="large" (click)="showModal(obj)" [color]="getColor(obj.viewed)">
                         <ion-label>{{ obj.name }}</ion-label>
                     </ion-button>
                 </div>
