@@ -113,10 +113,6 @@ export class ChecklistPage implements OnInit {
             item.expanded = false;
             return item;
           });
-        this.totalFound = 0;
-        for (const speciesClass of this.speciesClass) {
-          this.totalFound += speciesClass.found;
-        }
       } else {
         console.log('Running else');
 
@@ -135,6 +131,7 @@ export class ChecklistPage implements OnInit {
           }
         }
       }
+      this.checkChanged();
     });
     console.log('Species restored.');
     console.log(this.speciesClass);
