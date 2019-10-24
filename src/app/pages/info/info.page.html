@@ -10,7 +10,7 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>
+      <ion-card-title (onclick)="toggleExpanded()">
         Station History
       </ion-card-title>
     </ion-card-header>
@@ -82,4 +82,27 @@
       </ul>
     </ion-card-content>
   </ion-card>
+
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Contact Information
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          Turtle Cove Environmental Research Station
+          Box 10585
+          Hammond, LA 70402
+      </ion-card-content>
+      <ion-card-content>
+          Manager: Dr. Robert Moreau 
+          rmoreau@southeastern.edu
+      </ion-card-content>
+      <ion-card-content>
+          Ph/Fax: (985)549-5008
+      </ion-card-content>
+      <ion-card-content>
+          Cell: (504)231-1067
+      </ion-card-content>
+    </ion-card>
 </ion-content>

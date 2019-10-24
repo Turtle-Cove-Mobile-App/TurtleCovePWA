@@ -11,37 +11,84 @@ import { ModalComponent } from './modal/modal.component';
 })
 export class TcTourPage implements OnInit {
 
-  public total; // setTotal?
+  public total;
   public found = [];
   public totalFound = 0;
-
   public primColor = 'primary';
-
   public signs = [
     {
       id: 0,
       name: '1',
-      viewed: false
+      viewed: false,
+      title: 'Double-crested Cormorant',
+      info: [`The double-crested cormorant (Phalacrocorax auritus) is a member of the
+      cormorant family of seabirds. Its habitat is near rivers and lakes as
+      well as in coastal areas, and is widely distributed across North America,
+      from the Aleutian Islands in Alaska down to Florida and Mexico. Measuring
+      70–90 cm (28–35 in) in length, it is an all-black bird which gains a small
+      double crest of black and white feathers in breeding season. It has a bare
+      patch of orange-yellow facial skin. Five subspecies are recognized. It
+      mainly eats fish and hunts by swimming and diving. Its feathers, like those
+      of all cormorants, are not waterproof and it must spend time drying them out
+      after spending time in the water. Once threatened by the use of DDT, the numbers
+      of this bird have increased markedly in recent years.`],
+      citation: [`  (2019, October 2). Double-crested cormorant.
+       In Wikipedia, The Free Encyclopedia. Retrieved 18:07, October 24, 2019, from
+        https://en.wikipedia.org/w/index.php?title=Double-crested_cormorant&oldid=919153139`]
     },
     {
       id: 1,
       name: '2',
-      viewed: false
+      viewed: false,
+      title: 'Gulf Menhaden and Bay Anchovy',
+      info: [`The Gulf menhaden (Brevoortia patronus) is a small
+      marine filter-feeding fish belonging to the family Clupeidae.
+      The range of Gulf menhaden encompasses the entirety of the Gulf
+      of Mexico nearshore waters, with the exception of the extreme
+      eastern Yucatan and western Cuba. Evidence from morphology and
+      DNA analyses suggest that the Gulf menhaden is the Gulf of
+      Mexico complement to the Atlantic menhaden (Brevoortia tyrannus).
+      Both species support large commercial reduction fisheries, with
+      Gulf menhaden supporting the second largest fishery, by weight,
+      in the United States.`,
+      `The bay anchovy
+      is somewhat variable in appearance. It is a small, slender,
+      schooling fish with a greenish body and a silvery stripe. It
+      is characterized by its very long jaw, silvery belly, lateral
+      stripe, and single dorsal fin. The dorsal fin is located
+      directly above the anal fin origin. The adult male is generally
+      about 6 centimeters long, with a maximum length of 10 to 11
+      centimeters. It has 14 to 16 rays in its dorsal fin, 24 to 30
+      in its anal fin, and 11 to 12 in the pectoral. It may live more
+      than three years. The bay anchovy is similar to other species in the
+      genus Anchoa which occur in the same regions. The broad-striped anchovy
+      is similar in appearance but grows to a larger size, up to 15
+      centimeters. The Cuban anchovy has its anal fin set farther back on
+      the body.`],
+      citation: [`(2019, July 6). Gulf menhaden. In Wikipedia, The Free
+       Encyclopedia. Retrieved 16:55, October 24, 2019, from
+       https://en.wikipedia.org/w/index.php?title=Gulf_menhaden&oldid=905079852`,
+      `(2018, August 30). Anchoa mitchilli. In Wikipedia, The Free Encyclopedia. Retrieved
+       17:51, October 24, 2019, from
+       https://en.wikipedia.org/w/index.php?title=Anchoa_mitchilli&oldid=857298695`]
     },
     {
       id: 2,
       name: '3',
-      viewed: false
+      viewed: false,
+      title: 'Nope',
     },
     {
       id: 3,
       name: '4',
-      viewed: false
+      viewed: false,
+      title: 'Nope',
     },
     {
       id: 4,
       name: '5',
-      viewed: false
+      viewed: false,
+      title: 'Nope',
     },
     {
       id: 5,
