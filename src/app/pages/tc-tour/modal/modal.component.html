@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Sign {{sign.id + 1}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="text-align: center;">
+    <img width="100%" [src]="sign.image" />
+  </div>
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+            Sign {{sign.id + 1}}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Blah blah sign info blah blah
+      </ion-card-content>
+    </ion-card>
+</ion-content>

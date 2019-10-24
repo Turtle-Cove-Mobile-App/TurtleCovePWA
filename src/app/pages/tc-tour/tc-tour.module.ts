@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { TcTourPage } from './tc-tour.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ModalComponent } from './modal/modal.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TcTourPage]
+  declarations: [TcTourPage, ModalComponent],
+  entryComponents: [ModalComponent]
 })
 export class TcTourPageModule {}

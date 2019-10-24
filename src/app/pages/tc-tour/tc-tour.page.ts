@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController, AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from './modal/modal.component';
+
 
 @Component({
   selector: 'tc-tc-tour',
@@ -77,7 +80,19 @@ export class TcTourPage implements OnInit {
     }
   ];
 
-  constructor/*(public popoverController: PopoverController, private storage: Storage, private alertController: AlertController)*/() {}
+  // constructor(public popoverController: PopoverController, private storage: Storage, private alertController: AlertController) {}
+  constructor(private modelCtrl: ModalController) {}
+
+  async showModal(obj) {
+    const modal = await this.modelCtrl.create({
+      component: ModalComponent,
+      componentProps: {
+        obj
+      }
+    });
+    await modal.present();
+    this.signViewed(obj);
+  }
 
   public getColor(viewed): string {
     if (viewed) {
