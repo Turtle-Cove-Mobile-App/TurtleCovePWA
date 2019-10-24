@@ -10,17 +10,29 @@
 </ion-header>
 
 <ion-content>
-  <div style="text-align: center;">
-    <img width="100%" [src]="sign.image" />
-  </div>
+<!-- 
+  <ion-slides>
+      <ion-slide>
+          <img width="100%" [src]="sign.image" tappable (click)="openPreview(sign.image)" />
+      </ion-slide>
+  </ion-slides>
+-->
+  <ion-card>
+    <img width="100%" [src]="sign.image"/>
+  </ion-card>
+
   <ion-card>
       <ion-card-header>
         <ion-card-title>
-            Sign {{sign.id + 1}}
+          {{sign.title}}
         </ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        Blah blah sign info blah blah
+      <ion-card-content *ngFor="let obj of sign.info;">
+        {{obj}}
       </ion-card-content>
     </ion-card>
+    <p *ngFor="let cite of sign.citation;" style="text-align: center; color:darkgrey">
+      {{cite}}
+    </p>
+    
 </ion-content>
