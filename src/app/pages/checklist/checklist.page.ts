@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { PopoverComponent } from './popover/popover.component';
 import { Storage } from '@ionic/storage';
 import { Species } from './species';
@@ -46,7 +46,6 @@ export class ChecklistPage implements OnInit {
   ];
 
   constructor(
-    public popoverController: PopoverController,
     private storage: Storage,
     private alertController: AlertController,
     private modalCtrl: ModalController

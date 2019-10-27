@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from './modal/modal.component';
 
