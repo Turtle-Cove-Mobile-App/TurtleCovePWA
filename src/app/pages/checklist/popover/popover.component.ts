@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, PopoverController } from '@ionic/angular';
+import { NavParams, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'tc-popover',
@@ -12,7 +12,7 @@ export class PopoverComponent implements OnInit {
 
   constructor(
     private navParams: NavParams,
-    private popoverController: PopoverController
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -22,6 +22,6 @@ export class PopoverComponent implements OnInit {
   }
 
   public dismiss(): void {
-    this.popoverController.dismiss();
+    this.modalCtrl.dismiss();
   }
 }

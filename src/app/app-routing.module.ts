@@ -1,93 +1,90 @@
-import { NgModule } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
-import { TabsPage } from "./pages/tabs/tabs.page";
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TabsPage } from './pages/tabs/tabs.page';
 
 const routes: Routes = [
   {
-    path: "tabs",
+    path: 'tabs',
     component: TabsPage,
     children: [
       {
-        path: "home",
+        path: 'home',
         children: [
           {
-            path: "",
-            loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
+            path: '',
+            loadChildren: () =>
+              import('./pages/home/home.module').then(m => m.HomePageModule)
           }
         ]
       },
       {
-        path: "gw-tour",
+        path: 'tc-tour',
         children: [
           {
-            path: "",
-            loadChildren: () => import('./pages/gw-tour/gw-tour.module').then(m => m.GwTourPageModule)
+            path: '',
+            loadChildren: () =>
+              import('./pages/tc-tour/tc-tour.module').then(
+                m => m.TcTourPageModule
+              )
           }
         ]
       },
       {
-        path: "checklist",
+        path: 'gw-tour',
         children: [
           {
-            path: "",
-            loadChildren: () => import('./pages/checklist/checklist.module').then(m => m.ChecklistPageModule)
+            path: '',
+            loadChildren: () =>
+              import('./pages/gw-tour/gw-tour.module').then(
+                m => m.GwTourPageModule
+              )
           }
         ]
       },
       {
-        path: "tc-tour",
+        path: 'checklist',
         children: [
           {
-            path: "",
-            loadChildren: () => import('./pages/tc-tour/tc-tour.module').then(m => m.TcTourPageModule)
+            path: '',
+            loadChildren: () =>
+              import('./pages/checklist/checklist.module').then(
+                m => m.ChecklistPageModule
+              )
           }
         ]
       },
       {
-        path: "gw-tour",
+        path: 'about',
         children: [
           {
-            path: "",
-            loadChildren: () => import('./pages/gw-tour/gw-tour.module').then(m => m.GwTourPageModule)
+            path: '',
+            loadChildren: () =>
+              import('./pages/info/info.module').then(m => m.InfoPageModule)
           }
         ]
       },
       {
-        path: "checklist",
-        children: [
-          {
-            path: "",
-            loadChildren: () => import('./pages/checklist/checklist.module').then(m => m.ChecklistPageModule)
-          }
-        ]
-      },
-      {
-        path: "tc-tour",
-        children: [
-          {
-            path: "",
-            loadChildren: () => import('./pages/tc-tour/tc-tour.module').then(m => m.TcTourPageModule)
-          }
-        ]
-      },
-      {
-        path: "",
-        redirectTo: "/tabs/home",
-        pathMatch: "full"
+        path: '',
+        redirectTo: '/tabs/home',
+        pathMatch: 'full'
       }
     ]
   },
   {
-    path: "",
-    redirectTo: "/tabs/home",
-    pathMatch: "full"
+    path: 'events',
+    loadChildren: () =>
+      import('./pages/events/events.module').then(m => m.EventsPageModule)
   },
-  { path: 'info', loadChildren: './pages/info/info.module#InfoPageModule' },
-  { path: 'events', loadChildren: './pages/events/events.module#EventsPageModule' },
+  {
+    path: '',
+    redirectTo: '/tabs/home',
+    pathMatch: 'full'
+  }
+
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })

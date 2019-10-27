@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Sign {{sign.id + 1}}</ion-title>
+    <ion-title>Sign {{ sign.id + 1 }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismiss()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -10,29 +10,37 @@
 </ion-header>
 
 <ion-content>
-<!-- 
-  <ion-slides>
-      <ion-slide>
-          <img width="100%" [src]="sign.image" tappable (click)="openPreview(sign.image)" />
-      </ion-slide>
-  </ion-slides>
--->
   <ion-card>
-    <img width="100%" [src]="sign.image"/>
+    <ion-slides>
+      <ion-slide>
+        <img
+          width="100%"
+          [src]="sign.image"
+          tappable
+          (click)="openPreview(sign.image)"
+        />
+      </ion-slide>
+    </ion-slides>
   </ion-card>
 
+  <!-- <ion-card>
+    <img width="100%" [src]="sign.image" />
+  </ion-card> -->
+
   <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          {{sign.title}}
-        </ion-card-title>
-      </ion-card-header>
-      <ion-card-content *ngFor="let obj of sign.info;">
-        {{obj}}
-      </ion-card-content>
-    </ion-card>
-    <p *ngFor="let cite of sign.citation;" style="text-align: center; color:darkgrey">
-      {{cite}}
-    </p>
-    
+    <ion-card-header>
+      <ion-card-title>
+        {{ sign.title }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngFor="let obj of sign.info">
+      {{ obj }}
+    </ion-card-content>
+  </ion-card>
+  <p
+    *ngFor="let cite of sign.citation"
+    style="text-align: center; color:darkgrey"
+  >
+    {{ cite }}
+  </p>
 </ion-content>

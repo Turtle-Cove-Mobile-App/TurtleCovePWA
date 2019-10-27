@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import { ImageModalPage } from '../../image-modal/image-modal.page';
+import { ZoomComponent } from './zoom/zoom.component';
 
 @Component({
   selector: 'tc-modal',
@@ -21,9 +21,9 @@ export class ModalComponent implements OnInit {
 
   openPreview(image) {
     this.modalCtrl.create({
-      component: ImageModalPage,
+      component: ZoomComponent,
       componentProps: {
-        img: image
+        img: this.sign.image
       }
     }).then(modal => modal.present());
 

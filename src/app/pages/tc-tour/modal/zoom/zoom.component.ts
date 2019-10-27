@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'tc-image-model',
-  templateUrl: './image-modal.page.html',
-  styleUrls: ['./image-modal.page.scss'],
+  selector: 'tc-zoom',
+  templateUrl: './zoom.component.html',
+  styleUrls: ['./zoom.component.scss'],
 })
-export class ImageModalPage implements OnInit {
+export class ZoomComponent implements OnInit {
 
   image: any;
 
@@ -19,7 +19,7 @@ export class ImageModalPage implements OnInit {
   constructor(private navParams: NavParams, private modalController: ModalController) { }
 
   ngOnInit() {
-    this.image = this.navParams.get('image');
+    this.image = this.navParams.get('img');
   }
 
   zoom(zoomIn: boolean) {
