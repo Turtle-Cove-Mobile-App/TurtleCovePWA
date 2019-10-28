@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ChecklistPage } from './checklist.page';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PopoverComponent } from './popover/popover.component';
+import { ModalComponent } from './modal/modal.component';
 
 const routes: Routes = [
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ChecklistPage, PopoverComponent],
-  entryComponents: [PopoverComponent]
+  declarations: [ChecklistPage, ModalComponent],
+  entryComponents: [ModalComponent]
 })
 export class ChecklistPageModule {}

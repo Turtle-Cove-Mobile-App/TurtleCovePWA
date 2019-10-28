@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, AlertController } from '@ionic/angular';
-import { PopoverComponent } from './popover/popover.component';
+import { AlertController, ModalController } from '@ionic/angular';
+import { ModalComponent } from './modal/modal.component';
 import { Storage } from '@ionic/storage';
 import { Species } from './species';
 import { SpeciesClass } from './species-class';
@@ -46,9 +46,9 @@ export class ChecklistPage implements OnInit {
   ];
 
   constructor(
-    public popoverController: PopoverController,
     private storage: Storage,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private modalCtrl: ModalController
   ) {
     if (!environment.production) {
       this.speciesClass[this.speciesClass.length - 1].species.push(
@@ -196,13 +196,12 @@ export class ChecklistPage implements OnInit {
 
   async openSpeciesInfo(species, speciesClass) {
     console.log(species);
-    const popover = await this.popoverController.create({
-      component: PopoverComponent,
+    const popover = await this.modalCtrl.create({
+      component: ModalComponent,
       componentProps: {
         species,
         speciesClass
-      },
-      translucent: true
+      }
     });
     return await popover.present();
   }

@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { TcTourPage } from './tc-tour.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ModalComponent } from './modal/modal.component';
-import { ImageModalPage } from '../image-modal/image-modal.page';
+import { ZoomComponent } from './modal/zoom/zoom.component';
 
 const routes: Routes = [
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TcTourPage, ModalComponent, ImageModalPage],
-  entryComponents: [ModalComponent, ImageModalPage]
+  declarations: [TcTourPage, ModalComponent, ZoomComponent],
+  entryComponents: [ModalComponent, ZoomComponent]
 })
 export class TcTourPageModule {}

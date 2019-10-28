@@ -26,3 +26,7 @@ ion-card {
     color : var(--ion-color-secondary);
     --color-selected: var(--ion-color-secondary);
  }
+
+ .modal-wrapper {
+    background: transparent !important;
+ }
