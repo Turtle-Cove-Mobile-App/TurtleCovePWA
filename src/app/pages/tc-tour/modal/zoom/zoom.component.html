@@ -1,27 +1,42 @@
-<ion-content fullscreen>
+<ion-header>
+  <ion-toolbar style="--background: transparent;">
+    <ion-buttons slot="primary">
+      <ion-button (click)="close()" color="light">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-button class="close-fake" (click)="close()" fill="clear" color="light">
-      <ion-icon name="close" slot="start"></ion-icon>
-      Back
-    </ion-button>
-  
-    <ion-button (click)="zoom(true)" fill="clear" color="light">
-      <ion-icon name="add" slot="start"></ion-icon>
-      In
-    </ion-button>
-  
-    <ion-button (click)="zoom(false)" fill="clear" color="light">
-      <ion-icon name="remove" slot="start"></ion-icon>
-      Out
-    </ion-button>
-  
-    <ion-slides>
-      <ion-slide>
-        <div class="swiper-zoom-container">
-          <img [src]="image">
-        </div>
-      </ion-slide>
-    </ion-slides>
-  
-  </ion-content>
-  
+<ion-content fullscreen>
+  <div style="position: relative; height: 100%;">
+    <ion-grid
+      style="position: absolute; top: 40%; transform: translateY(-50%);"
+    >
+      <ion-row>
+        <ion-col>
+          <div
+            style="width: 20%; display: flex; justify-content: space-around; margin: auto;"
+          >
+            <ion-button (click)="zoom(true)" fill="clear" color="light">
+              <ion-icon name="add" slot="start"></ion-icon>
+              In
+            </ion-button>
+            <ion-button (click)="zoom(false)" fill="clear" color="light">
+              <ion-icon name="remove" slot="start"></ion-icon>
+              Out
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-slides [options]="sliderOptions" #slider>
+        <ion-slide>
+          <div class="swiper-zoom-container">
+            <img [src]="image" />
+          </div>
+        </ion-slide>
+      </ion-slides>
+      <ion-row> </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
