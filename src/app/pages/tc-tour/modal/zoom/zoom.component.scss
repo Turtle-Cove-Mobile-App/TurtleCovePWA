@@ -1,9 +1,10 @@
-.close-fake {
+ion-button {
     --background: transparent;
     ion-icon {
         font-size: 2rem;
     }
-    margin-top: 40px;
+    padding: 0;
+    margin: 0;
 }
 
 ion-content {

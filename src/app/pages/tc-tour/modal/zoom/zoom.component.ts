@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 
 @Component({
@@ -10,6 +10,8 @@ export class ZoomComponent implements OnInit {
 
   image: any;
 
+  @ViewChild('slider', { read: ElementRef, static: true }) slider: ElementRef;
+
   sliderOptions = {
     zoom: {
       maxRatio: 3
@@ -20,10 +22,16 @@ export class ZoomComponent implements OnInit {
 
   ngOnInit() {
     this.image = this.navParams.get('img');
+    console.log(this.slider);
   }
 
   zoom(zoomIn: boolean) {
-
+    const zoom = this.slider.nativeElement.swiper.zoom;
+    if (zoomIn) {
+      zoom.in();
+    } else {
+      zoom.out();
+    }
   }
 
   close() {
