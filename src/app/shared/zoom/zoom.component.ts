@@ -4,11 +4,12 @@ import { NavParams, ModalController } from '@ionic/angular';
 @Component({
   selector: 'tc-zoom',
   templateUrl: './zoom.component.html',
-  styleUrls: ['./zoom.component.scss'],
+  styleUrls: ['./zoom.component.scss']
 })
 export class ZoomComponent implements OnInit {
-
   image: any;
+
+  zoomedIn = false;
 
   @ViewChild('slider', { read: ElementRef, static: true }) slider: ElementRef;
 
@@ -18,7 +19,10 @@ export class ZoomComponent implements OnInit {
     }
   };
 
-  constructor(private navParams: NavParams, private modalController: ModalController) { }
+  constructor(
+    private navParams: NavParams,
+    private modalController: ModalController
+  ) {}
 
   ngOnInit() {
     this.image = this.navParams.get('img');
@@ -26,16 +30,18 @@ export class ZoomComponent implements OnInit {
   }
 
   zoom(zoomIn: boolean) {
-    const zoom = this.slider.nativeElement.swiper.zoom;
-    if (zoomIn) {
-      zoom.in();
-    } else {
-      zoom.out();
+    if (zoomIn === !this.zoomedIn) {
+      const zoom = this.slider.nativeElement.swiper.zoom;
+      if (zoomIn) {
+        zoom.in();
+      } else {
+        zoom.out();
+      }
+      this.zoomedIn = zoomIn;
     }
   }
 
   close() {
     this.modalController.dismiss();
   }
-
 }

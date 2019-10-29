@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar style="--background: transparent;">
+  <ion-toolbar>
     <ion-buttons slot="primary">
       <ion-button (click)="close()" color="light">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -9,26 +9,26 @@
 </ion-header>
 
 <ion-content fullscreen scrollY="false">
-
-  <div class="zoom-buttons">
-
-    <ion-button (click)="zoom(true)" fill="clear" color="light">
-      <ion-icon name="add" slot="start"></ion-icon>
-      In
-    </ion-button>
-
-    <ion-button (click)="zoom(false)" fill="clear" color="light">
-      <ion-icon name="remove" slot="start"></ion-icon>
-      Out
-    </ion-button>
-
-  </div>
-
   <ion-slides style="height: 100%;" [options]="sliderOptions" #slider>
     <ion-slide>
       <div class="swiper-zoom-container">
-        <img style="margin-bottom: 400px;" [src]="image" />
+        <img [src]="image" />
       </div>
     </ion-slide>
   </ion-slides>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="zoom-buttons">
+      <ion-button (click)="zoom(true)" fill="clear" color="light">
+        <ion-icon name="add" slot="start"></ion-icon>
+        In
+      </ion-button>
+      <ion-button (click)="zoom(false)" fill="clear" color="light">
+        <ion-icon name="remove" slot="start"></ion-icon>
+        Out
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
