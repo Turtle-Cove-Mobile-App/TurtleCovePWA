@@ -7,15 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoPage implements OnInit {
 
-  public expanded = false;
+  public historyExpanded = false;
+  public whatGoesOnExpanded = false;
 
   constructor() { }
 
-  toggleExpanded() {
-    if (this.expanded === false) {
-      this.expanded = true;
+  toggleHistory() {
+    if (this.historyExpanded === false) {
+      this.historyExpanded = true;
     } else {
-      this.expanded = false;
+      this.historyExpanded = false;
+    }
+  }
+
+  toggleWhatGoesOn() {
+    if (this.whatGoesOnExpanded === false) {
+      this.whatGoesOnExpanded = true;
+    } else {
+      this.whatGoesOnExpanded = false;
     }
   }
 

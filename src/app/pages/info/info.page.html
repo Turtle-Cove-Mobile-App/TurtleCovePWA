@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>Info</ion-title>
   </ion-toolbar>
-</!--> 
+</!-->
 
 <tc-header pageName="About"></tc-header>
 
@@ -16,11 +16,12 @@
   </ion-card>
   <ion-card>
     <ion-card-header>
-      <ion-card-title (onclick)="toggleExpanded()">
-        Station History
+      <ion-card-title (click)="toggleHistory()">
+        <ion-icon [name]="historyExpanded ? 'remove' : 'add'" color="dark"></ion-icon>
+        <span>Station History</span>
       </ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content *ngIf="historyExpanded">
       Turtle Cove itself is a historic structure located in the wetlands on Pass
       Manchac, a natural pass that connects Lakes Pontchartrain and Maurepas in
       southeastern Louisiana. The building was built in 1908 and is home to a
@@ -38,11 +39,12 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title>
-        What Goes on at Turtle Cove?
+      <ion-card-title (click)="toggleWhatGoesOn()">
+        <ion-icon [name]="whatGoesOnExpanded ? 'remove' : 'add'" color="dark"></ion-icon>
+        <span>What Goes on at Turtle Cove?</span>
       </ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content *ngIf="whatGoesOnExpanded">
       <ul>
         <li>
           University classes (at both undergraduate and graduate levels)
@@ -90,25 +92,22 @@
   </ion-card>
 
   <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          Contact Information
-        </ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-          Turtle Cove Environmental Research Station
-          Box 10585
-          Hammond, LA 70402
-      </ion-card-content>
-      <ion-card-content>
-          Manager: Dr. Robert Moreau 
-          rmoreau@southeastern.edu
-      </ion-card-content>
-      <ion-card-content>
-          Ph/Fax: (985)549-5008
-      </ion-card-content>
-      <ion-card-content>
-          Cell: (504)231-1067
-      </ion-card-content>
-    </ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Contact Information
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Turtle Cove Environmental Research Station Box 10585 Hammond, LA 70402
+    </ion-card-content>
+    <ion-card-content>
+      Manager: Dr. Robert Moreau rmoreau@southeastern.edu
+    </ion-card-content>
+    <ion-card-content>
+      Ph/Fax: (985)549-5008
+    </ion-card-content>
+    <ion-card-content>
+      Cell: (504)231-1067
+    </ion-card-content>
+  </ion-card>
 </ion-content>
