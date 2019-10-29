@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import { ZoomComponent } from './zoom/zoom.component';
+import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 
 @Component({
   selector: 'tc-modal',
