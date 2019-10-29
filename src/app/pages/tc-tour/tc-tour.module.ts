@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { TcTourPage } from './tc-tour.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ModalComponent } from './modal/modal.component';
-import { ZoomComponent } from '../../shared/zoom/zoom.component';
+import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 
 const routes: Routes = [
   {
