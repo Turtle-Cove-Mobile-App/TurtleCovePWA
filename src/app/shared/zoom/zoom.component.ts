@@ -28,7 +28,6 @@ export class ZoomComponent implements OnInit {
   ngOnInit() {
     this.image = this.navParams.get('img');
     this.imgId = this.navParams.get('id');
-    console.log(this.slider);
   }
 
   zoom(zoomIn: boolean) {
