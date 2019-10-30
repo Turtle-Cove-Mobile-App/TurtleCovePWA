@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from './modal/modal.component';
+import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 
 
 @Component({
@@ -10,14 +11,15 @@ import { ModalComponent } from './modal/modal.component';
 })
 export class TcTourPage implements OnInit {
 
-  public total;
+  // public total;
+  public total = 15;
+  public totalArray;
   public found = [];
   public totalFound = 0;
   public primColor = 'primary';
   public signs = [
     {
       id: 0,
-      name: '1',
       viewed: false,
       title: 'Double-crested Cormorant',
       info: [`The double-crested cormorant (Phalacrocorax auritus) is a member of the
@@ -37,7 +39,6 @@ export class TcTourPage implements OnInit {
     },
     {
       id: 1,
-      name: '2',
       viewed: false,
       title: 'Gulf Menhaden and Bay Anchovy',
       info: [`The Gulf menhaden (Brevoortia patronus) is a small
@@ -73,61 +74,56 @@ export class TcTourPage implements OnInit {
     },
     {
       id: 2,
-      name: '3',
       viewed: false,
       title: 'Nope',
     },
     {
       id: 3,
-      name: '4',
       viewed: false,
       title: 'Nope',
     },
     {
       id: 4,
-      name: '5',
       viewed: false,
       title: 'Nope',
     },
     {
       id: 5,
-      name: '6',
       viewed: false
     },
     {
       id: 6,
-      name: '7',
       viewed: false
     },
     {
       id: 7,
-      name: '8',
       viewed: false
     },
     {
       id: 8,
-      name: '9',
       viewed: false
     },
     {
       id: 9,
-      name: '10',
       viewed: false
     },
     {
       id: 10,
-      name: '11',
       viewed: false
     },
     {
       id: 11,
-      name: '12',
       viewed: false
     }
   ];
 
   // constructor(public popoverController: PopoverController, private storage: Storage, private alertController: AlertController) {}
   constructor(private modelCtrl: ModalController) {}
+
+  ngOnInit() {
+    // this.total = this.signs.length;
+    this.totalArray = new Array(this.total).fill({viewed: false}).map(item => ({viewed: item.viewed}));
+  }
 
   async showModal(obj) {
     const modal = await this.modelCtrl.create({
@@ -140,6 +136,31 @@ export class TcTourPage implements OnInit {
     this.signViewed(obj);
   }
 
+  async showZoom(id) {
+    const modal = await this.modelCtrl.create({
+      component: ZoomComponent,
+      componentProps: {
+        id
+      }
+    });
+    await modal.present();
+    this.signZoomViewed(id);
+  }
+
+  public signZoomViewed(id): void {
+    if (this.totalArray[id].viewed === false) {
+      this.totalArray[id].viewed = true;
+      this.totalFound++;
+    }
+  }
+
+  newReset() {
+    for (const sign of this.totalArray) {
+      sign.viewed = false;
+    }
+    this.totalFound = 0;
+  }
+
   public getColor(viewed): string {
     if (viewed) {
       return 'medium';
@@ -147,6 +168,7 @@ export class TcTourPage implements OnInit {
       return 'primary';
     }
   }
+
   public signViewed(obj): void {
     if (obj.viewed === false) {
       obj.viewed = true;
@@ -161,10 +183,6 @@ export class TcTourPage implements OnInit {
     }
     this.primColor = 'primary';
     this.totalFound = 0;
-  }
-
-  ngOnInit() {
-    this.total = this.signs.length;
   }
 
 }
