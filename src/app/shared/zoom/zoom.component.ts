@@ -8,6 +8,7 @@ import { NavParams, ModalController } from '@ionic/angular';
 })
 export class ZoomComponent implements OnInit {
   image: any;
+  imgId: any;
 
   zoomedIn = false;
 
@@ -26,7 +27,7 @@ export class ZoomComponent implements OnInit {
 
   ngOnInit() {
     this.image = this.navParams.get('img');
-    console.log(this.slider);
+    this.imgId = this.navParams.get('id');
   }
 
   zoom(zoomIn: boolean) {

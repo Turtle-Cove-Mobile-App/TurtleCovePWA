@@ -10,7 +10,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { TabsPage } from './pages/tabs/tabs.page';
 
 @NgModule({
@@ -21,9 +20,7 @@ import { TabsPage } from './pages/tabs/tabs.page';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: true
-    })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true })
   ],
   providers: [
     StatusBar,
