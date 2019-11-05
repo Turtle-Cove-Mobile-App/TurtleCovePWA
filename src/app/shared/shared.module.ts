@@ -1,3 +1,4 @@
+import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './header/header.component';
@@ -6,7 +7,8 @@ import { RouterModule } from '@angular/router';
 import { FilterSpeciesByNameStartsWithPipe } from './pipes/filter-species-by-name-starts-with.pipe';
 @NgModule({
   imports: [IonicModule, RouterModule],
-  declarations: [HeaderComponent, FilterSpeciesByNameStartsWithPipe],
-  exports: [HeaderComponent, RouterModule, FilterSpeciesByNameStartsWithPipe]
+  declarations: [HeaderComponent, FilterSpeciesByNameStartsWithPipe, ZoomComponent],
+  exports: [HeaderComponent, RouterModule, FilterSpeciesByNameStartsWithPipe, ZoomComponent],
+  entryComponents: [ZoomComponent]
 })
 export class SharedModule {}
