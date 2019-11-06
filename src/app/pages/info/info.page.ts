@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'tc-info',
@@ -10,7 +11,7 @@ export class InfoPage implements OnInit {
   public historyExpanded = false;
   public whatGoesOnExpanded = false;
 
-  constructor() { }
+  constructor(public platform: Platform) { }
 
   toggleHistory() {
     if (this.historyExpanded === false) {
