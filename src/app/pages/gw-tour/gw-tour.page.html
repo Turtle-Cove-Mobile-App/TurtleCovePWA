@@ -1,22 +1,59 @@
 <tc-header pageName="Greenway Tour"></tc-header>
 
 <ion-content>
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <div class="coords">
-                    {{ plugins.location[0] }}, {{ plugins.location[1] }}
-                </div>
-            </ion-col>
-        </ion-row>
-        <!-- <ion-row>
-            <ion-col>
-                <div style="display: flex; flex-direction: row;">
-                    <ion-button color="secondary" (click)="logLocation()">
-                        Check Location
-                    </ion-button>
-                </div>
-            </ion-col>
-        </ion-row> -->
-    </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="coords">
+          {{ plugins.location[0] }}, {{ plugins.location[1] }}
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <img src="assets/img/greenway.jpg" />
+          <ion-card-header>
+            <ion-card-subtitle>Manchac, LA</ion-card-subtitle>
+            <ion-card-title>Greenway</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+                Somebody once told me the world is gonna roll me
+                I ain't the sharpest tool in the shed
+                She was looking kind of dumb with her finger and her thumb
+                In the shape of an "L" on her forehead
+                Well the years start coming and they don't stop coming
+                Fed to the rules and I hit the ground running
+                Didn't make sense not to live for fun
+                Your brain gets smart but your head gets dumb
+                So much to do, so much to see
+                So what's wrong with taking the back streets?
+                You'll never know if you don't go
+                You'll never shine if you don't glow
+                Hey now, you're an all-star, get your game on, go play
+                Hey now, you're a rock star, get the show on, get paid
+                And all that glitters is gold
+                Only shooting stars break the mold...
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div style="display: flex; flex-direction: row;">
+          <ion-button>
+            <ion-icon name="car"></ion-icon>
+            <span>Take the Tour</span>
+          </ion-button>
+          <ion-button color='secondary'>
+            <ion-icon name="pin"></ion-icon>
+            <span>View Stops</span>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
