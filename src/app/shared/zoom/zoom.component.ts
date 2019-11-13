@@ -7,18 +7,15 @@ import { NavParams, ModalController } from '@ionic/angular';
   styleUrls: ['./zoom.component.scss']
 })
 export class ZoomComponent implements OnInit {
-  image: any;
-  imgId: any;
+  initIndex: number;
+  total: number;
+  paths: string[] = [];
+
+  sliderOptions;
 
   zoomedIn = false;
 
   @ViewChild('slider', { read: ElementRef, static: true }) slider: ElementRef;
-
-  sliderOptions = {
-    zoom: {
-      maxRatio: 3
-    }
-  };
 
   constructor(
     private navParams: NavParams,
@@ -26,8 +23,18 @@ export class ZoomComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.image = this.navParams.get('img');
-    this.imgId = this.navParams.get('id');
+    this.initIndex = this.navParams.get('index');
+    this.total = this.navParams.get('total');
+    for (let i = 0; i < this.total; i++) {
+      this.paths.push('assets/img/signs/' + i);
+    }
+
+    this.sliderOptions = {
+      initialSlide: this.initIndex,
+      zoom: {
+        maxRatio: 3
+      }
+    }
   }
 
   zoom(zoomIn: boolean) {

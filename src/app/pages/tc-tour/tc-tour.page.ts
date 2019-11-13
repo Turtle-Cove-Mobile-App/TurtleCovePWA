@@ -140,7 +140,8 @@ export class TcTourPage implements OnInit {
     const modal = await this.modelCtrl.create({
       component: ZoomComponent,
       componentProps: {
-        id
+        index: id,
+        total: this.total
       }
     });
     await modal.present();
