@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content fullscreen scrollY="false">
-  <ion-slides style="height: 100%;" [options]="sliderOptions" #slider (ionSlideDidChange)="slideChanged(slider)">
+  <ion-slides style="height: 100%;" [options]="sliderOptions" #slider (ionSlideDidChange)="slideChanged()">
     <ion-slide *ngFor="let obj of imgService.signs; let i = index">
       <div class="swiper-zoom-container">
         <img [src]="'assets/img/signs/' + i" />
