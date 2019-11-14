@@ -1,3 +1,4 @@
+import { ImageViewService } from './../../services/image-view/image-view.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 
@@ -7,9 +8,8 @@ import { NavParams, ModalController } from '@ionic/angular';
   styleUrls: ['./zoom.component.scss']
 })
 export class ZoomComponent implements OnInit {
-  initIndex: number;
-  total: number;
-  paths: string[] = [];
+
+  private initIndex: number;
 
   sliderOptions;
 
@@ -18,23 +18,24 @@ export class ZoomComponent implements OnInit {
   @ViewChild('slider', { read: ElementRef, static: true }) slider: ElementRef;
 
   constructor(
+    private modalController: ModalController,
     private navParams: NavParams,
-    private modalController: ModalController
+    public imgService: ImageViewService
   ) {}
 
   ngOnInit() {
     this.initIndex = this.navParams.get('index');
-    this.total = this.navParams.get('total');
-    for (let i = 0; i < this.total; i++) {
-      this.paths.push('assets/img/signs/' + i);
-    }
 
     this.sliderOptions = {
       initialSlide: this.initIndex,
       zoom: {
         maxRatio: 3
       }
-    }
+    };
+  }
+
+  slideChanged() {
+    this.slider.nativeElement.getActiveIndex().then(index => this.imgService.viewSign(index));
   }
 
   zoom(zoomIn: boolean) {

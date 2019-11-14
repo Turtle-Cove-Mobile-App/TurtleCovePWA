@@ -5,7 +5,7 @@
     style="padding-top: 10px; margin: auto; width: 100%; display: flex; justify-content: center;"
   >
     <ion-chip color="primary" style="text-align: center;">
-      <ion-label> {{ totalFound }} / {{ total }} Signs Viewed </ion-label>
+      <ion-label> {{ imgService.totalViewed }} / {{ imgService.total }} Signs Viewed </ion-label>
     </ion-chip>
   </div>
   <ion-grid>
@@ -17,7 +17,7 @@
           <ion-label>{{ obj.id + 1 }}</ion-label>
         </div>
       </ion-col> -->
-      <ion-col size="4" *ngFor="let obj of totalArray; let i = index">
+      <ion-col size="4" *ngFor="let obj of imgService.signs; let i = index">
         <div [class]="'sign-button ' + (obj.viewed ? 'viewed' : 'unviewed')" (click)="showZoom(i)">
           <img src="assets/img/signs/{{ i }}"/>
           <div></div>
@@ -28,7 +28,7 @@
     <ion-row>
       <ion-col>
         <div style="display: flex; flex-direction: row;">
-          <ion-button color="secondary" (click)="newReset()">
+          <ion-button color="secondary" (click)="imgService.reset()">
             Reset All
           </ion-button>
         </div>
