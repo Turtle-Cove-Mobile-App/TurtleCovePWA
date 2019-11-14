@@ -11,6 +11,7 @@ export class GwTourPage implements OnInit {
   constructor(public plugins: PluginsService) { }
 
   ngOnInit() {
+
   }
 
   ionViewWillEnter() {
