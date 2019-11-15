@@ -148,7 +148,7 @@ export class ChecklistPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Reset All',
       message:
-        'Are you sure you want to reset all of your checkboxes? This cannot be undone!',
+        'Are you sure you want to reset all of the checkboxes? This cannot be undone!',
       buttons: [
         {
           text: 'No',
