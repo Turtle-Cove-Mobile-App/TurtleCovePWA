@@ -7,15 +7,9 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div style="display: flex; flex-direction: row;">
-          <ion-button color="primary">
-            Hey girl, how you doin?
-          </ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-list *ngFor="let stop of stops">
+    <ion-item button click="showModal(stop)">
+      {{stop.title}}
+    </ion-item>
+  </ion-list>  
 </ion-content>

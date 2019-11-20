@@ -78,7 +78,7 @@ const routes: Routes = [
   {
     path: 'gw-stops',
     loadChildren: () =>
-      import('./pages/gw-stops/gw-stops.module').then(m => m.GwStopsPageModule)
+      import('./pages/gw-tour/gw-stops/gw-stops.module').then(m => m.GwStopsPageModule)
   },
   {
     path: '',
