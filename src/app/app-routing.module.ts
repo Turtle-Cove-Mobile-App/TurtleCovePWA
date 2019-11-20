@@ -76,11 +76,15 @@ const routes: Routes = [
       import('./pages/events/events.module').then(m => m.EventsPageModule)
   },
   {
+    path: 'gw-stops',
+    loadChildren: () =>
+      import('./pages/gw-stops/gw-stops.module').then(m => m.GwStopsPageModule)
+  },
+  {
     path: '',
     redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
-
 ];
 @NgModule({
   imports: [
