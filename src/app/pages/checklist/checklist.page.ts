@@ -1,3 +1,4 @@
+import { ImageViewService } from 'src/app/services/image-view/image-view.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ModalComponent } from './modal/modal.component';
@@ -5,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { Species } from './species';
 import { SpeciesClass } from './species-class';
 import { environment } from 'src/environments/environment';
+import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 
 @Component({
   selector: 'tc-checklist',
@@ -48,7 +50,8 @@ export class ChecklistPage implements OnInit {
   constructor(
     private storage: Storage,
     private alertController: AlertController,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    public imageService: ImageViewService
   ) {
     if (!environment.production) {
       this.speciesClass[this.speciesClass.length - 1].species.push(
@@ -194,16 +197,29 @@ export class ChecklistPage implements OnInit {
     this.anyExpanded = !this.anyExpanded;
   }
 
-  async openSpeciesInfo(species, speciesClass) {
-    console.log(species);
-    const popover = await this.modalCtrl.create({
-      component: ModalComponent,
+  async openSpeciesInfo(speciesIndex, speciesClass) {
+    const pathBase = 'assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/';
+    this.imageService.images = speciesClass.species.sort((a, b) => (a.name > b.name) ? 1 : -1).map((item, index) => ({path: pathBase + item.id}));
+
+    console.log(this.imageService.images);
+
+    const modal = await this.modalCtrl.create({
+      component: ZoomComponent,
       componentProps: {
-        species,
-        speciesClass
+        index: speciesIndex
       }
     });
-    return await popover.present();
+    await modal.present();
+    
+    // console.log(species);
+    // const popover = await this.modalCtrl.create({
+    //   component: ModalComponent,
+    //   componentProps: {
+    //     species,
+    //     speciesClass
+    //   }
+    // });
+    // return await popover.present();
   }
 
   getSpeciesNames(obj) {
