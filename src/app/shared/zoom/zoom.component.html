@@ -10,9 +10,9 @@
 
 <ion-content fullscreen scrollY="false">
   <ion-slides style="height: 100%;" [options]="sliderOptions" #slider (ionSlideDidChange)="slideChanged()">
-    <ion-slide *ngFor="let obj of imgService.signs; let i = index">
+    <ion-slide *ngFor="let obj of imgService.images">
       <div class="swiper-zoom-container">
-        <img [src]="'assets/img/signs/' + i" />
+        <img [src]="obj.path" />
       </div>
     </ion-slide>
   </ion-slides>
