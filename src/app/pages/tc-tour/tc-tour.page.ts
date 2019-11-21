@@ -1,7 +1,6 @@
 import { ImageViewService } from 'src/app/services/image-view/image-view.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
-import { ModalComponent } from './modal/modal.component';
 import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 
 
@@ -14,12 +13,11 @@ export class TcTourPage implements OnInit {
 
   public primColor = 'primary';
 
-  // constructor(public popoverController: PopoverController, private storage: Storage, private alertController: AlertController) {}
   constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController) {}
 
   ngOnInit() {
-    // this.total = this.signs.length;
-    this.imgService.setSigns(new Array(this.imgService.total).fill({viewed: false}).map(item => ({viewed: item.viewed})));
+    this.imgService.total = 15;
+    this.imgService.setImages(new Array(this.imgService.total).fill({viewed: false}).map((item, index) => ({viewed: item.viewed, path: 'assets/img/signs/' + index})));
   }
 
   async showZoom(id) {
@@ -31,7 +29,7 @@ export class TcTourPage implements OnInit {
       }
     });
     await modal.present();
-    this.imgService.viewSign(id);
+    this.imgService.viewImage(id);
   }
 
   async reset() {
