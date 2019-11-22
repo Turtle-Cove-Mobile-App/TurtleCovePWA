@@ -199,7 +199,7 @@ export class ChecklistPage implements OnInit {
 
   async openSpeciesInfo(speciesIndex, speciesClass) {
     const pathBase = 'assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/';
-    this.imageService.images = speciesClass.species.map((item, index) => ({path: pathBase + item.id}));
+    this.imageService.images = speciesClass.species.map((item, index) => ({path: pathBase + item.id + '.jpg'}));
 
     // console.log(this.imageService.images);
 
