@@ -67,7 +67,7 @@ export class ChecklistPage implements OnInit {
 
   ngOnInit() {
     for (const obj of this.speciesClass) {
-      obj.species = obj.species.sort((a, b) => (a.id > b.id) ? -1 : 1);
+      obj.species = obj.species.sort((a, b) => (a.name > b.name) ? 1 : -1);
     }
     this.restore();
     // tslint:disable-next-line: forin
@@ -199,7 +199,7 @@ export class ChecklistPage implements OnInit {
 
   async openSpeciesInfo(speciesIndex, speciesClass) {
     const pathBase = 'assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/';
-    this.imageService.images = speciesClass.species.sort((a, b) => (a.name > b.name) ? 1 : -1).map((item, index) => ({path: pathBase + item.id}));
+    this.imageService.images = speciesClass.species.map((item, index) => ({path: pathBase + item.id}));
 
     // console.log(this.imageService.images);
 
