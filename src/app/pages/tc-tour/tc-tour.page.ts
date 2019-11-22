@@ -15,7 +15,7 @@ export class TcTourPage implements OnInit {
 
   private totalNumberOfSigns = 15;
 
-  private signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index }));
+  private signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index + '.jpg'}));
 
   constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController) { }
 
