@@ -109,7 +109,7 @@ export class ChecklistPage implements OnInit {
 
       // If species arrays are the same classes and species, then restore
       if (JSON.stringify(speciesArray) === JSON.stringify(this.speciesClass)) {
-        console.log('Running if');
+        // console.log('Running if');
         this.speciesClass = null;
         this.speciesClass = speciesArray
           .map(item => {
@@ -117,7 +117,7 @@ export class ChecklistPage implements OnInit {
             return item;
           });
       } else {
-        console.log('Running else');
+        // console.log('Running else');
 
         // Loop through array and restored "checked"s
         // tslint:disable-next-line: forin
@@ -127,7 +127,7 @@ export class ChecklistPage implements OnInit {
             for (const thisSpeciesIndex in this.speciesClass[index].species) {
               if (this.speciesClass[index].species[thisSpeciesIndex].id === speciesArray[index].species[speciesIndex].id) {
                 this.speciesClass[index].species[thisSpeciesIndex] = speciesArray[index].species[speciesIndex];
-                console.log('Did the thing');
+                // console.log('Did the thing');
                 break;
               }
             }
@@ -137,14 +137,14 @@ export class ChecklistPage implements OnInit {
       this.checkChanged();
     });
     console.log('Species restored.');
-    console.log(this.speciesClass);
+    // console.log(this.speciesClass);
     this.save();
   }
 
   save() {
     this.storage.set('speciesArray', this.speciesClass);
     console.log('Species saved.');
-    console.log(this.speciesClass);
+    // console.log(this.speciesClass);
   }
 
   async presentResetAlert() {
@@ -201,7 +201,7 @@ export class ChecklistPage implements OnInit {
     const pathBase = 'assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/';
     this.imageService.images = speciesClass.species.sort((a, b) => (a.name > b.name) ? 1 : -1).map((item, index) => ({path: pathBase + item.id}));
 
-    console.log(this.imageService.images);
+    // console.log(this.imageService.images);
 
     const modal = await this.modalCtrl.create({
       component: ZoomComponent,

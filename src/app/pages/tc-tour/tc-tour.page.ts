@@ -13,11 +13,18 @@ export class TcTourPage implements OnInit {
 
   public primColor = 'primary';
 
-  constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController) {}
+  private totalNumberOfSigns = 15;
 
-  ngOnInit() {
-    this.imgService.total = 15;
-    this.imgService.setImages(new Array(this.imgService.total).fill({viewed: false}).map((item, index) => ({viewed: item.viewed, path: 'assets/img/signs/' + index})));
+  private signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index }));
+
+  constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController) { }
+
+  ngOnInit() { }
+
+  ionViewWillEnter() {
+    // Passes the array by reference, so any changes made to the array inside of the image viewer service are reflected here in the tc-tour class.
+    this.imgService.setImages(this.signArray);
+    // console.log(this.signArray);
   }
 
   async showZoom(id) {
