@@ -25,6 +25,7 @@ export class AppComponent {
     StatusBar.setStyle({
       style: StatusBarStyle.Dark
     });
+    StatusBar.setBackgroundColor({color: '#08582e'});
     this.platform.ready().then(() => {
       this.splashScreen.hide();
     });
