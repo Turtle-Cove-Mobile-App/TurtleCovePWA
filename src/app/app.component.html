@@ -30,7 +30,7 @@
       </ion-slide>
     </ion-slides>
   </div>
-  <div class="dev-banner" *ngIf="!prod || showIosInstallPrompt">
+  <div class="dev-banner" *ngIf="!prod">
     Development Build
   </div>
   <ion-router-outlet [ngClass]="prod ? '' : 'dev-router'"></ion-router-outlet>

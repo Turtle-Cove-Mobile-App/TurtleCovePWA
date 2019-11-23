@@ -25,17 +25,19 @@ export class AppComponent implements OnInit {
     });
     StatusBar.setBackgroundColor({ color: '#08582e' });
     SplashScreen.hide();
-    if (!this.platform.is("pwa")) {
+    if (this.platform.is("mobileweb") && !this.platform.is("pwa")) {
       this.showInstallPrompt = true;
     }
   }
 
   ngOnInit() {
-    const promptContainer = window.document.getElementById('prompt-container');
-    console.log(promptContainer);
-    setTimeout(() => {
-      promptContainer.style.visibility = 'visible';
-      promptContainer.style.opacity = '100%';
-    }, 2000);
+    if (this.showInstallPrompt) {
+      const promptContainer = window.document.getElementById('prompt-container');
+      console.log(promptContainer);
+      setTimeout(() => {
+        promptContainer.style.visibility = 'visible';
+        promptContainer.style.opacity = '100%';
+      }, 2000);
+    }
   }
 }
