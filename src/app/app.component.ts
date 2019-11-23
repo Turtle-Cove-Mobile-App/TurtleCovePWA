@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { environment } from 'src/environments/environment';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
-const { StatusBar } = Plugins;
+const { StatusBar, SplashScreen } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -14,10 +12,7 @@ export class AppComponent {
 
   public prod = environment.production;
 
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen
-  ) {
+  constructor() {
     this.initializeApp();
   }
 
@@ -26,8 +21,6 @@ export class AppComponent {
       style: StatusBarStyle.Dark
     });
     StatusBar.setBackgroundColor({color: '#08582e'});
-    this.platform.ready().then(() => {
-      this.splashScreen.hide();
-    });
+    SplashScreen.hide();
   }
 }
