@@ -11,10 +11,47 @@
 //     //opacity: 0.4;
 //   }
 
+div.prompt-container {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 0.5s;
+  z-index: 999;
+}
+
+div.shade {
+  opacity: 50%;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+
+.slides {
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  left: 10%;
+  right: 10%;
+}
+
+.slide {
+  border-radius: 5%;
+  background-color: white;
+}
+
+ion-slide {
+  border-radius: 5%;
+  background-color: white;
+}
+
 .dev-banner {
   width: 100%;
   background-color: goldenrod;
-  z-index: 999;
+  z-index: 998;
   text-align: center;
   height: 1.5em;
   padding-top: 3px;

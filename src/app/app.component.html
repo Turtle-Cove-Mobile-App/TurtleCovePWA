@@ -1,5 +1,36 @@
 <ion-app>
-  <div class="dev-banner" *ngIf="!prod">
+  <div id="prompt-container" class="prompt-container">
+    <div class="shade">
+    </div>
+    <ion-slides class="slides">
+      <ion-slide>
+        <div class="slide">
+          Slide 1
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          Slide 2
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          Slide 3
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          Slide 4
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          Slide 5
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="dev-banner" *ngIf="!prod || showIosInstallPrompt">
     Development Build
   </div>
   <ion-router-outlet [ngClass]="prod ? '' : 'dev-router'"></ion-router-outlet>
