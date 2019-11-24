@@ -205,6 +205,7 @@ export class ChecklistPage implements OnInit {
 
     const modal = await this.modalCtrl.create({
       component: ZoomComponent,
+      cssClass: 'transparent-modal',
       componentProps: {
         index: speciesIndex
       }
