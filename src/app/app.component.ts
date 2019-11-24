@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   }
 
   initializeApp() {
-    console.log(this.platform.platforms());
     StatusBar.setStyle({
       style: StatusBarStyle.Dark
     });

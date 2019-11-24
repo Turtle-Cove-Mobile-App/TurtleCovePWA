@@ -32,19 +32,19 @@ div.shade {
 
 .slides {
   position: absolute;
-  top: 25%;
-  bottom: 25%;
-  left: 10%;
-  right: 10%;
+  top: 20%;
+  bottom: 35%;
+  left: 0;
+  right: 0;
 }
 
 .slide {
   border-radius: 5%;
-  background-color: white;
-}
-
-ion-slide {
-  border-radius: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-top: 50%;
+  width: 100%;
+  height: 100%;
   background-color: white;
 }
 
