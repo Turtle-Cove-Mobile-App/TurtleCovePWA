@@ -4,8 +4,6 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,8 +21,6 @@ import { TabsPage } from './pages/tabs/tabs.page';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: true })
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

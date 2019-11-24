@@ -39,11 +39,11 @@
       <ng-container *ngFor="let letter of alphabet">
         <ion-item-group *ngIf="obj.expanded && (obj.species | filterSpeciesByNameStartsWith : letter)">
           <ion-item-divider style="background-color: lightgray; z-index: 0;" mode="ios">{{ letter }}</ion-item-divider>
-          <ng-container *ngFor="let species of (obj.species | filterSpeciesByNameStartsWith : letter).sort(); let i = index">
-            <ion-item [attr.lines]="(i == (obj.species | filterSpeciesByNameStartsWith : letter).sort().length - 1) ? 'none' : 'inset'">
+          <ng-container *ngFor="let species of (obj.species | filterSpeciesByNameStartsWith : letter); let j = index">
+            <ion-item [attr.lines]="(j == (obj.species | filterSpeciesByNameStartsWith : letter).length - 1) ? 'none' : 'inset'">
               <ion-label>{{ species.name }}</ion-label>
               <ion-checkbox color="primary" slot="start" [(ngModel)]="species.checked" (ionChange)="checkChanged()"></ion-checkbox>
-              <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species, obj.className)" name="information-circle-outline"></ion-icon>
+              <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species.id, obj)" name="information-circle-outline"></ion-icon>
             </ion-item>
           </ng-container>
         </ion-item-group>

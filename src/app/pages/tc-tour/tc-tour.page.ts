@@ -1,7 +1,6 @@
 import { ImageViewService } from 'src/app/services/image-view/image-view.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
-import { ModalComponent } from './modal/modal.component';
 import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 
 
@@ -14,12 +13,18 @@ export class TcTourPage implements OnInit {
 
   public primColor = 'primary';
 
-  // constructor(public popoverController: PopoverController, private storage: Storage, private alertController: AlertController) {}
-  constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController) {}
+  private totalNumberOfSigns = 15;
 
-  ngOnInit() {
-    // this.total = this.signs.length;
-    this.imgService.setSigns(new Array(this.imgService.total).fill({viewed: false}).map(item => ({viewed: item.viewed})));
+  private signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index + '.jpg'}));
+
+  constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController) { }
+
+  ngOnInit() { }
+
+  ionViewWillEnter() {
+    // Passes the array by reference, so any changes made to the array inside of the image viewer service are reflected here in the tc-tour class.
+    this.imgService.setImages(this.signArray);
+    // console.log(this.signArray);
   }
 
   async showZoom(id) {
@@ -32,7 +37,7 @@ export class TcTourPage implements OnInit {
       }
     });
     await modal.present();
-    this.imgService.viewSign(id);
+    this.imgService.viewImage(id);
   }
 
   async reset() {

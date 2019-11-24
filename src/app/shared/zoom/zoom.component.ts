@@ -35,7 +35,7 @@ export class ZoomComponent implements OnInit {
   }
 
   slideChanged() {
-    this.slider.nativeElement.getActiveIndex().then(index => this.imgService.viewSign(index));
+    this.slider.nativeElement.getActiveIndex().then(index => this.imgService.viewImage(index));
   }
 
   zoom(zoomIn: boolean) {
