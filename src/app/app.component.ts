@@ -20,12 +20,13 @@ export class AppComponent implements OnInit {
   }
 
   initializeApp() {
+    console.log(this.platform.platforms());
     StatusBar.setStyle({
       style: StatusBarStyle.Dark
     });
     StatusBar.setBackgroundColor({ color: '#08582e' });
     SplashScreen.hide();
-    if (this.platform.is("mobileweb") && !this.platform.is("pwa")) {
+    if (this.platform.is("mobileweb") && this.platform.is("mobile") && !this.platform.is("pwa")) {
       this.showInstallPrompt = true;
     }
   }
