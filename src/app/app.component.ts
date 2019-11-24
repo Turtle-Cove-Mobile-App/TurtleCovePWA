@@ -1,5 +1,5 @@
 import { Platform } from '@ionic/angular';
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
