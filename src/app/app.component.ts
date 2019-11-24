@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   public showInstallPrompt = false;
 
-  constructor(private platform: Platform) {
+  constructor(public platform: Platform) {
     this.initializeApp();
   }
 
