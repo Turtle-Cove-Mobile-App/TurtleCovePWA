@@ -7,8 +7,8 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list *ngFor="let stop of stops">
-    <ion-item button click="showModal(stop)">
+  <ion-list>
+    <ion-item *ngFor="let stop of stops" button (click)="showModal(stop)">
       {{stop.title}}
     </ion-item>
   </ion-list>  

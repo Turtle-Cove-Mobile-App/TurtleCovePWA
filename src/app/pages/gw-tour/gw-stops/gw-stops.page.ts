@@ -28,8 +28,8 @@ export class GwStopsPage implements OnInit {
 
   }
 
-  async showModal() {
-    //fix this
+  async showModal(stop) {
+    // fix this
     const modal = await this.modalCtrl.create({
       component: GwStopComponent,
       componentProps: {

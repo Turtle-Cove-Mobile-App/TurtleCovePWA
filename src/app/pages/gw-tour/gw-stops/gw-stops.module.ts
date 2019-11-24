@@ -23,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GwStopsPage, GwStopComponent, GwStopViewerComponent]
+  declarations: [GwStopsPage, GwStopComponent, GwStopViewerComponent],
+  entryComponents: [GwStopComponent]
 })
 export class GwStopsPageModule {}
