@@ -22,6 +22,4 @@ export class GwStopComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  
-
 }

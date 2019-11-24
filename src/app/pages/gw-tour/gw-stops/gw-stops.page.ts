@@ -32,8 +32,10 @@ export class GwStopsPage implements OnInit {
     // fix this
     const modal = await this.modalCtrl.create({
       component: GwStopComponent,
+      cssClass: 'transparent-modal',
       componentProps: {
-        stops: this.stops
+        stops: this.stops,
+        thing: stop
       }
     });
     await modal.present();
