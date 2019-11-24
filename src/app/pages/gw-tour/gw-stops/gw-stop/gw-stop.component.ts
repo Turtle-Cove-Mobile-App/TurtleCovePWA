@@ -18,4 +18,10 @@ export class GwStopComponent implements OnInit {
     this.stop = this.navParams.get('stop');
   }
 
+  dismiss() {
+    this.modalCtrl.dismiss();
+  }
+
+  
+
 }
