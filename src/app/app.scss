@@ -36,6 +36,8 @@ div.shade {
   bottom: 35%;
   left: 0;
   right: 0;
+  --bullet-background: var(--ion-color-primary);
+  --bullet-background-active: var(--ion-color-secondary);
 }
 
 .slide {
