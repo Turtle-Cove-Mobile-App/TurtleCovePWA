@@ -43,6 +43,11 @@ export class GwStopsPage implements OnInit {
       the shape of an "L" on her forehead...`,
       img: 'assets/img/stops/3.jpg',
       coords: [0, 0, 0]
+    },
+    { title: 'Sweet Daddys BBQ',
+    info: 'oooooooooooh boi gimme gimme yum yum',
+    img: 'assets/img/stops/4.jpg',
+    coords: [0, 0, 0]
     }
   ];
 
