@@ -13,38 +13,6 @@ export class GwStopsPage implements OnInit {
 
   public stops = [
     {
-      title: 'Scooby Doo',
-      info: `Somebody once told me the world is gonna roll me I ain't the sharpest tool
-      in the shed She was looking kind of dumb with her finger and her thumb In
-      the shape of an "L" on her forehead...`,
-      img: 'assets/img/stops/0.jpg',
-      coords: [0, 0, 0]
-    },
-    {
-      title: 'Center of a Volcano',
-      info: `Somebody once told me the world is gonna roll me I ain't the sharpest tool
-      in the shed She was looking kind of dumb with her finger and her thumb In
-      the shape of an "L" on her forehead...`,
-      img: 'assets/img/stops/1.jpg',
-      coords: [0, 0, 0]
-    },
-    {
-      title: 'Ghassan Home',
-      info: `Somebody once told me the world is gonna roll me I ain't the sharpest tool
-      in the shed She was looking kind of dumb with her finger and her thumb In
-      the shape of an "L" on her forehead...`,
-      img: 'assets/img/stops/2.jpg',
-      coords: [0, 0, 0]
-    },
-    {
-      title: 'North Pass Public Boat Launch',
-      info: `Somebody once told me the world is gonna roll me I ain't the sharpest tool
-      in the shed She was looking kind of dumb with her finger and her thumb In
-      the shape of an "L" on her forehead...`,
-      img: 'assets/img/stops/3.jpg',
-      coords: [0, 0, 0]
-    },
-    {
       title: 'Joyce Boardwalk',
       info: `The Joyce Boardwalk is the most northerly point on the Manchac Greenway, and is a wooden
       walkway through a cypress-tupelo swamp that meanders a little less than 800m showcasing the
@@ -67,7 +35,7 @@ export class GwStopsPage implements OnInit {
       ecosystem and history of the Manchac area. The boat launch site is a paved area with little to
       offer a landlocked ecotourism group, but the launch can engage local boaters with signage as an
       interface to connect them with the Greenway and information on the natural value of the area.`,
-      img: 'assets/img/stops/0.jpg',
+      img: 'assets/img/stops/1.jpg',
       coords: [0, 0, 0]
     },
     {
@@ -76,7 +44,7 @@ export class GwStopsPage implements OnInit {
       visiting the Manchac Greenway. Their outdoor seating area is compatible with a projector and
       screen presentation that can be given to groups by a guide during lunch or dinner The location of
       the restaurant by the Pass is ideal for beginning or ending a tour in Tangipahoa Parish.`,
-      img: 'assets/img/stops/0.jpg',
+      img: 'assets/img/stops/2.jpg',
       coords: [0, 0, 0]
     },
     {
@@ -89,7 +57,7 @@ export class GwStopsPage implements OnInit {
       and taxidermy animals from the region, and an extensive boardwalk with educational species
       plaques that extends into the marsh of the Manchac WMA. The artifact museum and boardwalk
       may be offered for special promotional events separate from the traditional ecotours.`,
-      img: 'assets/img/stops/0.jpg',
+      img: 'assets/img/stops/3.jpg',
       coords: [0, 0, 0]
     },
     {
@@ -101,7 +69,7 @@ export class GwStopsPage implements OnInit {
       the area that has allowed non-native plant and animal life to take root. Identification guides for
       common plants and animals on the nature trail can be provided. Periods of high flooding can
       easily submerge the trail, so tours at this site must be planned around high water levels.`,
-      img: 'assets/img/stops/0.jpg',
+      img: 'assets/img/stops/4.jpg',
       coords: [0, 0, 0]
     },
     {
@@ -110,12 +78,12 @@ export class GwStopsPage implements OnInit {
       groups in St. John the Baptist Parish. It is conveniently located near the Maurepas Swamp Nature
       Trail. They offer a spacious open-air dining area, an amazing view of Lake Pontchartrain, live
       entertainment, and room for parking and gathering`,
-      img: 'assets/img/stops/0.jpg',
+      img: 'assets/img/stops/5.jpg',
       coords: [0, 0, 0]
     },
     { title: 'Sweet Daddys BBQ',
     info: 'oooooooooooh boi gimme gimme yum yum',
-    img: 'assets/img/stops/4.jpg',
+    img: 'assets/img/stops/sweet.jpg',
     coords: [0, 0, 0]
     }
   ];
