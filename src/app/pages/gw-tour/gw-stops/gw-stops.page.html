@@ -6,8 +6,8 @@
       <ion-title>Greenway Stops</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content>
-  <ion-list>
+<ion-content padding-top>
+  <ion-list >
     <ion-item *ngFor="let stop of stops" button (click)="showModal(stop)">
       {{stop.title}}
     </ion-item>

@@ -15,7 +15,7 @@ export class GwStopComponent implements OnInit {
   public stop;
 
   ngOnInit() {
-    this.stop = this.navParams.get('stop');
+    this.stop = this.navParams.get('item');
   }
 
   dismiss() {
