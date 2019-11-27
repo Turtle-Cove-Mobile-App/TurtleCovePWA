@@ -1,3 +1,4 @@
+import { PwaPromptComponent } from './pwa-prompt/pwa-prompt.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -11,7 +12,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { TabsPage } from './pages/tabs/tabs.page';
 
 @NgModule({
-  declarations: [AppComponent, TabsPage],
+  declarations: [AppComponent, TabsPage, PwaPromptComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

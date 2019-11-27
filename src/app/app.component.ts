@@ -1,7 +1,6 @@
 import { Platform } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { environment } from 'src/environments/environment';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
 const { StatusBar, SplashScreen } = Plugins;
 
@@ -9,11 +8,7 @@ const { StatusBar, SplashScreen } = Plugins;
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit {
-
-  public prod = environment.production;
-
-  public showInstallPrompt = false;
+export class AppComponent {
 
   constructor(public platform: Platform) {
     this.initializeApp();
@@ -25,19 +20,5 @@ export class AppComponent implements OnInit {
     });
     StatusBar.setBackgroundColor({ color: '#08582e' });
     SplashScreen.hide();
-    if (this.platform.is("mobileweb") && this.platform.is("mobile") && !this.platform.is("pwa")) {
-      this.showInstallPrompt = true;
-    }
-  }
-
-  ngOnInit() {
-    if (this.showInstallPrompt) {
-      const promptContainer = window.document.getElementById('prompt-container');
-      console.log(promptContainer);
-      setTimeout(() => {
-        promptContainer.style.visibility = 'visible';
-        promptContainer.style.opacity = '100%';
-      }, 2000);
-    }
   }
 }

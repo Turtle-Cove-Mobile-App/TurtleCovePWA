@@ -1,0 +1,62 @@
+<div id="prompt-container" class="prompt-container">
+  <div class="shade">
+  </div>
+  <ng-container *ngIf="platform.is('android')">
+    <ion-slides pager="true" class="slides">
+      <ion-slide class="slide">
+        <div>
+          Android slide 1
+        </div>
+      </ion-slide>
+      <ion-slide class="slide">
+        <div>
+          Android slide 2
+        </div>
+      </ion-slide>
+      <ion-slide class="slide">
+        <div>
+          Android slide 3
+        </div>
+      </ion-slide>
+      <ion-slide class="slide">
+        <div>
+          Android slide 4
+        </div>
+      </ion-slide>
+      <ion-slide class="slide">
+        <div>
+          Android slide 5
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ng-container>
+  <ng-container *ngIf="platform.is('ios')">
+    <ion-slides class="slides">
+      <ion-slide>
+        <div class="slide">
+          iOS slide 1
+        </div>
+      </ion-slide>
+      <ion-slide class="slide">
+        <div>
+          iOS slide 2
+        </div>
+      </ion-slide>
+      <ion-slide class="slide">
+        <div>
+          iOS slide 3
+        </div>
+      </ion-slide>
+      <ion-slide class="slide">
+        <div>
+          iOS slide 4
+        </div>
+      </ion-slide>
+      <ion-slide class="slide">
+        <div>
+          iOS slide 5
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ng-container>
+</div>
