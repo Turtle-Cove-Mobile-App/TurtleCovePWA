@@ -1,6 +1,9 @@
 <div id="prompt-container" class="prompt-container">
   <div class="shade">
   </div>
+  <ion-button (click)="hidePrompt()" class="close-button" fill="clear" shape="round" size="small" color="light">
+    <ion-icon slot="icon-only" name="close"></ion-icon>
+  </ion-button>
   <ng-container *ngIf="platform.is('android')">
     <ion-slides pager="true" class="slides">
       <ion-slide class="slide">

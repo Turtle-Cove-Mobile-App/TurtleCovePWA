@@ -9,21 +9,38 @@ import { Component, OnInit } from '@angular/core';
 export class PwaPromptComponent implements OnInit {
 
   public showInstallPrompt = false;
+  public promptVisible = false;
 
-  constructor(private platform: Platform) {
+  private promptContainer;
+
+  constructor(public platform: Platform) {
     if (this.platform.is('mobileweb') && this.platform.is('mobile') && !this.platform.is('pwa')) {
       this.showInstallPrompt = true;
     }
   }
 
   ngOnInit() {
+    this.promptContainer = window.document.getElementById('prompt-container');
+    this.showPrompt();
+  }
+
+  showPrompt() {
     if (this.showInstallPrompt) {
-      const promptContainer = window.document.getElementById('prompt-container');
-      console.log(promptContainer);
+      console.log(this.promptContainer);
       setTimeout(() => {
-        promptContainer.style.visibility = 'visible';
-        promptContainer.style.opacity = '100%';
+        this.promptContainer.style.visibility = 'visible';
+        this.promptContainer.style.opacity = '100%';
+        this.promptVisible = true;
       }, 2000);
+    }
+  }
+
+  hidePrompt() {
+    // console.log('close button pressed');
+    if (this.promptVisible) {
+      this.promptContainer.style.visibility = 'hidden';
+      this.promptContainer.style.opacity = '0';
+      this.promptVisible = false;
     }
   }
 

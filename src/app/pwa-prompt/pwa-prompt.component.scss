@@ -17,6 +17,12 @@ div.shade {
   width: 100%;
 }
 
+ion-button.close-button {
+  position: absolute;
+  top: 15vh;
+  right: 8vw;
+}
+
 ion-slides.slides {
   position: absolute;
   top: 20%;
