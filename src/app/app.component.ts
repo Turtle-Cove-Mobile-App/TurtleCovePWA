@@ -20,5 +20,7 @@ export class AppComponent {
     });
     StatusBar.setBackgroundColor({ color: '#08582e' });
     SplashScreen.hide();
+    console.log('UserAgent: ' + navigator.userAgent);
+    // navigator.userAgent.match(/SamsungBrowser/i);
   }
 }
