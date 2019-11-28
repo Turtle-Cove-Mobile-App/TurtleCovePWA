@@ -45,6 +45,13 @@ ion-slide.slide {
       font-size: medium;
       padding-left: 5%;
       padding-right: 5%;
+      .chrome-disclaimer {
+        color: gray;
+        font-size: 0.8em;
+        padding-top: 1.5em;
+        width: 80%;
+        margin: auto;
+      }
     }
     div.button-container {
       position: absolute;
