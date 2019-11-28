@@ -1,5 +1,5 @@
 import { Platform } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'tc-pwa-prompt',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pwa-prompt.component.scss'],
 })
 export class PwaPromptComponent implements OnInit {
+
+  @ViewChild('slider', {static: true}) slider;
 
   public showInstallPrompt = false;
   public promptVisible = false;

@@ -5,30 +5,39 @@
     <ion-icon slot="icon-only" name="close"></ion-icon>
   </ion-button>
   <ng-container *ngIf="platform.is('android')">
-    <ion-slides pager="true" class="slides">
+    <ion-slides #slider pager="true" class="slides">
       <ion-slide class="slide">
-        <div>
-          Android slide 1
+        <div class="slide-positioning-container">
+          <span style="top: 15%;">
+            <ion-img src="assets/img/android_pwa_0.jpg"></ion-img>
+            <br>
+            Tap "Add TurtleCove to Home Screen" at the bottom of your screen.
+          </span>
+          <div class="button-container">
+            <ion-button (click)="slider.slidePrev()" size="small" class="slider-nav" style="visibility: hidden;">
+              Previous
+            </ion-button>
+            <ion-button (click)="slider.slideNext()" size="small" class="slider-nav">
+              Next
+            </ion-button>
+          </div>
         </div>
       </ion-slide>
       <ion-slide class="slide">
-        <div>
-          Android slide 2
-        </div>
-      </ion-slide>
-      <ion-slide class="slide">
-        <div>
-          Android slide 3
-        </div>
-      </ion-slide>
-      <ion-slide class="slide">
-        <div>
-          Android slide 4
-        </div>
-      </ion-slide>
-      <ion-slide class="slide">
-        <div>
-          Android slide 5
+        <div class="slide-positioning-container">
+          <span>
+            <ion-img src="assets/img/android_pwa_1.jpg"></ion-img>
+            <br>
+            Tap "Add" on the next screen to install the Turtle Cove app.
+          </span>
+          <div class="button-container">
+            <ion-button (click)="slider.slidePrev()" size="small" class="slider-nav">
+              Previous
+            </ion-button>
+            <ion-button (click)="slider.slideNext()" size="small" class="slider-nav">
+              Next
+            </ion-button>
+          </div>
         </div>
       </ion-slide>
     </ion-slides>
@@ -37,27 +46,27 @@
     <ion-slides class="slides">
       <ion-slide>
         <div class="slide">
-          iOS slide 1
+          <span>iOS slide 1</span>
         </div>
       </ion-slide>
       <ion-slide class="slide">
         <div>
-          iOS slide 2
+          <span>iOS slide 2</span>
         </div>
       </ion-slide>
       <ion-slide class="slide">
         <div>
-          iOS slide 3
+          <span>iOS slide 3</span>
         </div>
       </ion-slide>
       <ion-slide class="slide">
         <div>
-          iOS slide 4
+          <span>iOS slide 4</span>
         </div>
       </ion-slide>
       <ion-slide class="slide">
         <div>
-          iOS slide 5
+          <span>iOS slide 5</span>
         </div>
       </ion-slide>
     </ion-slides>
