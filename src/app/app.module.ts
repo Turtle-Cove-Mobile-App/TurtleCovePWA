@@ -1,4 +1,4 @@
-import { PwaPromptComponent } from './pwa-prompt/pwa-prompt.component';
+import { PwaPromptComponent } from './shared/pwa-prompt/pwa-prompt.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
