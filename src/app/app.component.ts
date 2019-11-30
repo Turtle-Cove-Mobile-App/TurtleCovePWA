@@ -1,4 +1,3 @@
-import { Platform } from '@ionic/angular';
 import { Component } from '@angular/core';
 
 import { Plugins, StatusBarStyle } from '@capacitor/core';
@@ -10,7 +9,7 @@ const { StatusBar, SplashScreen } = Plugins;
 })
 export class AppComponent {
 
-  constructor(public platform: Platform) {
+  constructor() {
     this.initializeApp();
   }
 
@@ -20,7 +19,5 @@ export class AppComponent {
     });
     StatusBar.setBackgroundColor({ color: '#08582e' });
     SplashScreen.hide();
-    console.log('UserAgent: ' + navigator.userAgent);
-    // navigator.userAgent.match(/SamsungBrowser/i);
   }
 }

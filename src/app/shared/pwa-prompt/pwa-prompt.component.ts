@@ -8,7 +8,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class PwaPromptComponent implements OnInit {
 
-  @ViewChild('slider', {static: true}) slider;
+  @ViewChild('slider', { static: true }) slider;
 
   public showInstallPrompt = false;
   public promptVisible = false;
@@ -22,13 +22,15 @@ export class PwaPromptComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.promptContainer = window.document.getElementById('prompt-container');
-    this.showPrompt();
+    window.addEventListener('beforeinstallprompt', () => {
+      this.promptContainer = window.document.getElementById('prompt-container');
+      this.showPrompt();
+    });
   }
 
   showPrompt() {
     if (this.showInstallPrompt) {
-      console.log(this.promptContainer);
+      // console.log(this.promptContainer);
       setTimeout(() => {
         this.promptContainer.style.visibility = 'visible';
         this.promptContainer.style.opacity = '100%';
