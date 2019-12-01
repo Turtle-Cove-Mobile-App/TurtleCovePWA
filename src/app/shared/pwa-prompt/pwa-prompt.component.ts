@@ -22,21 +22,26 @@ export class PwaPromptComponent implements OnInit {
   }
 
   ngOnInit() {
-    window.addEventListener('beforeinstallprompt', () => {
-      this.promptContainer = window.document.getElementById('prompt-container');
-      this.showPrompt();
-    });
+    if (this.showInstallPrompt) {
+      if (this.platform.is('ios')) {
+        this.showPrompt();
+      }
+      else {
+        window.addEventListener('beforeinstallprompt', () => {
+          this.showPrompt();
+        });
+      }
+    }
   }
 
   showPrompt() {
-    if (this.showInstallPrompt) {
-      // console.log(this.promptContainer);
-      setTimeout(() => {
-        this.promptContainer.style.visibility = 'visible';
-        this.promptContainer.style.opacity = '100%';
-        this.promptVisible = true;
-      }, 2000);
-    }
+    this.promptContainer = window.document.getElementById('prompt-container');
+    // console.log(this.promptContainer);
+    setTimeout(() => {
+      this.promptContainer.style.visibility = 'visible';
+      this.promptContainer.style.opacity = '100%';
+      this.promptVisible = true;
+    }, 2000);
   }
 
   hidePrompt() {
