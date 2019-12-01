@@ -13,7 +13,7 @@ export class TcTourPage implements OnInit {
 
   public primColor = 'primary';
 
-  private totalNumberOfSigns = 15;
+  private totalNumberOfSigns = 55;
 
   private signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index + '.jpg'}));
 
