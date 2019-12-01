@@ -27,6 +27,8 @@ ion-card {
   --color-selected: var(--ion-color-secondary);
 }
 
-.modal-wrapper {
-  background: transparent !important;
+.transparent-modal {
+  div.modal-wrapper {
+    background: transparent !important;
+  }
 }

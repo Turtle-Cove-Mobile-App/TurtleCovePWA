@@ -1,0 +1,24 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon color="light" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <div>
+      <ion-card>
+        <img [src]="stop.img" />
+        <ion-card-header>
+          <ion-card-title> {{ stop.title }} </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ stop.info }}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-grid>
+</ion-content>
