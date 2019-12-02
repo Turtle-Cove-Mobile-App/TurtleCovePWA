@@ -41,7 +41,10 @@
           <ion-item-divider style="background-color: lightgray; z-index: 0;" mode="ios">{{ letter }}</ion-item-divider>
           <ng-container *ngFor="let species of (obj.species | filterSpeciesByNameStartsWith : letter); let j = index">
             <ion-item [attr.lines]="(j == (obj.species | filterSpeciesByNameStartsWith : letter).length - 1) ? 'none' : 'inset'">
-              <ion-label>{{ species.name }}</ion-label>
+              <div>
+                <ion-label>{{ species.name }}</ion-label>
+                <ion-note style="font-style: italic;">{{ species.nomenclature }}</ion-note>
+              </div>
               <ion-checkbox color="primary" slot="start" [(ngModel)]="species.checked" (ionChange)="checkChanged()"></ion-checkbox>
               <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species.id, obj)" name="information-circle-outline"></ion-icon>
             </ion-item>
