@@ -7,18 +7,15 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <ion-grid>
-    <div>
-      <ion-card>
-        <img [src]="stop.img" />
-        <ion-card-header>
-          <ion-card-title> {{ stop.title }} </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          {{ stop.info }}
-        </ion-card-content>
-      </ion-card>
+<ion-card style="height: 100%;">
+  <img [src]="stop.img" />
+  <ion-card-header>
+    <ion-card-title> {{ stop.title }} </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <div style="overflow: scroll; display: inline-block;">
+      Stuff
+      {{ stop.info }}
     </div>
-  </ion-grid>
-</ion-content>
+  </ion-card-content>
+</ion-card>
