@@ -25,7 +25,7 @@ export class GwStopsPage implements OnInit {
       boardwalk. The end of the walkway has an enlarged seating area where the tour guide can take a
       salinity reading of the water and discuss the importance of maintaining this freshwater habitat.`,
       img: 'assets/img/stops/0.jpg',
-      coords: [0, 0, 0]
+      coords: [0, 0]
     },
     {
       title: 'North Pass Public Boat Launch',
@@ -36,7 +36,7 @@ export class GwStopsPage implements OnInit {
       offer a landlocked ecotourism group, but the launch can engage local boaters with signage as an
       interface to connect them with the Greenway and information on the natural value of the area.`,
       img: 'assets/img/stops/1.jpg',
-      coords: [0, 0, 0]
+      coords: [0, 0]
     },
     {
       title: `Middendorf's Seafood Restaurant`,
@@ -45,7 +45,7 @@ export class GwStopsPage implements OnInit {
       screen presentation that can be given to groups by a guide during lunch or dinner The location of
       the restaurant by the Pass is ideal for beginning or ending a tour in Tangipahoa Parish.`,
       img: 'assets/img/stops/2.jpg',
-      coords: [0, 0, 0]
+      coords: [0, 0]
     },
     {
       title: `Turtle Cove Environmental Research Station Boatshed and Classroom on Galva Canal`,
@@ -58,7 +58,7 @@ export class GwStopsPage implements OnInit {
       plaques that extends into the marsh of the Manchac WMA. The artifact museum and boardwalk
       may be offered for special promotional events separate from the traditional ecotours.`,
       img: 'assets/img/stops/3.jpg',
-      coords: [0, 0, 0]
+      coords: [0, 0]
     },
     {
       title: `LDWF Maurepas Swamp Nature Trail`,
@@ -70,7 +70,7 @@ export class GwStopsPage implements OnInit {
       common plants and animals on the nature trail can be provided. Periods of high flooding can
       easily submerge the trail, so tours at this site must be planned around high water levels.`,
       img: 'assets/img/stops/4.jpg',
-      coords: [0, 0, 0]
+      coords: [0, 0]
     },
     {
       title: `Frenier’s Landing Restaurant and Oyster Bar`,
@@ -79,12 +79,7 @@ export class GwStopsPage implements OnInit {
       Trail. They offer a spacious open-air dining area, an amazing view of Lake Pontchartrain, live
       entertainment, and room for parking and gathering`,
       img: 'assets/img/stops/5.jpg',
-      coords: [0, 0, 0]
-    },
-    { title: 'Sweet Daddys BBQ',
-    info: 'oooooooooooh boi gimme gimme yum yum',
-    img: 'assets/img/stops/sweet.jpg',
-    coords: [0, 0, 0]
+      coords: [0, 0]
     }
   ];
 
