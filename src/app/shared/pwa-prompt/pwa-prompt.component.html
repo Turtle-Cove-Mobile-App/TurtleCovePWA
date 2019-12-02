@@ -1,7 +1,8 @@
 <div id="prompt-container" class="prompt-container">
   <div class="shade">
   </div>
-  <ion-button no-padding (click)="hidePrompt()" [class]="platform.is('ios') ? 'ios-close-button' : 'md-close-button'" fill="clear" shape="round" size="small" color="light">
+  <ion-button no-padding (click)="hidePrompt()" [class]="platform.is('ios') ? 'ios-close-button' : 'md-close-button'"
+    fill="clear" shape="round" size="small" color="light">
     <ion-icon slot="icon-only" name="close"></ion-icon>
   </ion-button>
   <ng-container *ngIf="platform.is('android')">
@@ -51,15 +52,17 @@
   <ng-container *ngIf="platform.is('ios')">
     <!-- <ion-slides class="slides">
       <ion-slide> -->
-        <div class="ios-inner-slide">
-          <span class="install-instructions">
-            <ion-img src="assets/img/pwa-prompt/ios-pwa-icon.png" style="height: 4em;"></ion-img>
-            <h1>Install Turtle Cove App</h1>
-            <p>Install the Turtle Cove app on your home screen for quick and easy access when you're on the go.</p>
-            <p>Just tap <ion-img src="assets/img/pwa-prompt/ios-share-icon.jpg" style="width: 1em; display: inline-block; transform: translateY(1px)"></ion-img> then "Add to Home Screen"</p>
-          </span>
-        </div>
-      <!-- </ion-slide>
+    <div class="ios-inner-slide">
+      <span class="install-instructions">
+        <ion-img src="assets/img/pwa-prompt/ios-pwa-icon.png" style="height: 4em;"></ion-img>
+        <h1>Install Turtle Cove App</h1>
+        <p>Install the Turtle Cove app on your home screen for quick and easy access when you're on the go.</p>
+      </span>
+      <div class="ios-footer">
+        Just tap <ion-img src="assets/img/pwa-prompt/ios-share-icon.jpg"></ion-img> then "Add to Home Screen"
+      </div>
+    </div>
+    <!-- </ion-slide>
     </ion-slides> -->
   </ng-container>
 </div>

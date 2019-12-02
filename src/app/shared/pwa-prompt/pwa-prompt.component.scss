@@ -59,6 +59,18 @@ div.ios-inner-slide {
   left: 10%;
   right: 10%;
   background-color: white;
+  div.ios-footer {
+    position: absolute;
+    bottom: 25px;
+    padding-top: 20px;
+    width: 100%;
+    text-align: center;
+    ion-img {
+      width: 1em;
+      display: inline-block;
+      transform: translateY(1px);
+    }
+  }
 }
 
 div.md-inner-slide {
