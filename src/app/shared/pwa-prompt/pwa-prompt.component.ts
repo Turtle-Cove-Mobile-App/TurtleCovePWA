@@ -23,6 +23,7 @@ export class PwaPromptComponent implements OnInit {
 
   ngOnInit() {
     if (this.showInstallPrompt) {
+      this.showPrompt();
       if (this.platform.is('ios')) {
         this.showPrompt();
       }

@@ -1,15 +1,15 @@
 <div id="prompt-container" class="prompt-container">
   <div class="shade">
   </div>
-  <ion-button (click)="hidePrompt()" class="close-button" fill="clear" shape="round" size="small" color="light">
+  <ion-button no-padding (click)="hidePrompt()" [class]="platform.is('ios') ? 'ios-close-button' : 'md-close-button'" fill="clear" shape="round" size="small" color="light">
     <ion-icon slot="icon-only" name="close"></ion-icon>
   </ion-button>
   <ng-container *ngIf="platform.is('android')">
     <ion-slides #slider pager="true" class="slides">
-      <ion-slide class="slide">
-        <div class="slide-positioning-container">
-          <span style="top: 15%;">
-            <ion-img src="assets/img/android_pwa_0.jpg"></ion-img>
+      <ion-slide>
+        <div class="md-inner-slide">
+          <span class="install-instructions" style="top: 15%;">
+            <ion-img src="assets/img/pwa-prompt/md-pwa-0.jpg"></ion-img>
             <br>
             Tap "Add TurtleCove to Home Screen" at the bottom of your screen.
             <br>
@@ -17,7 +17,7 @@
               The Google Chrome App is recommended for best results.
             </div>
           </span>
-          <div class="button-container">
+          <div class="nav-button-container">
             <ion-button (click)="slider.slidePrev()" size="small" class="slider-nav" style="visibility: hidden;">
               Previous
             </ion-button>
@@ -27,16 +27,16 @@
           </div>
         </div>
       </ion-slide>
-      <ion-slide class="slide">
-        <div class="slide-positioning-container">
-          <span>
-            <ion-img src="assets/img/android_pwa_1.jpg"></ion-img>
+      <ion-slide>
+        <div class="md-inner-slide">
+          <span class="install-instructions">
+            <ion-img src="assets/img/pwa-prompt/md-pwa-1.jpg"></ion-img>
             <br>
             Tap "Add" on the next screen to install the Turtle Cove app.
             <br>
             <!-- <span style="color: gray; font-size: 0.5em;">The Google Chrome App is recommended for best results.</span> -->
           </span>
-          <div class="button-container">
+          <div class="nav-button-container">
             <ion-button (click)="slider.slidePrev()" size="small" class="slider-nav">
               Previous
             </ion-button>
@@ -49,32 +49,17 @@
     </ion-slides>
   </ng-container>
   <ng-container *ngIf="platform.is('ios')">
-    <ion-slides class="slides">
-      <ion-slide>
-        <div class="slide">
-          <span>iOS slide 1</span>
+    <!-- <ion-slides class="slides">
+      <ion-slide> -->
+        <div class="ios-inner-slide">
+          <span class="install-instructions">
+            <ion-img src="assets/img/pwa-prompt/ios-pwa-icon.png" style="height: 4em;"></ion-img>
+            <h1>Install Turtle Cove App</h1>
+            <p>Install the Turtle Cove app on your home screen for quick and easy access when you're on the go.</p>
+            <p>Just tap <ion-img src="assets/img/pwa-prompt/ios-share-icon.jpg" style="width: 1em; display: inline-block; transform: translateY(1px)"></ion-img> then "Add to Home Screen"</p>
+          </span>
         </div>
-      </ion-slide>
-      <ion-slide class="slide">
-        <div>
-          <span>iOS slide 2</span>
-        </div>
-      </ion-slide>
-      <ion-slide class="slide">
-        <div>
-          <span>iOS slide 3</span>
-        </div>
-      </ion-slide>
-      <ion-slide class="slide">
-        <div>
-          <span>iOS slide 4</span>
-        </div>
-      </ion-slide>
-      <ion-slide class="slide">
-        <div>
-          <span>iOS slide 5</span>
-        </div>
-      </ion-slide>
-    </ion-slides>
+      <!-- </ion-slide>
+    </ion-slides> -->
   </ng-container>
 </div>
