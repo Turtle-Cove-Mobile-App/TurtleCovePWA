@@ -1,8 +1,22 @@
 ion-toolbar {
-    --background: transparent;
+  --background: transparent;
 }
 
 ion-content {
-    --background: transparent;
+  --background: transparent;
 }
 
+ion-card {
+  display: flex;
+  flex-flow: column;
+  margin-top: 12px;
+  margin-bottom: auto;
+  max-height: 90%;
+}
+
+ion-card-content {
+  flex: 1 1 auto;
+  overflow: scroll;
+  padding-top: 0;
+  padding-bottom: 0;
+}
