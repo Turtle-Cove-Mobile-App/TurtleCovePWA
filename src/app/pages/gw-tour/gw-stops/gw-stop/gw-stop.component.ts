@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
-import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 
 @Component({
   selector: 'tc-gw-stop',
