@@ -39,6 +39,14 @@ export class GwStopsPage implements OnInit {
       coords: [0, 0]
     },
     {
+      title: 'Shell Bank Bayou',
+      info: `Shell Bank Bayou is a 2-mile-long bayou that runs from Lake Maurepas to Hwy 51
+      through the Maurepas Swamp WMA. The site is a very popular spot for both canoers and kayakers alike
+      due to its rich surrounding wildlife and gorgeous views.`,
+      img: 'assets/img/stops/6.png',
+      coords: [0, 0]
+    },
+    {
       title: `Middendorf's Seafood Restaurant`,
       info: `Middendorf’s is a willing partner that could provide a meeting site for tour groups
       visiting the Manchac Greenway. Their outdoor seating area is compatible with a projector and
