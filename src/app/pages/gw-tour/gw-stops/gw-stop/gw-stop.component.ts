@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
+import { StoragePlugin } from '@capacitor/core';
 
 @Component({
   selector: 'tc-gw-stop',
@@ -20,5 +21,12 @@ export class GwStopComponent implements OnInit {
   dismiss() {
     this.modalCtrl.dismiss();
   }
+
+  routeToStop() {
+    const lat = this.stop.coords[0];
+    const lon = this.stop.coords[1];
+    //route google maps to this stop's position
+  }
+
 
 }
