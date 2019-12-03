@@ -1,3 +1,4 @@
+import { Platform } from '@ionic/angular';
 import { Component, OnInit } from "@angular/core";
 import { PluginsService } from 'src/app/services/plugins-service/plugins.service';
 
@@ -7,7 +8,7 @@ import { PluginsService } from 'src/app/services/plugins-service/plugins.service
   styleUrls: ["./home.page.scss"]
 })
 export class HomePage implements OnInit {
-  constructor(private plugins: PluginsService) {}
+  constructor(private plugins: PluginsService, public platform: Platform) {}
 
   ngOnInit() {}
 
