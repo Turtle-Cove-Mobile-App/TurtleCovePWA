@@ -4,7 +4,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-card>
+        <ion-card style="margin-bottom: 0;">
           <img src="assets/img/turtle-cove.jpg" />
           <ion-card-header>
             <ion-card-subtitle>Manchac, LA</ion-card-subtitle>
@@ -16,7 +16,8 @@
             understanding of Southeast Louisiana's coastal wetland environments
             through research, education, and public outreach activities and
             programs for Southeastern's students, faculty and staff as well as
-            the greater University community.
+            the greater University community. For a 20 minute video on Turtle Cove and 
+            its surrounding ecosystem, please watch our video "Troubled Waters" below.
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -25,9 +26,9 @@
     <ion-row>
       <ion-col>
         <div style="display: flex; flex-direction: row;">
-          <ion-button routerLink="/events">
-            <ion-icon name="calendar"></ion-icon>
-            <span>Events</span>
+          <ion-button (click)="openUrl('http://www.southeastern.edu/acad_research/programs/turtle_cove/index.html')">
+            <ion-icon name="desktop"></ion-icon>
+            <span>Our Website</span>
           </ion-button>
           <ion-button (click)="openUrl('https://www.youtube-nocookie.com/embed/iqhW54bWwnw')">
             <ion-icon name="film"></ion-icon>
@@ -39,7 +40,7 @@
     <ion-row>
       <ion-col>
         <div style="display: flex; flex-direction: row;">
-          <ion-button color="secondary" (click)="openUrl('https://www.southeastern.edu/alumni_donors/foundation/giving/tutlecove/index.html')">
+          <ion-button style="margin-top: 0;" color="secondary" (click)="openUrl('https://www.southeastern.edu/alumni_donors/foundation/giving/tutlecove/index.html')">
               Support Us!
           </ion-button>
         </div>

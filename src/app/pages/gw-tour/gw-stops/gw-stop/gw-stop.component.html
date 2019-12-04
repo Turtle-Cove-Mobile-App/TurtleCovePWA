@@ -7,13 +7,15 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-card>
-  <img [src]="stop.img" />
-  <ion-card-header>
-    <ion-card-title> {{ stop.title }} </ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    {{ stop.info }}
-  </ion-card-content>
-  <ion-button style="margin: 10px 15px;">Take me there!</ion-button>
-</ion-card>
+<ion-content fullscreen scrollY="false">
+  <ion-card>
+    <img [src]="stop.img" />
+    <ion-card-header>
+      <ion-card-title> {{ stop.title }} </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ stop.info }}
+    </ion-card-content>
+    <ion-button [href]='this.address' target="_blank" style="margin: 10px 15px;">Take me there!</ion-button>
+  </ion-card>
+</ion-content>
