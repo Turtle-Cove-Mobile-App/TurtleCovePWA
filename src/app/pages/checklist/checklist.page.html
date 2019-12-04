@@ -28,8 +28,8 @@
         <ng-container *ngFor="let obj of speciesClass; let i = index">
           <ion-item-divider no-padding mode="ios" sticky style="background-color: gray; color: white; height: 40px;"
             (click)="toggleClass(obj)">
-            <div style="width: 100%; height: 2px; background-color: black; position: absolute; top: 0; left: 0;"
-              *ngIf="i > 0"></div>
+            <div style="width: 100%; height: 2px; background-color: black; position: absolute; bottom: 0; left: 0;"
+              *ngIf="i < (speciesClass.length - 1) && !obj.expanded"></div>
             <ion-button class="ion-no-padding" slot="start" fill="clear" size="small" color="light">
               <ion-icon slot="icon-only" size="large" [attr.name]="!obj.expanded ? 'add' : 'remove'" mode="ios">
               </ion-icon>
