@@ -7,14 +7,14 @@
       <ion-title>Species Checklist</ion-title>
     </ion-toolbar>
   </ion-header> -->
-    <div style="padding-top: 10px; margin: auto; width: 100%; display: flex; justify-content: center;">
+    <div style="padding-top: 10px; margin: auto; width: 100%; display: flex; justify-content: center; flex: 0 0 auto;">
       <ion-chip color="primary" style="text-align: center;">
         <ion-label>
           {{ totalFound }} / {{ total }} Species Found
         </ion-label>
       </ion-chip>
     </div>
-    <div style="display: flex; align-content: center; width: 100%;">
+    <div style="display: flex; align-content: center; width: 100%; flex: 0 0 auto;">
       <ion-button class="top-button" color="secondary" (click)="toggleExpandAll()">
         <ion-icon slot="start" size="large" [attr.name]="!anyExpanded ? 'add' : 'remove'" mode="ios"></ion-icon>
         {{ anyExpanded ? 'Collapse' : 'Expand' }} All

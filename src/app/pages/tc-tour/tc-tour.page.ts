@@ -26,9 +26,10 @@ export class TcTourPage implements OnInit {
         this.signArray = signs;
       }
       else {
-        this.signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index + '.jpg'}));
+        this.signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index + '.jpg' }));
         this.storage.set('signs', this.signArray);
       }
+      this.imgService.setImages(this.signArray);
     });
   }
 

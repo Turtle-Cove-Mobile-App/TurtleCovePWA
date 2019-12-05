@@ -2,13 +2,13 @@
 
 <ion-content>
   <div class="content-container">
-    <div style="padding-top: 10px; margin: auto; width: 100%; display: flex; justify-content: center;">
+    <div style="padding-top: 10px; margin: auto; width: 100%; display: flex; justify-content: center; flex: 0 0 auto;">
       <ion-chip color="primary" style="text-align: center;">
         <ion-label> {{ imgService.totalViewed }} / {{ imgService.total }} Signs Viewed </ion-label>
       </ion-chip>
     </div>
     <!-- <div style="display: flex; flex-direction: row;"> -->
-      <ion-button color="secondary" (click)="reset()">
+      <ion-button style=" flex: 0 0 auto;" color="secondary" (click)="reset()">
         Reset All
       </ion-button>
     <!-- </div> -->
