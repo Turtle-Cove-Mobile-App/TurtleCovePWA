@@ -45,5 +45,6 @@ export class ImageViewService {
       image.viewed = false;
     }
     this.calcTotalViewed();
+    this.storage.set('signs', this.images);
   }
 }
