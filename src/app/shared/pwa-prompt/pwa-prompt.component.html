@@ -1,12 +1,12 @@
 <div id="prompt-container" class="prompt-container">
   <div class="shade">
   </div>
-  <ion-button no-padding (click)="hidePrompt()" [class]="platform.is('ios') ? 'ios-close-button' : 'md-close-button'"
-    fill="clear" shape="round" size="small" color="light">
-    <ion-icon slot="icon-only" name="close"></ion-icon>
-  </ion-button>
   <ng-container *ngIf="platform.is('android')">
     <div class="md-one-slide">
+      <ion-button no-padding (click)="hidePrompt()" [class]="platform.is('ios') ? 'ios-close-button' : 'md-close-button'"
+        fill="clear" shape="round" size="small" color="light">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
       <h2>Install Turtle Cove App</h2>
       <div class="chrome-disclaimer">
         The Google Chrome App is recommended for best results.
