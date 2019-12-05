@@ -1,7 +1,9 @@
 import { PluginsService } from '../../services/plugins-service/plugins.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
 
+const { Network } = Plugins;
 
 @Component({
   selector: 'tc-gw-tour',
@@ -11,11 +13,18 @@ import { ToastController } from '@ionic/angular';
 export class GwTourPage implements OnInit {
 
   private isToastOpen = false;
-  public online = window.navigator.onLine;
 
   constructor(public plugins: PluginsService, public toastController: ToastController) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.plugins.subscribeLocation();
+  }
+
+  ionViewDidLeave() {
+    this.plugins.unsubscribeLocation();
   }
 
   async presentToastWithOptions() {
@@ -40,24 +49,18 @@ export class GwTourPage implements OnInit {
     }
   }
 
-  ionViewWillEnter() {
-    this.plugins.subscribeLocation();
-  }
-
-  ionViewDidLeave() {
-    this.plugins.unsubscribeLocation();
-  }
-
   logLocation() {
     console.log(this.plugins.location);
   }
 
   buttonHandler() {
-    if (this.online) {
-      window.open('https://goo.gl/maps/gkSE8GiJMzcfuCRu9', '_blank');
-    } else {
-      this.presentToastWithOptions();
-    }
+    Network.getStatus().then(status => {
+      if (status.connected) {
+        window.open('https://goo.gl/maps/gkSE8GiJMzcfuCRu9', '_blank');
+      } else {
+        this.presentToastWithOptions();
+      }
+    });
   }
 
 }

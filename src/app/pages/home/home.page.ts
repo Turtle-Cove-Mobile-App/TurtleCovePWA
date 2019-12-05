@@ -11,49 +11,20 @@ import { ToastController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  private isToastOpen = false;
-  public online = window.navigator.onLine;
+  constructor(private plugins: PluginsService, public platform: Platform) { }
 
-  constructor(private plugins: PluginsService, public platform: Platform, public toastController: ToastController) {}
+  ngOnInit() { }
 
-  ngOnInit() {}
-
-  openUrl(url: string) {
-    this.plugins.openUrl(url);
-  }
+  // openUrl(url: string) {
+  //   this.plugins.openUrl(url);
+  // }
 
   logLocation() {
     console.log(this.plugins.location);
   }
 
-  async presentToastWithOptions() {
-    console.log(this.isToastOpen);
-    if (!this.isToastOpen) {
-      const toast = await this.toastController.create({
-        header: 'Failed to load...',
-        message: 'This feature requires an internet connection',
-        color: 'dark',
-        position: 'bottom',
-        buttons: [
-          {
-            text: 'Close',
-            handler: () => {
-              console.log('Cancel clicked');
-              this.isToastOpen = false;
-            }
-          }
-        ]
-      });
-      toast.present().then(() => this.isToastOpen = true);
-    }
-  }
-
-  buttonHandler(url) {
-    if (this.online) {
-      this.plugins.openUrl(url);
-    } else {
-      this.presentToastWithOptions();
-    }
+  buttonHandler(url: string) {
+    this.plugins.openUrl(url);
   }
 
 }
