@@ -19,7 +19,7 @@ div.shade {
 
 ion-button.md-close-button {
   position: absolute;
-  top: 20vh;
+  top: 15vh;
   right: 8vw;
   height: 2em;
   width: 2em;
@@ -31,7 +31,7 @@ ion-button.md-close-button {
 
 ion-button.ios-close-button {
   position: absolute;
-  top: 20vh;
+  top: 14vh;
   right: 8vw;
   height: 2.5em;
   width: 2.5em;
@@ -53,15 +53,16 @@ ion-slides.slides {
 
 div.ios-inner-slide {
   position: absolute;
-  top: 25%;
-  bottom: 40%;
+  top: 20%;
+  bottom: 30%;
   border-radius: 1em;
   left: 10%;
   right: 10%;
   background-color: white;
   div.ios-footer {
     position: absolute;
-    bottom: 25px;
+    // bottom: 25px;
+    bottom: 5px;
     padding-top: 20px;
     width: 100%;
     text-align: center;
@@ -69,6 +70,14 @@ div.ios-inner-slide {
       width: 1em;
       display: inline-block;
       transform: translateY(1px);
+    }
+    .dont-show-again {
+      margin: 10px auto 0 auto;
+      width: 80%;
+      // position: absolute;
+      // bottom: 5px;
+      // left: 20px;
+      // right: 0;
     }
   }
 }
@@ -81,6 +90,52 @@ div.md-inner-slide {
   width: 100%;
   height: 100%;
   background-color: white;
+}
+
+.md-one-slide {
+  position: absolute;
+  top: 20%;
+  bottom: 25%;
+  left: 0;
+  right: 0;
+  border-radius: 1em;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: white;
+  text-align: center;
+  .install-step {
+    display: flex;
+    * {
+      flex: 1 1 auto;
+      margin-left: 10px;
+    }
+  }
+  .install-step-text {
+    margin: 0.5em auto 1em auto;
+    width: 90%;
+  }
+  ion-img {
+    margin-right: 15px;
+    border: 2px solid black;
+  }
+  span {
+    text-align: left;
+    font-weight: bolder;
+    font-size: larger;
+  }
+  .chrome-disclaimer {
+    color: gray;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .dont-show-again {
+    padding: 0 0 0 20px;
+    margin: 10px auto 0 auto;
+    width: 90%;
+  }
 }
 
 div.nav-button-container {
@@ -115,6 +170,18 @@ span.install-instructions {
     padding-top: 1.5em;
     width: 80%;
     margin: auto;
+  }
+}
+
+.checkbox-container {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 30%;
+  display: flex;
+  justify-content: flex-start;
+  ion-checkbox {
+    --background: transparent;
   }
 }
 

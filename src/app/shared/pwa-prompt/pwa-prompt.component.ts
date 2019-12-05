@@ -13,6 +13,8 @@ export class PwaPromptComponent implements OnInit {
   public showInstallPrompt = false;
   public promptVisible = false;
 
+  public dontShowAgain = false;
+
   private promptContainer;
 
   constructor(public platform: Platform) {
