@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { ImageViewService } from 'src/app/services/image-view/image-view.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
@@ -15,11 +16,20 @@ export class TcTourPage implements OnInit {
 
   private totalNumberOfSigns = 55;
 
-  private signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index + '.jpg'}));
+  private signArray;
 
-  constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController) { }
+  constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController, private storage: Storage) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.storage.get('signs').then(signs => {
+      if (signs) {
+        this.signArray = signs;
+      }
+      else {
+        this.signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index + '.jpg'}));
+      }
+    });
+  }
 
   ionViewWillEnter() {
     // Passes the array by reference, so any changes made to the array inside of the image viewer service are reflected here in the tc-tour class.

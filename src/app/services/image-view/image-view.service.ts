@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ImageViewService {
   public total: number;
   public totalViewed: number;
 
-  constructor() { }
+  constructor(private storage: Storage) { }
 
   public setImages(images: any[]) {
     this.images = images;
@@ -35,6 +36,7 @@ export class ImageViewService {
     if (this.images[id].viewed === false) {
       this.images[id].viewed = true;
       this.totalViewed++;
+      this.storage.set('signs', this.images);
     }
   }
 
