@@ -53,7 +53,7 @@ export class PwaPromptComponent implements OnInit {
     // console.log(this.promptContainer);
     setTimeout(() => {
       this.promptContainer.style.visibility = 'visible';
-      this.promptContainer.style.opacity = '100%';
+      this.promptContainer.style.opacity = '1.0';
       this.promptVisible = true;
     }, 2000);
   }
@@ -62,7 +62,7 @@ export class PwaPromptComponent implements OnInit {
     // console.log('close button pressed');
     if (this.promptVisible) {
       this.promptContainer.style.visibility = 'hidden';
-      this.promptContainer.style.opacity = '0';
+      this.promptContainer.style.opacity = '0.0';
       this.promptVisible = false;
     }
   }
