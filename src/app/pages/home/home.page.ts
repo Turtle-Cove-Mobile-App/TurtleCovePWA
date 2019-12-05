@@ -18,10 +18,6 @@ export class HomePage implements OnInit {
   //   this.plugins.openUrl(url);
   // }
 
-  logLocation() {
-    console.log(this.plugins.location);
-  }
-
   buttonHandler(url: string) {
     this.plugins.openUrl(url);
   }
