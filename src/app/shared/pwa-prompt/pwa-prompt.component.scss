@@ -31,7 +31,7 @@ ion-button.md-close-button {
 
 ion-button.ios-close-button {
   position: absolute;
-  top: 14vh;
+  top: 15vh;
   right: 8vw;
   height: 2.5em;
   width: 2.5em;
@@ -54,7 +54,7 @@ ion-slides.slides {
 div.ios-inner-slide {
   position: absolute;
   top: 20%;
-  bottom: 30%;
+  bottom: 38%;
   border-radius: 1em;
   left: 10%;
   right: 10%;
@@ -72,7 +72,7 @@ div.ios-inner-slide {
       transform: translateY(1px);
     }
     .dont-show-again {
-      margin: 10px auto 0 auto;
+      margin: auto;
       width: 80%;
       // position: absolute;
       // bottom: 5px;
