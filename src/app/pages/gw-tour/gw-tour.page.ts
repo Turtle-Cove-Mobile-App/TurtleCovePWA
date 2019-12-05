@@ -1,9 +1,6 @@
 import { PluginsService } from '../../services/plugins-service/plugins.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Plugins } from '@capacitor/core';
-
-const { Network } = Plugins;
 
 @Component({
   selector: 'tc-gw-tour',
@@ -54,13 +51,11 @@ export class GwTourPage implements OnInit {
   }
 
   buttonHandler() {
-    Network.getStatus().then(status => {
-      if (status.connected) {
-        window.open('https://goo.gl/maps/gkSE8GiJMzcfuCRu9', '_blank');
-      } else {
-        this.presentToastWithOptions();
-      }
-    });
+    if (navigator.onLine) {
+      window.open('https://goo.gl/maps/gkSE8GiJMzcfuCRu9', '_blank');
+    } else {
+      this.presentToastWithOptions();
+    }
   }
 
 }

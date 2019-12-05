@@ -1,7 +1,7 @@
 import { ToastController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-const { Browser, Geolocation, Network } = Plugins;
+const { Browser, Geolocation } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +20,12 @@ export class PluginsService {
   }
 
   openUrl(url) {
-    Network.getStatus().then(status => {
-      if (status.connected) {
-        Browser.open({ url });
-      }
-      else {
-        this.presentToastWithOptions();
-      }
-    });
+    if (navigator.onLine) {
+      Browser.open({ url });
+    }
+    else {
+      this.presentToastWithOptions();
+    }
   }
 
   async presentToastWithOptions() {
