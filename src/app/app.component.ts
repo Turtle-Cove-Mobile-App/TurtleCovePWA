@@ -1,3 +1,4 @@
+import { PluginsService } from 'src/app/services/plugins-service/plugins.service';
 import { Component } from '@angular/core';
 
 import { Plugins, StatusBarStyle } from '@capacitor/core';
@@ -9,7 +10,7 @@ const { StatusBar, SplashScreen } = Plugins;
 })
 export class AppComponent {
 
-  constructor() {
+  constructor(private plugins: PluginsService) {
     this.initializeApp();
   }
 
