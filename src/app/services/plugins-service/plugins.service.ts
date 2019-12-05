@@ -1,6 +1,7 @@
+import { ToastController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { Plugins } from '@capacitor/core';
-const { Browser, Geolocation } = Plugins;
+const { Browser, Geolocation, Network } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,43 @@ const { Browser, Geolocation } = Plugins;
 export class PluginsService {
   public location = [0, 0];
 
+  private isToastOpen = false;
+
   private watch;
 
-  constructor() {}
+  constructor(private toastController: ToastController) { }
 
   openUrl(url) {
-    Browser.open({ url });
+    Network.getStatus().then(status => {
+      if (status.connected) {
+        Browser.open({ url });
+      }
+      else {
+        this.presentToastWithOptions();
+      }
+    });
+  }
+
+  async presentToastWithOptions() {
+    console.log(this.isToastOpen);
+    if (!this.isToastOpen) {
+      const toast = await this.toastController.create({
+        header: 'Failed to load...',
+        message: 'This feature requires an internet connection',
+        color: 'dark',
+        position: 'bottom',
+        buttons: [
+          {
+            text: 'Close',
+            handler: () => {
+              console.log('Cancel clicked');
+              this.isToastOpen = false;
+            }
+          }
+        ]
+      });
+      toast.present().then(() => this.isToastOpen = true);
+    }
   }
 
   subscribeLocation() {

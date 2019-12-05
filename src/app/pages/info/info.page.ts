@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
 
+const { Network } = Plugins;
 
 @Component({
   selector: 'tc-info',
@@ -12,7 +14,6 @@ export class InfoPage implements OnInit {
   public historyExpanded = false;
   public whatGoesOnExpanded = false;
   private isToastOpen = false;
-  public online = window.navigator.onLine;
 
   constructor(public toastController: ToastController) { }
 
@@ -39,11 +40,13 @@ export class InfoPage implements OnInit {
   }
 
   buttonHandler() {
-    if (this.online) {
-      window.open('https://goo.gl/maps/mqcqMtYzFSaTokYRA', '_blank');
-    } else {
-      this.presentToastWithOptions();
-    }
+    Network.getStatus().then(status => {
+      if (status.connected) {
+        window.open('https://goo.gl/maps/mqcqMtYzFSaTokYRA', '_blank');
+      } else {
+        this.presentToastWithOptions();
+      }
+    });
   }
 
   toggleHistory() {
