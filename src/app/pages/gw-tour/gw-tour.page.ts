@@ -11,28 +11,23 @@ import { ToastController } from '@ionic/angular';
 export class GwTourPage implements OnInit {
 
   private isToastOpen = false;
+  public online = window.navigator.onLine;
 
   constructor(public plugins: PluginsService, public toastController: ToastController) { }
 
   ngOnInit() {
-
-  }
-
-  buttonClickHandler() {
-      // beep boop check if near coordinates
-
   }
 
   async presentToastWithOptions() {
     console.log(this.isToastOpen);
     if (!this.isToastOpen) {
       const toast = await this.toastController.create({
-        header: 'Failed to start tour...',
-        message: 'Please navigate to Hwy 51',
+        header: 'Failed to load...',
+        message: 'This feature requires an internet connection',
         color: 'dark',
         position: 'bottom',
         buttons: [
-           {
+          {
             text: 'Close',
             handler: () => {
               console.log('Cancel clicked');
@@ -45,7 +40,6 @@ export class GwTourPage implements OnInit {
     }
   }
 
-
   ionViewWillEnter() {
     this.plugins.subscribeLocation();
   }
@@ -56,6 +50,14 @@ export class GwTourPage implements OnInit {
 
   logLocation() {
     console.log(this.plugins.location);
+  }
+
+  buttonHandler() {
+    if (this.online) {
+      window.open('https://goo.gl/maps/gkSE8GiJMzcfuCRu9', '_blank');
+    } else {
+      this.presentToastWithOptions();
+    }
   }
 
 }

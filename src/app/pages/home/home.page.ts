@@ -1,6 +1,8 @@
 import { Platform } from '@ionic/angular';
 import { Component, OnInit } from "@angular/core";
 import { PluginsService } from 'src/app/services/plugins-service/plugins.service';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: "tc-home",
@@ -8,7 +10,11 @@ import { PluginsService } from 'src/app/services/plugins-service/plugins.service
   styleUrls: ["./home.page.scss"]
 })
 export class HomePage implements OnInit {
-  constructor(private plugins: PluginsService, public platform: Platform) {}
+
+  private isToastOpen = false;
+  public online = window.navigator.onLine;
+
+  constructor(private plugins: PluginsService, public platform: Platform, public toastController: ToastController) {}
 
   ngOnInit() {}
 
@@ -19,4 +25,35 @@ export class HomePage implements OnInit {
   logLocation() {
     console.log(this.plugins.location);
   }
+
+  async presentToastWithOptions() {
+    console.log(this.isToastOpen);
+    if (!this.isToastOpen) {
+      const toast = await this.toastController.create({
+        header: 'Failed to load...',
+        message: 'This feature requires an internet connection',
+        color: 'dark',
+        position: 'bottom',
+        buttons: [
+          {
+            text: 'Close',
+            handler: () => {
+              console.log('Cancel clicked');
+              this.isToastOpen = false;
+            }
+          }
+        ]
+      });
+      toast.present().then(() => this.isToastOpen = true);
+    }
+  }
+
+  buttonHandler(url) {
+    if (this.online) {
+      this.plugins.openUrl(url);
+    } else {
+      this.presentToastWithOptions();
+    }
+  }
+
 }
