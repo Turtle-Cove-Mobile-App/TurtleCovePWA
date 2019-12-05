@@ -17,18 +17,6 @@ div.shade {
   width: 100%;
 }
 
-ion-button.ios-close-button {
-  position: absolute;
-  top: 15vh;
-  right: 8vw;
-  height: 2.5em;
-  width: 2.5em;
-  ion-icon {
-    width: 100%;
-    height: 100%;
-  }
-}
-
 ion-slides.slides {
   position: absolute;
   top: 25%;
@@ -41,12 +29,24 @@ ion-slides.slides {
 
 div.ios-inner-slide {
   position: absolute;
-  top: 20%;
-  bottom: 38%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 325px;
   border-radius: 1em;
-  left: 10%;
-  right: 10%;
+  left: 5%;
+  right: 5%;
   background-color: white;
+  ion-button.ios-close-button {
+    position: absolute;
+    top: -35px;
+    right: -5px;
+    height: 2.5em;
+    width: 2.5em;
+    ion-icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
   div.ios-footer {
     position: absolute;
     // bottom: 25px;
