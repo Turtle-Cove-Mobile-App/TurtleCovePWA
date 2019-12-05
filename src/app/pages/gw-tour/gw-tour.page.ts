@@ -16,13 +16,13 @@ export class GwTourPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter() {
-    this.plugins.subscribeLocation();
-  }
+  // ionViewWillEnter() {
+  //   this.plugins.subscribeLocation();
+  // }
 
-  ionViewDidLeave() {
-    this.plugins.unsubscribeLocation();
-  }
+  // ionViewDidLeave() {
+  //   this.plugins.unsubscribeLocation();
+  // }
 
   async presentToastWithOptions() {
     console.log(this.isToastOpen);
@@ -46,9 +46,9 @@ export class GwTourPage implements OnInit {
     }
   }
 
-  logLocation() {
-    console.log(this.plugins.location);
-  }
+  // logLocation() {
+  //   console.log(this.plugins.location);
+  // }
 
   buttonHandler() {
     if (navigator.onLine) {
