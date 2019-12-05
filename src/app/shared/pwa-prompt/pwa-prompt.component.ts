@@ -36,7 +36,6 @@ export class PwaPromptComponent implements OnInit {
         }
       }
       if (this.showInstallPrompt) {
-        this.showPrompt();
         if (this.platform.is('ios')) {
           this.showPrompt();
         }
