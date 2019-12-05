@@ -13,7 +13,11 @@ export class PluginsService {
 
   private watch;
 
-  constructor(private toastController: ToastController) { }
+  constructor(private toastController: ToastController) {
+    // HACK: fix toast not presented when offline, due to lazy loading the toast controller.
+    // Can be removed once #17450 is resolved: https://github.com/ionic-team/ionic/issues/17450
+    this.toastController.create({ animated: false }).then(t => { t.present(); t.dismiss(); });
+  }
 
   openUrl(url) {
     Network.getStatus().then(status => {

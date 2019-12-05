@@ -1,0 +1,96 @@
+<div id="prompt-container" class="prompt-container">
+  <div class="shade">
+  </div>
+  <ng-container *ngIf="platform.is('android')">
+    <div class="md-one-slide">
+      <ion-button no-padding (click)="hidePrompt()" class="md-close-button"
+        fill="clear" shape="round" size="small" color="light">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+      <h2>Install Turtle Cove App</h2>
+      <div class="chrome-disclaimer">
+        The Google Chrome App is recommended for best results.
+      </div>
+      <div class="install-step">
+        <span>1.</span>
+        <ion-img src="assets/img/pwa-prompt/md-pwa-0.jpg"></ion-img>
+      </div>
+      <div class="install-step-text">Tap "Add TurtleCove to Home Screen" at the bottom of your screen.</div>
+      <div class="install-step">
+        <span>2.</span>
+        <ion-img src="assets/img/pwa-prompt/md-pwa-1.jpg"></ion-img>
+      </div>
+      <div class="install-step-text" style="margin-bottom: 0;">Tap "Add" on the next screen to install the Turtle Cove app.</div>
+      <ion-item class="dont-show-again" color="transparent" lines="none" no-padding>
+        <ion-label>Don't show this prompt again.</ion-label>
+        <ion-checkbox [(ngModel)]="dontShowAgain" (ionChange)="checkChanged()"></ion-checkbox>
+      </ion-item>
+    </div>
+    <!-- <ion-slides #slider pager="true" class="slides">
+      <ion-slide>
+        <div class="md-inner-slide">
+          <span class="install-instructions" style="top: 15%;">
+            <ion-img src="assets/img/pwa-prompt/md-pwa-0.jpg"></ion-img>
+            <br>
+            Tap "Add TurtleCove to Home Screen" at the bottom of your screen.
+            <br>
+            <div class="chrome-disclaimer">
+              The Google Chrome App is recommended for best results.
+            </div>
+          </span>
+          <div class="nav-button-container">
+            <ion-button (click)="slider.slidePrev()" size="small" class="slider-nav" style="visibility: hidden;">
+              Previous
+            </ion-button>
+            <ion-button (click)="slider.slideNext()" size="small" class="slider-nav">
+              Next
+            </ion-button>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="md-inner-slide">
+          <span class="install-instructions">
+            <ion-img src="assets/img/pwa-prompt/md-pwa-1.jpg"></ion-img>
+            <br>
+            Tap "Add" on the next screen to install the Turtle Cove app.
+            <br>
+            <!~~ <span style="color: gray; font-size: 0.5em;">The Google Chrome App is recommended for best results.</span> ~~>
+          </span>
+          <div class="nav-button-container">
+            <ion-button (click)="slider.slidePrev()" size="small" class="slider-nav">
+              Previous
+            </ion-button>
+            <ion-button (click)="slider.slideNext()" size="small" class="slider-nav">
+              Next
+            </ion-button>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides> -->
+  </ng-container>
+  <ng-container *ngIf="platform.is('ios')">
+    <!-- <ion-slides class="slides">
+      <ion-slide> -->
+    <div class="ios-inner-slide">
+      <ion-button no-padding (click)="hidePrompt()" class="ios-close-button"
+        fill="clear" shape="round" size="small" color="light">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+      <span class="install-instructions">
+        <ion-img src="assets/img/pwa-prompt/ios-pwa-icon.png" style="height: 4em;"></ion-img>
+        <h1>Install Turtle Cove App</h1>
+        <p>Install the Turtle Cove app on your home screen for quick and easy access when you're on the go.</p>
+      </span>
+      <div class="ios-footer">
+        Just tap <ion-img src="assets/img/pwa-prompt/ios-share-icon.jpg"></ion-img> then "Add to Home Screen"
+        <ion-item  class="dont-show-again" color="transparent" lines="none">
+          <ion-label>Don't show this again.</ion-label>
+          <ion-checkbox [(ngModel)]="dontShowAgain" (ionChange)="checkChanged()"></ion-checkbox>
+        </ion-item>
+      </div>
+    </div>
+    <!-- </ion-slide>
+    </ion-slides> -->
+  </ng-container>
+</div>

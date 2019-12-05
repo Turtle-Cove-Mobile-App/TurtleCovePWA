@@ -1,6 +1,6 @@
+import { PluginsService } from 'src/app/services/plugins-service/plugins.service';
 import { Component } from '@angular/core';
 
-import { environment } from 'src/environments/environment';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
 const { StatusBar, SplashScreen } = Plugins;
 
@@ -10,9 +10,7 @@ const { StatusBar, SplashScreen } = Plugins;
 })
 export class AppComponent {
 
-  public prod = environment.production;
-
-  constructor() {
+  constructor(private plugins: PluginsService) {
     this.initializeApp();
   }
 
@@ -20,7 +18,7 @@ export class AppComponent {
     StatusBar.setStyle({
       style: StatusBarStyle.Dark
     });
-    StatusBar.setBackgroundColor({color: '#08582e'});
+    StatusBar.setBackgroundColor({ color: '#08582e' });
     SplashScreen.hide();
   }
 }

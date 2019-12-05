@@ -1,7 +1,6 @@
 import { Platform } from '@ionic/angular';
 import { Component, OnInit } from "@angular/core";
 import { PluginsService } from 'src/app/services/plugins-service/plugins.service';
-import { ToastController } from '@ionic/angular';
 
 
 @Component({
