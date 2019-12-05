@@ -1,4 +1,3 @@
-import { PluginsService } from '../../services/plugins-service/plugins.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
@@ -11,7 +10,7 @@ export class GwTourPage implements OnInit {
 
   private isToastOpen = false;
 
-  constructor(public plugins: PluginsService, public toastController: ToastController) { }
+  constructor(public toastController: ToastController) { }
 
   ngOnInit() {
   }
