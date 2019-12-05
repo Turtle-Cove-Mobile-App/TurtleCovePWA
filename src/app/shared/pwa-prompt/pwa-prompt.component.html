@@ -23,7 +23,7 @@
       <div class="install-step-text" style="margin-bottom: 0;">Tap "Add" on the next screen to install the Turtle Cove app.</div>
       <ion-item class="dont-show-again" color="transparent" lines="none" no-padding>
         <ion-label>Don't show this prompt again.</ion-label>
-        <ion-checkbox [(ngModel)]="dontShowAgain"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="dontShowAgain" (ionChange)="checkChanged()"></ion-checkbox>
       </ion-item>
     </div>
     <!-- <ion-slides #slider pager="true" class="slides">
@@ -82,7 +82,7 @@
         Just tap <ion-img src="assets/img/pwa-prompt/ios-share-icon.jpg"></ion-img> then "Add to Home Screen"
         <ion-item  class="dont-show-again" color="transparent" lines="none">
           <ion-label>Don't show this again.</ion-label>
-          <ion-checkbox [(ngModel)]="dontShowAgain"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="dontShowAgain" (ionChange)="checkChanged()"></ion-checkbox>
         </ion-item>
       </div>
     </div>

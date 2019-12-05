@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
@@ -17,24 +18,35 @@ export class PwaPromptComponent implements OnInit {
 
   private promptContainer;
 
-  constructor(public platform: Platform) {
-    if (this.platform.is('mobileweb') && this.platform.is('mobile') && !this.platform.is('pwa')) {
-      this.showInstallPrompt = true;
-    }
+  constructor(public platform: Platform, private storage: Storage) {
   }
 
   ngOnInit() {
-    if (this.showInstallPrompt) {
-      this.showPrompt();
-      if (this.platform.is('ios')) {
-        this.showPrompt();
+    this.storage.get('dontShowPrompt').then(bool => {
+      if (bool) {
+        this.dontShowAgain = (bool === 'true');
+        if (this.platform.is('mobileweb') && this.platform.is('mobile') && !this.platform.is('pwa') && !this.dontShowAgain) {
+          this.showInstallPrompt = true;
+        }
       }
       else {
-        window.addEventListener('beforeinstallprompt', () => {
-          this.showPrompt();
-        });
+        if (this.platform.is('mobileweb') && this.platform.is('mobile') && !this.platform.is('pwa')) {
+          console.log(bool);
+          this.showInstallPrompt = true;
+        }
       }
-    }
+      if (this.showInstallPrompt) {
+        this.showPrompt();
+        if (this.platform.is('ios')) {
+          this.showPrompt();
+        }
+        else {
+          window.addEventListener('beforeinstallprompt', () => {
+            this.showPrompt();
+          });
+        }
+      }
+    });
   }
 
   showPrompt() {
@@ -56,4 +68,8 @@ export class PwaPromptComponent implements OnInit {
     }
   }
 
+  checkChanged() {
+    console.log('Thing changed');
+    this.storage.set('dontShowPrompt', this.dontShowAgain.toString());
+  }
 }

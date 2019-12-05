@@ -1,11 +1,9 @@
 import { ImageViewService } from 'src/app/services/image-view/image-view.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { ModalComponent } from './modal/modal.component';
 import { Storage } from '@ionic/storage';
 import { Species } from './species';
 import { SpeciesClass } from './species-class';
-import { environment } from 'src/environments/environment';
 import { ZoomComponent } from 'src/app/shared/zoom/zoom.component';
 
 @Component({
