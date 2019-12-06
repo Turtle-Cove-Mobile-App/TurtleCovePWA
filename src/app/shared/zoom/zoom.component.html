@@ -12,7 +12,7 @@
   <ion-slides style="height: 100%;" [options]="sliderOptions" #slider (ionSlideDidChange)="slideChanged()">
     <ion-slide *ngFor="let obj of imgService.images">
       <div class="swiper-zoom-container">
-        <img [src]="obj.path" />
+        <img [src]="obj.path"/>
       </div>
     </ion-slide>
   </ion-slides>

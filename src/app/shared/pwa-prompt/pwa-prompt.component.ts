@@ -31,7 +31,6 @@ export class PwaPromptComponent implements OnInit {
       }
       else {
         if (this.platform.is('mobileweb') && this.platform.is('mobile') && !this.platform.is('pwa')) {
-          // console.log(bool);
           this.showInstallPrompt = true;
         }
       }

@@ -16,14 +16,11 @@ export class TcTourPage implements OnInit {
 
   private totalNumberOfSigns = 55;
 
-  public loading;
-
   private signArray;
 
   constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController, private storage: Storage) { }
 
   ngOnInit() {
-    this.loading = true;
     this.storage.get('signs').then(signs => {
       if (signs) {
         this.signArray = signs;
@@ -33,9 +30,6 @@ export class TcTourPage implements OnInit {
         this.storage.set('signs', this.signArray);
       }
       this.imgService.setImages(this.signArray);
-      setTimeout(() => {
-        this.loading = false;
-      }, 500);
     });
   }
 
