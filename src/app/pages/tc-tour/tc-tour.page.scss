@@ -21,17 +21,17 @@ ion-spinner {
   height: 100%;
   background-color: white;
   position: relative;
+  overflow: hidden;
   border-radius: 15px;
   // border-width: 2.5px;
   // border-color: black;
   // border-style: solid;
-  overflow: hidden;
-  // box-shadow: 2px 4px 10px grey;
   ion-img {
     filter: blur(5px);
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    height: 80%;
   }
   div {
     position: absolute;
