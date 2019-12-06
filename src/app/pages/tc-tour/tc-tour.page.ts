@@ -35,7 +35,7 @@ export class TcTourPage implements OnInit {
       this.imgService.setImages(this.signArray);
       setTimeout(() => {
         this.loading = false;
-      }, 1000);
+      }, 500);
     });
   }
 
