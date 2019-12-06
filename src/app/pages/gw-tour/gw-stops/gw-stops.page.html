@@ -1,15 +1,15 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="tabs/home"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Greenway Stops</ion-title>
-    </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Greenway Stops</ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content padding-top>
-  <ion-list >
-    <ion-item *ngFor="let stop of stops" button (click)="showModal(stop)">
+  <ion-list no-padding>
+    <ion-item mode="ios" *ngFor="let stop of stops" button (click)="showModal(stop)">
       {{stop.title}}
     </ion-item>
-  </ion-list>  
+  </ion-list>
 </ion-content>
