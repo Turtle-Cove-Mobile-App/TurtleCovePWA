@@ -1,3 +1,4 @@
+import { InstallCounterService } from './../../services/install-counter/install-counter.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
@@ -11,8 +12,16 @@ export class InfoPage implements OnInit {
   public historyExpanded = false;
   public whatGoesOnExpanded = false;
   private isToastOpen = false;
+  public installCount;
 
-  constructor(public toastController: ToastController) { }
+  constructor(public toastController: ToastController, public installCounter: InstallCounterService) { }
+
+  ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.installCounter.getCount().subscribe(response => this.installCount = response.value);
+  }
 
   async presentToastWithOptions() {
     console.log(this.isToastOpen);
@@ -58,9 +67,6 @@ export class InfoPage implements OnInit {
     } else {
       this.whatGoesOnExpanded = false;
     }
-  }
-
-  ngOnInit() {
   }
 
 }

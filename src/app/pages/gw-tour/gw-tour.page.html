@@ -12,43 +12,36 @@
     </ion-row>
   </ion-grid>
    -->
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <img src="assets/img/greenway.jpg"/>
-          <ion-card-header>
-            <ion-card-subtitle>Manchac, LA</ion-card-subtitle>
-            <ion-card-title>Manchac Greenway</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-              The Manchac Greenway provides the general public a look inside the natural
-              environment of Louisiana’s robust marsh and swamp ecosystems. Despite already having
-              maintained trails that are open to public access, most people are either unaware or unmotivated
-              to utilize this area on their own. By hosting tours under the guidance of biologists trained in the
-              Manchac ecosystems, we can attract more attention to these underappreciated areas and educate
-              the local communities about their own surrounding habitat. This also provides a fundraising
-              opportunity for eligible biology graduate students and qualified undergraduates at Southeastern
-              Louisiana University, as well as partnering groups who already support the Greenway and will
-              assist in its further development in the future.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <div style="display: flex; flex-direction: row;">
-          <ion-button (click)="buttonHandler()" >
-            <ion-icon name="car"></ion-icon>
-            <span>Take the Tour</span>
-          </ion-button>
-          <ion-button color='secondary' routerLink="/gw-stops">
-            <ion-icon name="pin"></ion-icon>
-            <span>View Stops</span>
-          </ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="content-container">
+    <div style="height: 100%; overflow-y: scroll;">
+      <ion-card>
+        <img src="assets/img/greenway.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle>Manchac, LA</ion-card-subtitle>
+          <ion-card-title>Manchac Greenway</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          The Manchac Greenway provides the general public a look inside the natural
+          environment of Louisiana’s robust marsh and swamp ecosystems. Despite already having
+          maintained trails that are open to public access, most people are either unaware or unmotivated
+          to utilize this area on their own. By hosting tours under the guidance of biologists trained in the
+          Manchac ecosystems, we can attract more attention to these underappreciated areas and educate
+          the local communities about their own surrounding habitat. This also provides a fundraising
+          opportunity for eligible biology graduate students and qualified undergraduates at Southeastern
+          Louisiana University, as well as partnering groups who already support the Greenway and will
+          assist in its further development in the future.
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div style="display: flex; flex-direction: row;">
+      <ion-button (click)="buttonHandler()">
+        <ion-icon name="car"></ion-icon>
+        <span>Take the Tour</span>
+      </ion-button>
+      <ion-button color='secondary' routerLink="/gw-stops">
+        <ion-icon name="pin"></ion-icon>
+        <span>View Stops</span>
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

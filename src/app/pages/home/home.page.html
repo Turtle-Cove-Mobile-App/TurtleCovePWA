@@ -1,51 +1,44 @@
 <tc-header pageName="Turtle Cove"></tc-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card style="margin-bottom: 0;">
-          <img src="assets/img/turtle-cove.jpg"/>
-          <ion-card-header>
-            <ion-card-subtitle>Manchac, LA</ion-card-subtitle>
-            <ion-card-title>Turtle Cove</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            The mission of the Turtle Cove Environmental Research Station
-            (Turtle Cove ERS) is to facilitate and support a better
-            understanding of Southeast Louisiana's coastal wetland environments
-            through research, education, and public outreach activities and
-            programs for Southeastern's students, faculty and staff as well as
-            the greater University community. For a 20 minute video on Turtle Cove and 
-            its surrounding ecosystem, please watch our video "Troubled Waters" below.
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  
-    <ion-row>
-      <ion-col>
-        <div class="button-row">
-          <ion-button (click)="buttonHandler('http://www.southeastern.edu/acad_research/programs/turtle_cove/index.html')">
-            <ion-icon name="desktop"></ion-icon>
-            <span>Our Website</span>
-          </ion-button>
-          <ion-button (click)="buttonHandler('https://www.youtube-nocookie.com/embed/iqhW54bWwnw')">
-            <ion-icon name="film"></ion-icon>
-            <span>Troubled Waters</span>
-          </ion-button>
+  <div class="content-container">
+    <div style="height: 100%; overflow-y: scroll;">
+      <ion-card style="margin-bottom: 0;">
+        <img src="assets/img/turtle-cove.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle>Manchac, LA</ion-card-subtitle>
+          <ion-card-title>Turtle Cove</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          The mission of the Turtle Cove Environmental Research Station
+          (Turtle Cove ERS) is to facilitate and support a better
+          understanding of Southeast Louisiana's coastal wetland environments
+          through research, education, and public outreach activities and
+          programs for Southeastern's students, faculty and staff as well as
+          the greater University community. For a 20 minute video on Turtle Cove and
+          its surrounding ecosystem, please watch our video "Troubled Waters" below.
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="button-container">
+      <div class="button-row">
+        <ion-button
+          (click)="buttonHandler('http://www.southeastern.edu/acad_research/programs/turtle_cove/index.html')">
+          <ion-icon name="desktop"></ion-icon>
+          <span>Our Website</span>
+        </ion-button>
+        <ion-button (click)="buttonHandler('https://www.youtube-nocookie.com/embed/iqhW54bWwnw')">
+          <ion-icon name="film"></ion-icon>
+          <span style="text-overflow: ellipsis; overflow: hidden;">Troubled Waters</span>
+        </ion-button>
       </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div style="display: flex; flex-direction: row;">
-          <ion-button style="margin-top: 0;" color="secondary" (click)="buttonHandler('https://www.southeastern.edu/alumni_donors/foundation/giving/tutlecove/index.html')">
-              Support Us!
-          </ion-button>
-        </div>
-      </ion-col>
-    </ion-row>
+      <div class="button-row">
+        <ion-button style="margin-top: 0;" color="secondary"
+          (click)="buttonHandler('https://www.southeastern.edu/alumni_donors/foundation/giving/tutlecove/index.html')">
+          Support Us!
+        </ion-button>
+      </div>
+    </div>
     <!-- <ion-row>
       <ion-col>
         <div style="display: flex; flex-direction: row;">
@@ -55,5 +48,5 @@
         </div>
       </ion-col>
     </ion-row> -->
-  </ion-grid>
+  </div>
 </ion-content>

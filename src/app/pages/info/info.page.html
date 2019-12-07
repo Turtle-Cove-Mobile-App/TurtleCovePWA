@@ -10,9 +10,19 @@
 <tc-header pageName="About"></tc-header>
 
 <ion-content>
+  <ion-card *ngIf="installCount">
+    <ion-card-header>
+      <ion-card-title>
+        App Installs
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ installCount }}
+    </ion-card-content>
+  </ion-card>
 
   <ion-card (click)="buttonHandler()">
-    <img src="assets/img/tcMap.jpg"/>
+    <img src="assets/img/tcMap.jpg" />
   </ion-card>
   <ion-card>
     <ion-card-header>
@@ -104,17 +114,23 @@
       <br>
       <br>
       Turtle Cove Environmental Research Station Box 10585 Hammond, LA 70402
-    </ion-card-content>
-    <ion-card-content>
-      Manager: Dr. Robert Moreau rmoreau@southeastern.edu
-    </ion-card-content>
-    <ion-card-content>
-      Ph/Fax: (985)549-5008
-    </ion-card-content>
-    <ion-card-content>
-      Cell: (504)231-1067
+      <br>
+      <br>
+      Manager: Dr. Robert Moreau
+      <br>
+      <br>
+      Email: <a href="mailto:rmoreau@southeastern.edu">rmoreau@southeastern.edu</a>
+      <br>
+      <br>
+      Ph/Fax: <a href="tel:9855495008">(985) 549-5008</a>
+      <br>
+      <br>
+      Cell: <a href="tel:5042311067">(504) 231-1067</a>
     </ion-card-content>
   </ion-card>
-  <div style="text-align: center; width: 100%; color: gray; padding-bottom: 5px;">Turtle icon made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-  <div style="text-align: center; width: 85%; margin: auto; color: gray; padding-bottom: 5px;">The Turtle Cove Companion App was devloped by Phillip Weaver and Zachary Armand</div>
+  <div style="text-align: center; width: 100%; color: gray; padding-bottom: 5px;">Turtle icon made by <a
+      href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+      href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+  <div style="text-align: center; width: 85%; margin: auto; color: gray; padding-bottom: 5px;">The Turtle Cove Companion
+    App was devloped by Phillip Weaver and Zachary Armand</div>
 </ion-content>

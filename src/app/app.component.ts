@@ -1,5 +1,7 @@
+import { InstallCounterService } from './services/install-counter/install-counter.service';
 import { PluginsService } from 'src/app/services/plugins-service/plugins.service';
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Plugins, StatusBarStyle } from '@capacitor/core';
 const { StatusBar, SplashScreen } = Plugins;
@@ -10,11 +12,14 @@ const { StatusBar, SplashScreen } = Plugins;
 })
 export class AppComponent {
 
-  constructor(private plugins: PluginsService) {
+  constructor(private plugins: PluginsService, private http: HttpClient, private installCounter: InstallCounterService) {
     this.initializeApp();
   }
 
   initializeApp() {
+    window.addEventListener('appinstalled', () => {
+      this.installCounter.incrementCount();
+    });
     StatusBar.setStyle({
       style: StatusBarStyle.Dark
     });
