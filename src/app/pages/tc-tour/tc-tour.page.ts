@@ -17,7 +17,7 @@ export class TcTourPage implements OnInit {
   private totalNumberOfSigns = 55;
 
   private imagesLoaded = 0;
-  private loading;
+  public loading;
 
   private signArray;
 
