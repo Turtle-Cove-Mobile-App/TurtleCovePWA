@@ -20,7 +20,7 @@ export class InfoPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.installCounter.getCount().subscribe(response => this.installCount = response.value);
+    this.installCounter.getCount().subscribe((response: {value: number}) => this.installCount = response.value);
   }
 
   async presentToastWithOptions() {
