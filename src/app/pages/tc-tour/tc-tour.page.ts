@@ -16,11 +16,15 @@ export class TcTourPage implements OnInit {
 
   private totalNumberOfSigns = 55;
 
+  private imagesLoaded = 0;
+  private loading;
+
   private signArray;
 
   constructor(private modalCtrl: ModalController, public imgService: ImageViewService, private alertController: AlertController, private storage: Storage) { }
 
   ngOnInit() {
+    this.loading = true;
     this.storage.get('signs').then(signs => {
       if (signs) {
         this.signArray = signs;
@@ -37,6 +41,12 @@ export class TcTourPage implements OnInit {
     // Passes the array by reference, so any changes made to the array inside of the image viewer service are reflected here in the tc-tour class.
     this.imgService.setImages(this.signArray);
     // console.log(this.signArray);
+  }
+
+  imgLoaded() {
+    if (++this.imagesLoaded === this.totalNumberOfSigns) {
+      this.loading = false;
+    }
   }
 
   async showZoom(id) {
