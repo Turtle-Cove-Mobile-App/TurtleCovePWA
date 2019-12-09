@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'filterSpeciesByNameStartsWith',
-  pure: false
+  pure: true
 })
 export class FilterSpeciesByNameStartsWithPipe implements PipeTransform {
   transform(array, letter): any {
