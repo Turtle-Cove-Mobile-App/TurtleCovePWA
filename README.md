@@ -4,7 +4,7 @@ Computer Science 411 (Zac and Jeremiah)
 
 ## Description
 
-The Turtle Cove Mobile App is a companion app for the Turtle Cove Environmental Research Station. It is intended to be used to help people learn about the facility and the surrounding area as well as improve their experience while they are visitors there. It will provide any important information about the research station and the surrounding area, guide them on the boardwalk tour at the facility, and provide an informational tour along the Manchac Greenway.
+The Turtle Cove Mobile App is a companion app for the Turtle Cove Environmental Research Station. It is built as a Progressive Web App that is to be hosted on a web server and accessed via a URL like a traditional website. It is intended to be used to help people learn about the facility and the surrounding area as well as improve their experience while they are visitors there. It will provide any important information about the research station and the surrounding area, guide them on the boardwalk tour at the facility, and provide an informational tour along the Manchac Greenway.
 
 ## Technologies Used
 
