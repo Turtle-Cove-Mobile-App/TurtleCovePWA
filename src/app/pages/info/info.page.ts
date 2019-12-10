@@ -19,9 +19,9 @@ export class InfoPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter() {
-    this.installCounter.getCount().subscribe((response: {value: number}) => this.installCount = response.value);
-  }
+  // ionViewWillEnter() {
+  //   this.installCounter.getCount().subscribe((response: {value: number}) => this.installCount = response.value);
+  // }
 
   async presentToastWithOptions() {
     console.log(this.isToastOpen);

@@ -16,9 +16,9 @@ export class AppComponent {
   }
 
   initializeApp() {
-    window.addEventListener('appinstalled', () => {
-      this.installCounter.incrementCount();
-    });
+    // window.addEventListener('appinstalled', () => {
+    //   this.installCounter.incrementCount();
+    // });
     StatusBar.setStyle({
       style: StatusBarStyle.Dark
     });
