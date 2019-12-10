@@ -29,4 +29,5 @@ The Turtle Cove Mobile App is a companion app for the Turtle Cove Environmental 
 2.  To test a live production version of the app locally, run `ionic serve`.
 3.  To build a development build of the app, run `ionic build`.
 4.  To build a production build of the app for release, run `ionic build –prod`.
+5.	If the app will be hosted in a directory other than the root directory of the web server, then an extra build parameter should be added like so. `ionic build --prod -- --base-href=/path/to/app/root/www/`
 ##### Note: Builds will go into the ‘/www’ directory within the project folder
