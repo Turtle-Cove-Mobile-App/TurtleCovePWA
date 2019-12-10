@@ -18,7 +18,7 @@ The Turtle Cove Mobile App is a companion app for the Turtle Cove Environmental 
 ## Maintenance Guide
 ### *This is what a terminal command in the guide looks like. -> `terminal command`
 #### Setting up the development environment
-1.  In order to retrieve the source-code for the Turtle Mobile App, contact Dr. Ghassan Alkadi to receive access to the repository.
+1.  In order to retrieve the source-code for the Turtle Mobile App, contact Dr. Ghassan Alkadi (ghassan.alkadi@selu.edu) to receive access to the repository.
 2.  Pull the repo to a project directory of your choosing.
 3.  If not already installed, install the latest LTS release of Node.JS from https://nodejs.org/en/.
 4.  Open a terminal and run `npm install -g ionic`.
