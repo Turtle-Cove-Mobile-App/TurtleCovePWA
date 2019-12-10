@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "www",
+    "public": "prod",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -8,8 +8,8 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/external/webapp_test/turtlecoveapp/www/**",
+        "destination": "/external/webapp_test/turtlecoveapp/www/index.html"
       }
     ],
     "headers": [
