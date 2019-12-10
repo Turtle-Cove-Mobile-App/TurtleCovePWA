@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./events.page.scss"]
 })
 export class EventsPage implements OnInit {
-  private apiKey = "myGoogleAPIKey";
+  private apiKey = "AIzaSyDxJFgb7IlKXSGritDAsMtmbWZ7P4rLfqU";
 
   public events;
 
