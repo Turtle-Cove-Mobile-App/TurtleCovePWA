@@ -14,7 +14,7 @@
     ],
     "headers": [
       {
-        "source": "ngsw-worker.js",
+        "source": "/external/webapp_test/turtlecoveapp/www/ngsw-worker.js",
         "headers": [
           {
             "key": "Cache-Control",

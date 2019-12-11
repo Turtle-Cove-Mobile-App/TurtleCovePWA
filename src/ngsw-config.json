@@ -4,23 +4,10 @@
     {
       "name": "app",
       "installMode": "prefetch",
-      "resources": {
-        "files": [
-          "/favicon.ico",
-          "/index.html",
-          "/*.css",
-          "/*.js"
-        ]
-      }
-    }, {
-      "name": "assets",
-      "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/**",
-          "/svg/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/**"
         ],
         "urls": [
           "https://cdn.jsdelivr.net/npm/pwacompat@2.0.9/pwacompat.min.js"

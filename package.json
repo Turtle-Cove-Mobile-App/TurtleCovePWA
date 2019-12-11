@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-selu-dev": "ionic build --prod -- --base-href=/external/webapp_test/turtlecoveapp/www/"
+    "build-selu-dev": "rm -rf prod/external/webapp_test/turtlecoveapp/www && ionic build --prod -- --base-href=/external/webapp_test/turtlecoveapp/www/ && mv www prod/external/webapp_test/turtlecoveapp && firebase deploy -P dev"
   },
   "private": true,
   "dependencies": {
