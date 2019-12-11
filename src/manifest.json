@@ -4,8 +4,8 @@
   "theme_color": "#08582e",
   "background_color": "#08582e",
   "display": "standalone",
-  "scope": "/external/webapp_test/turtlecoveapp/www/",
-  "start_url": "/external/webapp_test/turtlecoveapp/www/",
+  "scope": "/external/turtlecoveapp/",
+  "start_url": "/external/turtlecoveapp/",
   "orientation": "portrait",
   "icons": [
     {
