@@ -5,7 +5,7 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**",
-      "*.zip"
+      "**/*.zip"
     ],
     "rewrites": [
       {
