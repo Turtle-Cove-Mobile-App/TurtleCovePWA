@@ -152,9 +152,6 @@ export class ChecklistPage implements OnInit {
   }
 
   ngOnInit() {
-    for (const obj of this.speciesClass) {
-      obj.species = obj.species.sort((a, b) => (a.name > b.name) ? 1 : -1);
-    }
     this.restore();
     // tslint:disable-next-line: forin
     for (const obj of this.speciesClass) {

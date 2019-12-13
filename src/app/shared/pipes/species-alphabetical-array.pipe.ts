@@ -43,7 +43,8 @@ export class SpeciesAlphabeticalArrayPipe implements PipeTransform {
         returnArr[currentIndex] = [obj];
       }
     }
-    return returnArr;
+    array = returnArr;
+    return array;
   }
 
   // transform(array, letter): any {
