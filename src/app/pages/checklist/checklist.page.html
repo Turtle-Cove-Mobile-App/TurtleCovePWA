@@ -41,9 +41,9 @@
               </ion-label>
             </ion-chip>
           </ion-item-divider>
-          <ng-container *ngIf="obj.expanded">
+          <ng-container *ngFor="let speciesArr of (obj.species | speciesAlphabeticalArray)">
 
-            <ion-item-group *ngFor="let speciesArr of (obj.species | speciesAlphabeticalArray)">
+            <ion-item-group *ngIf="obj.expanded">
               <ion-item-divider style="background-color: lightgray; z-index: 0;" mode="ios">{{ speciesArr[0].name.charAt(0) }}
               </ion-item-divider>
               <ng-container
