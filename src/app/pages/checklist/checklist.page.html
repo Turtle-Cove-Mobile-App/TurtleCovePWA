@@ -43,7 +43,7 @@
           </ion-item-divider>
           <ng-container *ngFor="let speciesArr of (obj.species | speciesAlphabeticalArray)">
 
-            <ion-item-group *ngIf="obj.expanded">
+            <ion-item-group [ngStyle]="{'display' : obj.expanded ? 'initial' : 'none'}">
               <ion-item-divider style="background-color: lightgray; z-index: 0;" mode="ios">{{ speciesArr[0].name.charAt(0) }}
               </ion-item-divider>
               <ng-container
