@@ -42,7 +42,27 @@
             </ion-chip>
           </ion-item-divider>
           <ng-container *ngIf="obj.expanded">
-            <ng-container *ngFor="let letter of alphabet">
+
+            <ion-item-group *ngFor="let speciesArr of (obj.species | speciesAlphabeticalArray)">
+              <ion-item-divider style="background-color: lightgray; z-index: 0;" mode="ios">{{ speciesArr[0].name.charAt(0) }}
+              </ion-item-divider>
+              <ng-container
+                *ngFor="let species of speciesArr; let j = index">
+                <ion-item
+                  [attr.lines]="(j == speciesArr.length - 1) ? 'none' : 'inset'">
+                  <div>
+                    <ion-label>{{ species.name }}</ion-label>
+                    <ion-note style="font-style: italic;">{{ species.nomenclature }}</ion-note>
+                  </div>
+                  <ion-checkbox color="primary" slot="start" [(ngModel)]="species.checked" (ionChange)="checkChanged()">
+                  </ion-checkbox>
+                  <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species.id, obj)"
+                    name="information-circle-outline"></ion-icon>
+                </ion-item>
+              </ng-container>
+            </ion-item-group>
+
+            <!-- <ng-container *ngFor="let letter of alphabet">
               <ion-item-group *ngIf="(obj.species | filterSpeciesByNameStartsWith : letter)">
                 <ion-item-divider style="background-color: lightgray; z-index: 0;" mode="ios">{{ letter }}
                 </ion-item-divider>
@@ -62,8 +82,9 @@
                   </ion-item>
                 </ng-container>
               </ion-item-group>
-            </ng-container>
+            </ng-container> -->
           </ng-container>
+
         </ng-container>
       </ion-item-group>
     </div>

@@ -12,7 +12,7 @@ import { SpeciesAlphabeticalArrayPipe } from './pipes/species-alphabetical-array
 @NgModule({
   imports: [CommonModule, IonicModule, RouterModule, FormsModule],
   declarations: [HeaderComponent, FilterSpeciesByNameStartsWithPipe, ZoomComponent, PwaPromptComponent, SpeciesAlphabeticalArrayPipe],
-  exports: [HeaderComponent, RouterModule, FilterSpeciesByNameStartsWithPipe, ZoomComponent, PwaPromptComponent],
+  exports: [HeaderComponent, RouterModule, FilterSpeciesByNameStartsWithPipe, ZoomComponent, PwaPromptComponent, SpeciesAlphabeticalArrayPipe],
   entryComponents: [ZoomComponent]
 })
 export class SharedModule {}
