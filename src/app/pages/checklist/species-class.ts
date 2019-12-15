@@ -3,6 +3,7 @@ import { Species } from './species';
 export class SpeciesClass {
     public className: string;
     public species: Species[];
+    public speciesGrouped: Species[][];
     public found: number;
     public expanded: boolean;
 

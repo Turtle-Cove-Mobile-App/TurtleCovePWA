@@ -23,7 +23,7 @@
         Reset All
       </ion-button>
     </div>
-    <div class="scroll-container">
+    <div class="scroll-container" *ngIf="!loading">
       <ion-item-group>
         <ng-container *ngFor="let obj of speciesClass; let i = index">
           <ion-item-divider no-padding mode="ios" sticky style="background-color: gray; color: white; height: 40px;"
@@ -41,7 +41,7 @@
               </ion-label>
             </ion-chip>
           </ion-item-divider>
-          <ng-container *ngFor="let speciesArr of (obj.species | speciesAlphabeticalArray)">
+          <ng-container *ngFor="let speciesArr of obj.speciesGrouped">
 
             <ion-item-group [ngStyle]="{'display' : obj.expanded ? 'initial' : 'none'}">
               <ion-item-divider style="background-color: lightgray; z-index: 0;" mode="ios">{{ speciesArr[0].name.charAt(0) }}

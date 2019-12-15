@@ -1,3 +1,4 @@
+import { SpeciesAlphabeticalPipe } from './../../shared/pipes/species-alphabetical.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ChecklistPage]
+  declarations: [ChecklistPage],
+  providers: [SpeciesAlphabeticalPipe]
 })
 export class ChecklistPageModule {}

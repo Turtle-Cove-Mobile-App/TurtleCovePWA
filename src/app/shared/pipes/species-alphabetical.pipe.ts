@@ -1,12 +1,13 @@
+import { SpeciesClass } from '../../pages/checklist/species-class';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'speciesAlphabeticalArray',
+  name: 'speciesAlphabetical',
   pure: true
 })
-export class SpeciesAlphabeticalArrayPipe implements PipeTransform {
+export class SpeciesAlphabeticalPipe implements PipeTransform {
 
-  transform(array: any[]): any {
+  transform(obj: SpeciesClass): any {
     // let returnArr: any[][] = new Array(26);
     // for (const obj of array) {
     //   const index = obj.name.toLowerCase().charCodeAt(0) - 97;
@@ -23,28 +24,27 @@ export class SpeciesAlphabeticalArrayPipe implements PipeTransform {
     // }
     // return returnArr;
     
-    let returnArr: any[][] = new Array();
+    obj.speciesGrouped = new Array();
 
-    array.sort((a, b) => a.name > b.name ? 1 : -1);
+    obj.species.sort((a, b) => a.name > b.name ? 1 : -1);
     let currentIndex = 0;
-    let prevLetter = array[0].name.charAt(0).toLowerCase();
+    let prevLetter = obj.species[0].name.charAt(0).toLowerCase();
     
-    for (const obj of array) {
-      const currentLetter = obj.name.charAt(0).toLowerCase();
+    for (const species of obj.species) {
+      const currentLetter = species.name.charAt(0).toLowerCase();
       if (currentLetter > prevLetter) {
         // console.log(currentLetter + ' is greater than ' + prevLetter);
         currentIndex++;
         prevLetter = currentLetter;
       }
-      if (returnArr[currentIndex]) {
-        returnArr[currentIndex].push(obj);
+      if (obj.speciesGrouped[currentIndex]) {
+        obj.speciesGrouped[currentIndex].push(species);
       }
       else {
-        returnArr[currentIndex] = [obj];
+        obj.speciesGrouped[currentIndex] = [species];
       }
     }
-    array = returnArr;
-    return array;
+    return obj;
   }
 
   // transform(array, letter): any {

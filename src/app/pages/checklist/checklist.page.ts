@@ -1,3 +1,4 @@
+import { SpeciesAlphabeticalPipe } from './../../shared/pipes/species-alphabetical.pipe';
 import { ImageViewService } from 'src/app/services/image-view/image-view.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
@@ -133,11 +134,16 @@ export class ChecklistPage implements OnInit {
     ])
   ];
 
+  private restored = false;
+
+  public loading = true;
+
   constructor(
     private storage: Storage,
     private alertController: AlertController,
     private modalCtrl: ModalController,
-    public imageService: ImageViewService
+    public imageService: ImageViewService,
+    private speciesPipe: SpeciesAlphabeticalPipe
   ) {
     // if (!environment.production) {
     //   this.speciesClass[this.speciesClass.length - 1].species.push(
@@ -152,12 +158,23 @@ export class ChecklistPage implements OnInit {
   }
 
   ngOnInit() {
-    this.restore();
     // tslint:disable-next-line: forin
     for (const obj of this.speciesClass) {
       obj.found = 0;
       this.total += obj.species.length;
     }
+
+    this.restore();
+    if (!this.restored) {
+      this.generateSpeciesList();
+    }
+    this.loading = false;
+  }
+
+  async generateSpeciesList() {
+    this.speciesClass.forEach(speciesClass => {
+      speciesClass = this.speciesPipe.transform(speciesClass);
+    });
   }
 
   checkChanged() {
@@ -165,9 +182,11 @@ export class ChecklistPage implements OnInit {
     // tslint:disable-next-line: forin
     for (const speciesClass of this.speciesClass) {
       speciesClass.found = 0;
-      for (const species of speciesClass.species) {
-        if (species.checked) {
-          speciesClass.found++;
+      for (const speciesGroup of speciesClass.speciesGrouped) {
+        for (const species of speciesGroup) {
+          if (species.checked) {
+            speciesClass.found++;
+          }
         }
       }
       this.totalFound += speciesClass.found;
@@ -177,47 +196,50 @@ export class ChecklistPage implements OnInit {
 
   restore() {
     this.storage.get('speciesArray').then(speciesArray => {
-      // let same = true;
-      // if (speciesArray && speciesArray.length === this.speciesClass.length) {
-      //   for (const species in speciesArray) {
-      //     if (
-      //       speciesArray[species].species.length !==
-      //       this.speciesClass[species].species.length
-      //     ) {
-      //       same = false;
-      //       break;
-      //     }
-      //   }
-      // }
+      if (speciesArray) {
+        // let same = true;
+        // if (speciesArray && speciesArray.length === this.speciesClass.length) {
+        //   for (const species in speciesArray) {
+        //     if (
+        //       speciesArray[species].species.length !==
+        //       this.speciesClass[species].species.length
+        //     ) {
+        //       same = false;
+        //       break;
+        //     }
+        //   }
+        // }
 
-      // If species arrays are the same classes and species, then restore
-      if (JSON.stringify(speciesArray) === JSON.stringify(this.speciesClass)) {
-        // console.log('Running if');
-        this.speciesClass = null;
-        this.speciesClass = speciesArray
-          .map(item => {
-            item.expanded = false;
-            return item;
-          });
-      } else {
-        // console.log('Running else');
+        // If species arrays are the same classes and species, then restore
+        if (JSON.stringify(speciesArray) === JSON.stringify(this.speciesClass)) {
+          // console.log('Running if');
+          this.speciesClass = null;
+          this.speciesClass = speciesArray
+            .map(item => {
+              item.expanded = false;
+              return item;
+            });
+        } else {
+          // console.log('Running else');
 
-        // Loop through array and restored "checked"s
-        // tslint:disable-next-line: forin
-        for (const index in speciesArray) {
+          // Loop through array and restored "checked"s
           // tslint:disable-next-line: forin
-          for (const speciesIndex in speciesArray[index].species) {
-            for (const thisSpeciesIndex in this.speciesClass[index].species) {
-              if (this.speciesClass[index].species[thisSpeciesIndex].id === speciesArray[index].species[speciesIndex].id) {
-                this.speciesClass[index].species[thisSpeciesIndex] = speciesArray[index].species[speciesIndex];
-                // console.log('Did the thing');
-                break;
+          for (const index in speciesArray) {
+            // tslint:disable-next-line: forin
+            for (const speciesIndex in speciesArray[index].species) {
+              for (const thisSpeciesIndex in this.speciesClass[index].species) {
+                if (this.speciesClass[index].species[thisSpeciesIndex].id === speciesArray[index].species[speciesIndex].id) {
+                  this.speciesClass[index].species[thisSpeciesIndex] = speciesArray[index].species[speciesIndex];
+                  // console.log('Did the thing');
+                  break;
+                }
               }
             }
           }
         }
+        this.restored = true;
+        this.checkChanged();
       }
-      this.checkChanged();
     });
     console.log('Species restored.');
     // console.log(this.speciesClass);
@@ -254,8 +276,10 @@ export class ChecklistPage implements OnInit {
     // tslint:disable-next-line: forin
     for (const obj of this.speciesClass) {
       obj.found = 0;
-      for (const species of obj.species) {
-        species.checked = false;
+      for (const speciesGroup of obj.speciesGrouped) {
+        for (const species of speciesGroup) {
+          species.checked = false;
+        }
       }
     }
     this.totalFound = 0;
@@ -282,7 +306,7 @@ export class ChecklistPage implements OnInit {
 
   async openSpeciesInfo(speciesIndex, speciesClass) {
     const pathBase = 'assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/';
-    this.imageService.images = speciesClass.species.map((item, index) => ({path: pathBase + item.id + '.jpg'}));
+    this.imageService.images = speciesClass.species.map((item, index) => ({ path: pathBase + item.id + '.jpg' }));
 
     // console.log(this.imageService.images);
 
@@ -294,7 +318,7 @@ export class ChecklistPage implements OnInit {
       }
     });
     await modal.present();
-    
+
     // console.log(species);
     // const popover = await this.modalCtrl.create({
     //   component: ModalComponent,
