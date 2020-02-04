@@ -137,7 +137,7 @@ export class ChecklistPage implements OnInit {
     private storage: Storage,
     private alertController: AlertController,
     private modalCtrl: ModalController,
-    public imageService: ImageViewService
+    public imgService: ImageViewService
   ) {
     // if (!environment.production) {
     //   this.speciesClass[this.speciesClass.length - 1].species.push(
@@ -285,17 +285,15 @@ export class ChecklistPage implements OnInit {
     this.anyExpanded = !this.anyExpanded;
   }
 
-  async openSpeciesInfo(speciesIndex, speciesClass) {
+  async openSpeciesInfo(species, speciesClass) {
     const pathBase = 'assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/';
-    this.imageService.images = speciesClass.species.map((item, index) => ({ path: pathBase + item.id + '.jpg' }));
-
-    // console.log(this.imageService.images);
+    this.imgService.images = speciesClass.species.map((item, index) => ({ path: pathBase + item.id + '.jpg' }));
 
     const modal = await this.modalCtrl.create({
       component: ZoomComponent,
       cssClass: 'transparent-modal',
       componentProps: {
-        index: speciesIndex
+        index: this.imgService.images.findIndex(image => image.path === ('assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/' + species.id + '.jpg'))
       }
     });
     await modal.present();

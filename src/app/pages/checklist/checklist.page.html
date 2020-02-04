@@ -57,7 +57,7 @@
                     <ion-checkbox color="primary" slot="start" [(ngModel)]="species.checked"
                       (ionChange)="checkChanged()">
                     </ion-checkbox>
-                    <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(j, obj)"
+                    <ion-icon style="z-index: 99;" slot="end" (click)="openSpeciesInfo(species, obj)"
                       name="information-circle-outline"></ion-icon>
                   </ion-item>
                 </ng-container>

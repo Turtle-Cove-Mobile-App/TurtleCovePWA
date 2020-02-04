@@ -11,11 +11,13 @@ export class ZoomComponent implements OnInit {
 
   private initIndex: number;
 
+  public viewEntered = false;
+
   sliderOptions;
 
   zoomedIn = false;
 
-  @ViewChild('slider', { read: ElementRef, static: true }) slider: ElementRef;
+  @ViewChild('slider', { read: ElementRef, static: false }) slider: ElementRef;
 
   constructor(
     private modalController: ModalController,
@@ -32,6 +34,10 @@ export class ZoomComponent implements OnInit {
         maxRatio: 3
       }
     };
+  }
+
+  ionViewWillEnter() {
+    this.viewEntered = true;
   }
 
   slideChanged() {
