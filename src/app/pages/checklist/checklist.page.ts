@@ -285,15 +285,15 @@ export class ChecklistPage implements OnInit {
     this.anyExpanded = !this.anyExpanded;
   }
 
-  async openSpeciesInfo(species, speciesClass) {
+  async openSpeciesInfo(speciesId, speciesClass) {
     const pathBase = 'assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/';
-    this.imgService.images = speciesClass.species.map((item, index) => ({ path: pathBase + item.id + '.jpg' }));
+    this.imgService.images = speciesClass.species.map((item, index) => ({ id: item.id, path: pathBase + item.id + '.jpg' }));
 
     const modal = await this.modalCtrl.create({
       component: ZoomComponent,
       cssClass: 'transparent-modal',
       componentProps: {
-        index: this.imgService.images.findIndex(image => image.path === ('assets/img/species/' + speciesClass.className.split(' ')[0].toLowerCase() + '/' + species.id + '.jpg'))
+        index: this.imgService.images.findIndex(image => image.id === speciesId)
       }
     });
     await modal.present();

@@ -33,6 +33,7 @@ export class TcTourPage implements OnInit {
         this.signArray = new Array(this.totalNumberOfSigns).fill({ viewed: false }).map((item, index) => ({ viewed: item.viewed, path: 'assets/img/signs/' + index + '.jpg' }));
         this.storage.set('signs', this.signArray);
       }
+    }).then(() => {
       this.imgService.setImages(this.signArray);
     });
   }
@@ -54,8 +55,7 @@ export class TcTourPage implements OnInit {
       component: ZoomComponent,
       cssClass: 'transparent-modal',
       componentProps: {
-        index: id,
-        // signs: this.imgService.signs
+        index: id
       }
     });
     await modal.present();
